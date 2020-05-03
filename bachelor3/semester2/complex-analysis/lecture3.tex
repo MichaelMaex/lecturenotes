@@ -1,0 +1,133 @@
+\lecture{3}{2020-02-26}{Belangrijkste resultaten}
+\section{Berekenen van Integralen} \label{sec:berekenen_van_integralen}
+We willen de volgende integraal uitrekenen.
+\[
+\int_{-\infty}^{\infty} \frac{\sin x}{x} \dd x = \lim_{R \to \infty} \int_{-R}^{R}\frac{\sin x}{x} \dd x
+.\]
+Met een primitieve kunnen we dit niet uitrekenen. Deze integraal is ook niet absoluut convergent.
+Beschouw de functie \[
+	f:\C\to \C: z\mapsto \frac{\sin z}{z} = \frac{e^{iz}-e^{-iz}}{z i 2}
+.\] 
+We weten dat  $\sin x = \im e^{ix}$. 
+We beschouwen dan 
+\[
+\int_{-R}^{R} \frac{e^{ix}}{x} \dd x
+.\] 
+Nu krijgen we een probleem rond $0$. Maar we kunnen met limieten werken.
+Zij $0 < \epsilon < R$. 
+ \[
+\int_{-R}^{-\epsilon} \frac{e^{ix}}{x }\dd x + \int_{\epsilon}^{R}\frac{e^{ix}}{x}\dd x
+.\] 
+
+\begin{figure}[ht]
+    \centering
+    \incfig{contour-voor-sin-x-over-x}
+    \caption{contour voor sin x over x}
+    \label{fig:contour-voor-sin-x-over-x}
+\end{figure}
+Dan beschouwen we over de toy contour \[
+	\lim_{\substack{R \to \infty \\ \epsilon \to 0}} 
+	\int_{-R}^{-\epsilon} \frac{e^{iz}}{z} \dd z + \int_{\epsilon}^{R} \frac{e^{iz}}{z} \dd z
+.\] 
+Dus is \[
+	\im \left( \lim_{\substack{R \to \infty \\ \epsilon \to 0}} (I_1 + I_3) \right)   = \int_{-\infty}^{\infty} \frac{\sin x}{x} \dd x
+.\] 
+Nu beweren we dat $\lim_{R \to \infty} I_4 = 0$. 
+ML afschatting gaat net niet werken. Maar we kunnen parametriseren. \[
+I_4 = \int_{0}^{\pi }\frac{e^{iRe^{it}}}{Re^{it}}R i e^{it} \dd t = i \int_0^{\pi }e^{iRe^{it}} \dd t
+.\] 
+Dus 
+\begin{align*}
+	\abs{I_4} &\le \int_0^{\pi} \abs{e^{iRe^{it}}} \dd t \\
+	= \int_0^{\pi} e^{-R \sin t} \dd t 
+.\end{align*}
+Dit wordt duidelijk klein.
+Hieruit vinden we dat \[
+	\lim_{\substack{\epsilon \to 0 \\ R \to \infty}} I_1 + I_3= - \lim_{\epsilon \to 0} I_2
+.\] 
+Dus wordt het 
+\begin{align*}
+	\int_{C_\epsilon^+} \frac{1}{z} \dd z &= \int_0^{\pi}\frac{1}{\epsilon e^{it}}\epsilon i e^{it} \\
+	&= \pi i
+.\end{align*}
+Ook is \[
+\int_{C_\epsilon^{+}} \frac{e^{iz}-1}{z} \dd z \to 0 \text{ als } \epsilon \to 0
+.\] 
+Dus is \[
+\lim_{\epsilon \to 0} - I_2 = \pi i
+.\] 
+Dus \[
+\int_{-\infty}^{\infty} \frac{\sin x}{x} \dd x = \pi
+.\] 
+
+\section{Formule van Cauchy} \label{sec:formule_van_cauchy}
+\begin{stelling}
+	Zij $f$ holomorph in $\Omega$. Zij $D$ een schijf met $\overline{D} = D \cup C \subset \Omega$. 
+Dan $f(z)  = \frac{1}{2\pi i} \oint_{C} \frac{f(s)}{s - z}$ voor $z \in D$.
+\end{stelling}
+\begin{gevolg}
+	 Met inductie bekomen we dat voor elke $n \in \N$ \[
+		 f^{(n)}(z) = \frac{n!}{2\pi i} \oint \frac{f(s)}{(s - z)^{n + 1}} \dd s
+	 .\] 
+	 Dus $f$ is willekeurig vaak afleidbaar!
+\end{gevolg}
+We gaan het uit een ander perspectief bekijken.
+Beschouw \[
+	f(z) = \frac{1}{2 \pi i} \oint_C \frac{f(s)}{s - z} \dd s 
+.\] 
+Bekijk $f(z)$ ronnd $z_0 \in D$. Kier $z \in D$ met $\abs{z - z_0} < \frac{1}{ 2}\min_{s \in C}\abs{s - z_0}$.
+Dan 
+ \begin{align*}
+	 \frac{1}{s-z} &=  \frac{1}{s - z_0 -(z- z_0)} \\
+	 &= \frac{1}{s - z_0}\frac{1}{1 - \frac{z - z_0}{s - z_0}} \\
+	 &= \sum_{k = 0}^{ \infty} \frac{(z - z_0)^{k}}{(s - z_0)^{k -1}} \\
+.\end{align*}
+Er volgt (het convergeert uniform in een omgeving van $z_0$)
+\begin{align*}
+	f(z)  &= \frac{1}{2 \pi i} \oint_C f(s) \sum_{k = 0}^{\infty}\frac{(z - z_0)^{k}}{(s - z_0)^{k + 1}} \dd s \\
+	 &= \frac{1}{2 \pi i} \sum_{k = 0}^{\infty}\left( \oint_C \frac{f(s)}{(s - z_0)^{k+1}} \dd s \right) (z - z_0)^{k}
+.\end{align*}
+Dus $f(z) $ is een machreeks in een omgeving van  $z_0$.
+\begin{gevolg}
+	[Cauchy afschatting]
+	Als $f$ holomorf is in $\Omega$ en $z_0 \in \Omega$ en $\overline{D_r(z_0)}\subset \Omega$.
+	Dan is \[
+		\abs{f^{(n)}(z_0)}  \le \frac{n!}{r^{n}} \max_{s \in C_r(z_0)}\abs{f(s)}
+	.\] 
+\end{gevolg}
+\begin{proof}
+	We weten dat \[
+		f^{(n)}(z_0) = \frac{n!}{2\p\pi} \oint_{C_r(z_0)}\frac{f(s)}{(s - z_0)^{n + 1}} \dd s
+	.\] 
+	We passen hier ML afschatting op toe. 
+	 \begin{align*}
+		 \abs{f^{(n)}(z_0)} &\le \frac{n!}{2\pi }2 \pi r \max_{s \in C_r(z_0)} \abs{\frac{f(s)}{(s - z_0)^{n + 1}}} \\&= \frac{n!}{r^{n}} \max _{s \in C_r(z_0)} \abs{f(s)} 
+	.\end{align*}
+\end{proof}
+\begin{stelling}
+	[Stelling Liouville]
+	Zij $f$ holomorf of $\C$ (gehele functie). Als $f$ begrensd is, dan is $f$ constant.
+\end{stelling}
+\begin{proof}
+	We schrijven $f(z) = \sum_{n = 0}^{\infty}a_nz^{n},$ met $a_n = \frac{f^{(n)}(0)}{n!}$.
+	Voor elke $r \ge 0 $ is 
+	\begin{align*}
+		\abs{f^{(n)}} &\le \frac{n!}{r^{n}} \cdot  \max_{s \in C_r(0)} \abs{f(s)} \\
+			      &\le \frac{n!}{r^{n}} \cdot \sup_{s \in \C}\abs{f(s)}
+	.\end{align*}
+	Dus 
+	\[
+		\abs{a_n} \le \frac{1}{r^{n}}\cdot \sup_{s \in \C} \abs{f(s)} \text{ voor elke } r > 0
+	.\] 
+	Dus voor alle $n\le 1$ geldt $a_n = 0$.
+\end{proof}
+\begin{stelling}
+	[Hoofdstelling van de Algebra]	
+Als $P$ een veelterm is van graad $n \ge 1$. Dan heeft  $P$ een nulpunt in $\C$.
+\end{stelling}
+\begin{proof}
+	Stel $p$ heeft geen nulpunten. Dan is $z\mapsto f(z) = \frac{1}{p(z)}$ een gehele functie. Als $\abs{z} \to \infty$ dan zal $\abs{f(z)} \to 0$.
+	Dan is $f$ begrensd op $\C$.
+	Volgens Liouville is $f$ constant. \contra
+\end{proof}
+

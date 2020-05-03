@@ -1,0 +1,155 @@
+\lecture{1}{2020-02-13}{Introduction to Schemes}
+\setcounter{chapter}{-1}
+\chapter{About the Course} \label{chap:about_the_course}
+
+This course givse and introduction to \emph{schemes}. This is a vast generalisation of quasi-projective varieties. Allows problems from ANT.
+
+The main applications in this course are 
+\begin{enumerate}
+	\item Riemann-Roch \& classification of curves.
+	\item Weil conjectures 
+\end{enumerate}
+
+Practical information and announcements will be on Toledo. The main reference for this course is \emph{The Rising Sea} by Ravi Vakil.
+There are also lecture notes summarizing a selection of topics.
+
+Evaluation will be like AG1. 
+\begin{itemize}
+	\item Two take home tests during the semester. 
+	\item Take home exam: Choose one of the two forms
+		\begin{itemize}
+			\item list of questions
+			\item write a short paper
+		\end{itemize}
+\end{itemize}
+
+Best way to study for this course is to do all the exercise in the course. 
+There will be five problem classes, which will be superviesed by Kien.
+
+\chapter{Motivation for Schemes} \label{chap:motivation_for_schemes}
+Why are quasi-projective varieties still not enough?
+\section{Non-reduced Structure} \label{sec:reduces_structure}
+
+		Let $k$ be an algebraically closed field of char $\ne 2$.
+		 \[
+			 C = \{(x,y) \in k^2 | x = y^2\} \subset \aff^2
+		.\] 
+
+We will attacht a geometric object called $\spec A$ to any commutative ring  $A$.
+
+
+Condider now the intersection of  $C$ with the line $l = Z(x = 0)$.
+In quasi projective varieties this intersection is  $(0,0)$. We loose information on the multiplicity. 
+In schemes this becomes  $\spec \frac{k[x,y]}{(x - y^2, x)} \simeq \frac{k[y]}{(y^2)}$
+schemes to keep track of multiplicity of intersections. 
+
+This gives us an algebraic version of differential calculus. We can define things like tangentspaces, derivatives, differential forms, \ldots
+
+\section{Arithmetic applications} \label{sec:arithmetic_applications}
+Fundamental insight: There is a deep interplay between arithmetic properties of polynomials over non algebraically closed fields $k$ and the geometry of the algebraic varieties defined over an algebraically closed extension of $k$.
+
+As an example we can consider Fermat's Last Theorem. To really understand FLT we have to understand the geometry of elliptic curves.  Another example is the Mordell conjecture, proven by Faltings (1980s).
+
+\begin{theorem}
+	[Mordell]
+	Let $F(x,y,z) = a x^{k} + b y^{k} + c z^{k}$, where $a, b, c \in \Q$. 
+	The set of solutions with coordinates in $\Q$ is finite if $\deg d \ge 4$ iff the genus of the curve defined by $F$ over $\C$ is $\ge 2$. 
+\end{theorem}
+
+Another example is given by the weil conjectures. It concerns systems of equations over $\F_q$. The idea is to count the solutions over  $\F_q, \F_{q^2}, \F_{q^3}, \ldots$. There is a pattern explained by the existence of a topology on varieties over $\F_q$ with properties similar to the ones over $\C$.  Consider
+\[
+\F_{q^2} \to \F_{q^2}: x \to x^{q}
+.\] 
+Then $\F_q$ is the set of fixed points. 
+Likewise we find  $\F_{q^{d}}$ as a fixed locus of $\frob^{d}$ in $\F_q^{d}$ (algebraic closure of $\F_q$). 
+
+Algebraic topology, would allow use to compute fixed points using Defschetz' trace formula, but this doesn't work for the zarisky topology. 
+The solution is schemes + \'etale  topology.
+
+This shows that we need a theory of algebraic geometry over arbitrary fields and maybe even over commutative rings. This cannot be done with quasi-projective varieties.
+Suppose homogenous equation  $x^2 + y^2 + z^2 = 0$ over $\R$.
+Over $\C$ the conic defined by this equation is just isomorphic to $\proj^1$.
+But from a numbetheory standpoint there are no real solutions, but $\proj^1$ has $\infty$ many points. 
+
+\paragraph{Naive attempt}
+Define a projective varieties by looking at solution sets over $\R$ instead of $\C$. 
+This is not satisfactory. Our equation would define the empty variety. 
+\begin{example}
+	Consider the product \[
+		\prod_{a \in \F_q} (x - a)
+	.\] 
+	This defines $\F_q$ over $\F_q$. The solution set is just the affine line. 
+	Over an algebraic closure the equation still defines a finite number of points, but  $\aff^{1}$ is a curve.
+\end{example}
+We somehow have to keep track of solutions over all possible extensions of the field $k$. 
+Weil made such a formalism in 1940, but it was cumbersome and didn't work when $k$ was not a perfect field.
+The theory of schemes developed by Serre, Grothendieck, \ldots in 1950-60' is the answer.
+
+\section{Gluing algebraic varieties} \label{sec:gluing_algebraic_varieties}
+A quasi projective avariety is defined by \emph{global} equations in $\proj^{n}$. 
+But often we would like to construct varieties by first constructing local pieces and then gluing these together as in diff geom.
+This is particularly useful in the theory of Moduli spaces. These are varieties that parameterize other varieties or algebraic objects on varieties (eg subvarieties in $\proj^{n}$).
+The result if no longer a qproj varietu, but it is a scheme.
+Thes space is qprojcetive but this is only clear a posterior. Finding the equation for moduli spaces is difficult.
+
+\section{Philosophy of Schemes} \label{sec:philosophy_of_schemes}
+\begin{enumerate}
+	\item The main idea is to attacha geometric object $\spec A$ to any commutative ring $A$. 
+Then construct general schemes by $\emph{gluing}$ pieces of the form $\spec A$. 
+\item The central ideal is 
+	\[
+	\begin{tikzcd}
+		\text{geometry of schemes} \arrow[r, leftrightarrow] & \text{algebraic properties of the functions that live on the scheme}
+	\end{tikzcd}
+	.\] 
+
+\end{enumerate}
+The geometry object is a locally ringed space, which is a tologycial space + sheaf of funcions. 
+\begin{example}
+	\begin{itemize}
+		\item differentiable manifolds
+		\item complex manifolds
+		\item schemes
+	\end{itemize}
+\end{example}
+
+\chapter{Sheaves} \label{chap:sheaves}
+\section{Motivating example: differentiable manifold} \label{sec:motivating_example:_differentiable_manifold}
+\begin{definition}
+	An $n$-dimensional differentiable manifold is 
+	\begin{itemize}
+		\item a Hausdorff second countable topological space $X$. 
+		\item An equivalence class of smoothly compatible atlases
+	\end{itemize}
+\end{definition}
+\paragraph{Key idea} The differentaible structe on $X$ is completly determined by the sets of differentiable functions $f: U \to \R$ on all opens $U $ of $X$. 
+From this data we can reconstruct an atlas. 
+\begin{itemize}
+	\item For every open  $U \subset X$, a continous map $\phi: U \to \R^{n}$ is differentiable iff for every open $V \subset \R^{n}$ and every differentiable function $g: V \to \R$ the composite function $g \circ \phi: \phi^{-1}(V) \to \R$ is differentiable. 
+	\item For every open $V \in \R^{n}$, a continuous map $\psi: V \to X$ is differentaible iff for every open $U \subset X$  and every differentiable function  $f: U \to \R$ the composite $f\circ \psi: \psi^{-1}(U) \to \R$ is differentiable.
+\end{itemize}
+Now a homeomorphism $\phi: U \subset  X \to  V \subset  \R^{n}$ is a chart iff $\phi$ and $\phi^{-1}$ are differentiable.
+The collection of all these charts is an atlas htat is equivalent to the original one.
+
+Now we will forget about charts and atlases and axiomise a differentaible structure.
+
+\begin{definition}
+	[equivalent to differentiable manifold]
+	\begin{itemize}
+		\item Hausdorff secondcountable topological space $X$. 
+		\item A map $\mathcal{O} _x: U \to \mathcal{O}_X(U)$, which maps an open in $X$ to a set of functions $f: U \to \R$ satisfying:
+			\begin{enumerate}
+				\item "differentiability is a local property"
+					If $U$ is an open of $X$ and $\{U_i | i \in I\} $ is an open cover of $U$, then a function $f: U \to \R$ belongs to $\mathcal{O} _x(U)$ iff $f|_U:U_i \to \R$ belongs to $\mathcal{O} _x(U_i)$ for every $i \in I$.
+				\item "locally,  $(X, \mathcal{O} _X)$ looks like an open in $\R^{n}$" 
+					Every points in $X$ has an open eighbourhood $U$ with a homeomorphism $\phi: U \to V \subset \R^{n}$, with $V$ open, such that for every open $U'\subset U$, a funcniton $f: U' \to \R$ lies in $\mathcal{O} _x(U')$ iff the funciton $f \circ \phi^{-1}: \phi(U') \to \R$ is differentiable. 
+			\end{enumerate}
+	\end{itemize}
+\end{definition}
+The map $\mathcal{O} _x$ is called the \emph{structure sheaf} of $X$, and $(x, \mathcal{O} _X)$ is an example of a locally ringed space.
+
+
+\begin{description}
+	\item[Axiom 1] essential property of a sheaf
+	\item[Axiom 2] determines the kind of geometry we are doing. 
+\end{description}

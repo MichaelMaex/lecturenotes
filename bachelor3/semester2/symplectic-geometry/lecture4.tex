@@ -1,0 +1,167 @@
+\lecture{4}{2020-03-11}{Submanifolds and Normal Forms}
+
+\begin{revision}
+	\begin{itemize}
+		\item A time-dependent vector field is a fiamily $\{x_t\} _{t \in I}$ of vector fields on  $M$ which depends smoothly on $t$. 
+		\item The flow of a  time dependent vector field satisfies the differential equation \[
+				\frac{\dd f(\psi'_t(\rho)}{\dd t}|_{t' = t} = X_{t}(\psi_t(\rho))(f), \forall  f \in C^{\infty}(\mu), t \in (-\epsilon, \epsilon)
+		.\] 
+		$\psi_t: U \subset M \to U$ is an isotopy of diffeiomorphisms.
+	\item Time-dep vfs on $M$ are in 1-1 correspondence with (time independent, honest) vf on $M \times (-\epsilon, \epsilon)$.
+		And  $(X(t, p)$
+	\item If  $\{\alpha_t\} _{t 
+		\in I} \subset \Omega^{k}(M) $ smooth family, $\rho_t:M\to M$ isotopy, 
+		\[
+			\frac{\dd}{\dd t}(\rho^*_t(\alpha_t)) = \rho^*(\mathcal{L} _{X_t} \alpha_t + \frac{\dd }{\dd t})
+		.\] 
+	\item A \emph{Chain homotopy} operator betweeen smooth maps $f_0, f_1: M \to N$ is a linear map \begin{align*}
+			Q: \Omega^{k}(N) &\longrightarrow \Omega^{k-1}(M) \\
+		f^*_1 - f^*_0 &= \dd \circ Q + Q \circ \dd
+	.\end{align*}
+	\end{itemize}
+\end{revision}
+
+\begin{notation}
+	\begin{align*}
+		H&: I\times M \to N \text{ smooth}\\
+		f_t&: M \to N, x\mapsto  H(t, x) \\
+		f_0&: x\mapsto H(0, x) \\
+		f_1&: x\mapsto H(1, x)\\
+		I_t: M \mapsto  I\times M, x\mapsto (t, X) 
+	.\end{align*}
+	Then \[
+	Q := \int_0^{1}I_t^*\circ i_{\frac{\partial }{\partial t} }\circ H^* \dd t
+.\] is a homotyp between $f^*_0$ and $f^*_1$.
+\end{notation}
+
+The aim of the following lectures is 
+\begin{itemize}
+	\item  Mores theorem
+	\item Darbous theorem
+		\time Weinstein Lagrangiand manifold theorem.
+\end{itemize}	
+
+\begin{proposition}
+	[Tuburlar neighborhood theorem]	
+	Let $M$ be a smooth manifold, $i: X \into M$ (embedded) submanifold, compact, $\forall  \rpho \in M \exists $ a neighborhood.\[
+	O_p \subset V \subset NX = \frac{TM|_x}{TX}
+	\] 
+	of the zerosection such that $\forall p \in X: V\cap N_pX$ is convex and $\exists $ diffeomorphism $\phi:V \to \phi(v)$
+	such that \[
+	\begin{tikzcd}
+		V \arrow[r, "\phi"] & M^{P} \\
+		X \arrow[u, hookrightarrow, "o"] \arrow[ur, hookrightarrow,"i"]
+	\end{tikzcd}
+	.\] 
+\end{proposition}
+\begin{proof}
+	See Comprehensive introduction to differential geometry by Spivak.
+\end{proof}
+\subsection{Small excursion into Riemannian Geometry} \label{sec:small_excursion_into_riemannian_geometry}
+\begin{definition}
+	A \emph{Riemann metric} $g$ on $M$ is a fiberwise metric for $TM$, i.e. a inner product (pos-def) on every $T_pM$, st. $g_p$ varies smoothly.	
+\end{definition}
+\begin{note}
+	This a not a metric, like a metric space, But it does induce a metric on the Riemannian manifold.
+	\[
+		d_g(p, q) = \inf \left\{\int_0^{1}\sqrt{g(\dot\gamma(t), \dot\gamma(t))}\dd t \right\} 
+	.\] 
+
+	The energy functional on paths is $E(\gamma) = \frac{1}{2} \int_0^{1}g(\dot\gamma(t), \dot\gammat(t)) \dd t$. 
+	Geodesics minimize this functional.
+\end{note}
+\begin{theorem}
+	Let $p \in M$. THere exists a neighborhood $U \subset M$ of  $p$ and $\epsilon > 0$ such that  \[
+		\forall q \in U, V \in T_qM \text{ such that }\|v\|_g = \sqrt{g(v, v)}  \le \eppsilon:
+	.\] 
+	THere is a unique geodesic $\gamma_V:(-1, 1) \to M, \gamma V(0) = q, \dot \gamma_v(0) = V$.
+\end{theorem}
+\begin{definition}
+	For any $p \in M$, the \emph{exponential map at $p$ } is \[
+		\exp_p: V \subset T_pM \to M: V\mapsto \exp_p(v) = \gamma(1)
+	,\]
+	where $\gamma:[0,1] \to M$ is the unique geodesic such that $\gamma(0) = p ,\dot\gamma(U) = V$. 
+\end{definition}
+
+We will now prove the tublar neigborhood theorem.
+\begin{proof}
+	[proof of tubular neigborhood theorem]
+Choose a Riemann metric $g, dg, \|\bullet\|_g$ for norm induced by $g$.
+Let $\varepsilon = \{v \in  T_p M \st p \in X, v \in (T_pX)^{\perp}\} \simeq NX = \frac{TM|_X}{TX} $
+$U_\epsilon = \{q \in M \st dg(q, X) \le \epsilon\} $.
+So $\exp: \varepsilon_\epsilon  \to U_\epsilon$ is defined if $\epsilon$ is small enough. 
+\begin{lemma}
+	For sufficiently small $\epsilon$, $\exp$ is a difeomorhpism
+\end{lemma}
+\begin{proof}
+	$V \subset E$ for set of non-critical points which contains the $0$-section.
+	Write $V_1 = \overline{V\cap E_1}$ is comppact set that contains the $0$-section.
+\end{proof}
+\begin{lemma}
+	If $A$ is a compact metric space $X_0 \subset A$ is closed. Let $f: A \to B$ be a local homeomorphism such that $f|_x $ bijective, then $f$ is bijective on a neighborhood of $X$.
+\end{lemma}
+If $\epsilon$ is sufficiently small then $\exp: E_\epsilon \to \exp(E_\epsilon) $ is diffeomorphism. 
+Let ot show $\exp(E_\epsilon) - U_\epsilon$. 
+It is clear that $\exp(E_\epsilon) \subset U_\epsilon$. 
+The other inclusion is not trivial. 
+Pick $\gamma:[0,1] \to M$ geodesic of length $\le \epsilon, \gamma(0) = p, \gamma(1) = q$. 
+So $g(\dot\gamma\left( 0 \right) , T_pX) = 0$. 
+\end{proof}
+
+
+\begin{proposition}
+	Let $i; X \into M$ embedded submanifold with. $U \subset M$ a tubular neighborhood ($\pi: U \to X$).
+	Then 
+	\begin{enumerate}
+		\item $i^*: H^{\bullet}(U) \to H^{\bullet}(X)$, is an isomorphism.
+		\item If $\beta \in \Omega^{k}(U)$, $d\beta = 0$ and $i^*\beta  = 0$ then $\exists \xi \in \Omega^{k-1}(U)$ st $d\xi = \beta, \xi|_X = 0$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item $\pi: U \to X$ Homotopy equivalent $\pi \circ i = \id _X$, $i\circ \pi \simeq \id_y$, 
+			Where $H:I \times U \to U, (t, v)\mapsto  (tv)$ is the homotopy.
+		\item $H: I \times U \to U$ induces chain homotopy $o_p$. \[
+				Q: \Omega^{\bullet}(U) \to \Omega^{\bullet -1}(U)
+		\]
+		from $\id^*_U$ and $(i\circ \pi)^*$.
+		Assume $\beta \in \Omega^{k}_{ce}(U)$ such that $i^*\beta = 0$. 
+		Then 
+		\begin{align*}
+			(i\circ \pi)^*(\beta ' - \id_U^*\beta)) &=  d Q(\beta) - Q(d\beta) \\
+			\beta &=  dQ (\beta) - 0
+		.\end{align*}
+		\begin{align*}
+			Q(\beta) &=  \int_0^{1}\left( I_t^* \circ i_{\frac{\partial }{\partial t} } \right)  \circ H^*(\beta)  \dd t\\
+				 &= \int_0^{1} f^*_t(i_v\beta) \dd t 
+		,\end{align*}
+		where $V := H_*(\frac{\partial }{\partial t} ), f_t: H|_{\{t\} \times i(X)}$
+
+	\end{enumerate}
+\end{proof}
+
+\begin{TODO}
+	All geodesics were denoted wrong and should be defined on an interval $[0, \epsilon']$ with  $\epsilon'< \epsilon $.
+\end{TODO}
+\section{Darboux' theorem} \label{sec:darboux'_theorem}
+\begin{theorem}
+	[Moser's]
+	Let $M$ compact, $\{w_t\} _{t \in I}$ smooth family of symp forms such that $[w_t] \in H^2(\mu)$ const, then there exists isopy $\{\rho_t\} _{t \in T}: M \to M$ such that $\rho_t^*w_t = w_0$.	
+\end{theorem}
+\begin{proof}
+	Recall; on compact manifolds 
+	\[
+		\{\text{isotopies}\}  \overset{1-1}{\longleftrightarrow} \{\text{time-dep vfs}\}	
+	.\] 
+	Then 
+	\begin{align*}
+		\frac{\dd }{\dd t} \rho^*-t w_t = \pho^*_t\left( \mathcal{L} _{V_t}w_t + \frac{\dd}{ \dd t}w_t \right) 
+	.\end{align*}
+	where $\rho_t$ is flow of $V_t$. Need ot find $V_t$ such that $\mathcal{L} _{V_t}w_t + \frac{\dd}{ \dd t}w_t = 0$. 
+	Note that $w_t - w_{t'}$ is always exact by assumption. 
+	\begin{fact}
+		$\exists \eta_t \in \Omega^1(M)$ such that $\dd \eta_t =\frac{\dd }{\dd t } w_t$ 
+	\end{fact}
+	$V_t$ unique time-dependent vector field such that $i_{V_t}w_t + \eta_t = 0$
+Then the flow $\{\rho_t\} _{t \in I}$ of $V_t$ satisfies $\rho^*_tw_t = w_0$. 
+\end{proof}

@@ -1,0 +1,83 @@
+\lecture{4}{2020-03-04}{Title}
+
+\chapter{Nulpunten van Holomorfe Functies} \label{chap:nulpunten_van_holomorfe_functies}
+
+\begin{lemma}
+	Zij $\Omega$ open en $z_0 \in \Omega$. 
+	$f: \Omega \to \C$ is holomorf met $f(z_0) = 0$. 
+	Dan zijn er 2 mogelijkheden.
+	\begin{enumerate}
+		\item Er is een $U \open \Omega$ met $z_0 \in U$ zodat $f \equiv 0 $  op $U$.
+		\item Er is een $U \open \Omega$ met $z_0 \in U$ zodat $f$ geen nulpunten heeft in $U \setminus \{z_0\} $.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Rond $z_0$ heeft $f$ een convergente machtreeks. Dus \[
+		f(z) = \sum_{n = 0}^{\infty} a_n (z - z_0)^{n}
+	,\] 
+	voor $z \in D_r(z_0)$ met $a_0 = 0$.
+	Neem aan dat niet alle $a_n = 0$. Dan is er een minimale $m \in \N$ waarvoor $a_m \ne 0$. 
+	Dan is 
+	\[
+		f(z) = (z - z_0)^{m}\underbrace{\sum_{n=1}^{\infty} a_{n + m}(z  + z_0)^{n}}_{g(z)}
+	.\] 
+	Dan heeft $f(z) = 0$ als en slechts als $g(z) = 0$ op $U \setminus \{z_0\} $. WE weten dat  $g$ continu is op $z_0$ en niet nul in $z_0$ dus bestaat er een $V \open U$ zodat $g \ne 0$ op $V$. Dus heeft $f$ geen nulpunten op $V \setminus \{z_0\} $.
+\end{proof}
+
+\begin{stelling}
+	Zij $\Omega$ open en samenhangend en $f: \Omega \to \C$ holomorf. 
+	Neem aan dat er een rij  $(z_k)_k$ in $\Omega$ die niet stabiliseert en waar $f(z_k) = 0$ en dat $\lim_{k \to \infty}z_k$ bestaat en $z^* \in \Omega$. 
+	Dan is $f\equiv 0$. 
+
+	Of equivalent. Als $E = \{z \in \Omega \st f(z) = 0\} $ een ophopingspunt heeft in $\Omega$ dan is $f \equiv 0$.
+\end{stelling}
+\begin{proof}
+	Voer in $U = \{z \in \Omega \st \exists r> 0 : f\equiv 0 \text{ op } D_r(z) \subset  \Omega\} $, $V = \Omega \setminus U$.  	
+	Dan zijn is $U, V$ disjuncte opens met unie $\Omega$. 
+	Dus is $U = \emptyset$ of $V = \emptyset $. 
+	Vanwege lemma $z^{*} \in U$. Dus $U \ne \empty$. Dus $U = \Omega$. Dus $f \equiv 0$.
+\end{proof}
+
+\begin{stelling}
+	[Identiteitsstelling]
+	Zij $\Omega \open \C$ en samenhangend. Zij $f, g$ holomorfe fucties op $\Omega$. 
+	Stel $\{z \st f(z) = g(z)\} $ heeft een ophopingspunt in $\Omega$. Dan is $f = g$ op $\Omega$.
+\end{stelling}
+\begin{proof}
+	Bekijk $f - g$. Duhheuuhhh
+\end{proof}
+
+\section{Stelling van Morera} \label{sec:stelling_van_morera}
+\begin{stelling}
+	Zij $\Omega$ open en $f: \Omega \to \C$ continu.
+Stel $\oint_T f(z) d(z) = 0$ voor elke rand van een driehook $T$ binnen $\Omega$.  Dan is $f$ holomorf of $\Omega$. 
+\end{stelling}
+\begin{proof}
+	Bekijk schijf  $D_r(z_0) \subset \Omega$. 
+	Neem $F(z) = \int_{[z_0, z]} f(w) \dd w$.
+	Dan is vanwege de aanname dat $\int_{T} f(w) \dd w = 0$ het zo dat
+	\begin{align*}
+		\frac{F(z+h) - F(z)}{h} = \frac{1}{h} \int_{[z, z+h]}f(w) dw \to f(z) \text{ als } h \to 0
+	.\end{align*}
+	Dus $F$ is afleidbaar/holomorf.
+\end{proof}
+
+\section{Rijen van holomorfe functies} \label{sec:rijen_van_holomorfe_functies}
+Zij $\Omega$ open $f_n: \Omega \to \C, f: \Omega \to \C$.
+Wat betekennt $f_n \to f $ als $n \to \infty$?
+\begin{description}
+	\item[Puntsgewijs] $\forall z \in \Omega: \lim_{n \to \infty}f_n(z) = f(z)$.
+	\item[Uniform] $\sum_{z \in \Omega}|f_n(z) - f(z)| \to 0$ als $n\to \infty$.
+	\item[$L^2$ convergentie] $f_n \to f $ in $L^2(dx dy)$. \[
+			\int_{\Omega} \abs{f_n(x, y) - f(x, y)}^2 \dd x \dd y \to 0 \text{ als } n \to \infty
+.\]
+\item[Uniforme convergentie op compacta] Voor elke compacte $K \subset \Omega$ geldt dat $f_n|_K$ uniform convergeert naar $f_K$.
+\end{description}
+\begin{stelling}
+	Zij $(f_n)$ zij van holomorfe functies op $\Omega$ die uniform op compacta convergeert naar $f:\Omega \to \C$. Dan is $f$ holomorf.
+\end{stelling}
+\begin{proof}
+	Morera. Neem driehook $T$ binnen $\Omega$. 
+	Te bewijzen $\int_{}$
+\end{proof}
+

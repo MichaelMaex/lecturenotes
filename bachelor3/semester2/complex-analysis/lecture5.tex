@@ -1,0 +1,130 @@
+\lecture{5}{2020-03-11}{Spiegeling principe en Residue stelling}
+
+\subsection{Spiegelingprincipe van Schwarz} \label{sec:spiegelingprincipe_van_schwarz}
+\begin{stelling}	
+Zij $\Omega \open \C^{+} = \{z \in \C \st \im z > 0\} $. 
+Zij $f: \Omega \to \C$ holomorf. Neem aan dat $\overline{\Omega}\cap \R = [a, b]$. 
+Veronderstel dat $f: \Omega\cup [a, b] \to \C$ is continue uitbreiding en $f(x) \in \R$ voor $x \in [a, b]$.
+Dan is er een holomorfe  $F:\Omega \cup \Omega^*\cup [a, b] \to \C$ zodat $F(z) = f(z) $ voor $z \in \Omega$. 
+\end{stelling}
+\begin{proof}
+	Neem \[
+		F(z) = \begin{cases}
+			f(z) & \text{als }z \in \Omega \cup [a, b] \\
+			\overline{f(\overline{z})} & \text{als } z \in \Omega^* 
+		\end{cases}
+	.\] 
+	We willen nu bewijzen dat $F$ holomorf is. Dit kan met de cauchy riemann vergelijkingen, maar dat willen we niet doen.
+	Neem $z_0 \in \Omega^*$. Dan $\overline{z_0} \in \Omega$. 
+	Dus bestaat er een machtreeks rond $\overline{z_0}$. 
+	\[
+		f(w) = \sum_{k=1}^{\infty} a_k (w - \overline{z_0}) \text{ in schijf } D_r(\overline{z_0})
+	.\] 
+	Als $z \in D_r(z_0)$ dans if 
+	\begin{align*}
+		F(z) &= \overline{f(\overline{z})} = \sum_{k = 1}^{\infty} \overline{a_k}\overline{(\overline{z}- \overline{z_0})^{k}} \\
+		     &= \sum_{k = 1}^{\infty} \overline{a_k}(z - z_0)^{k}
+	.\end{align*}
+	Dus is $F$ holomorf in $\Omega^*$.
+	We willen nu bewijzen dat $F$ continue is op $\Omega \cup \Omega^*$
+	Neem $z_k \to X \in [a, b]$, met  $z_k \in \Omega^*$. Dan is  $F(z_k) = \overline{f(\overline{z_k})}$.
+	Dan $\overline{z_k} \in \Omega$ en $f(\overline{z_k} \to f(x)$. We weten dat $f(x)$ reel is.
+
+	Ten slotte willen we aantonen dat $F$ holomorf is op $[a,b]$. 
+	We bewijzen dit met Morera.
+\end{proof}
+
+\chapter{Meromorfe Functies en het Logaritme} \label{chap:meromorfe_functies_en_het_logaritme}
+\section{Nulpunten en polen} \label{sec:nulpunten_en_polen}
+\begin{herhaling}
+Zij $\Omega$ open en $f:\Omega \to \C$ is holomorf. 
+Zij $z_0 \in \Omega$ als $f(z_0) = 0$. Veronderstel dat $f$ niet constant is in een omgeving van $z_0$. 
+Dan is $z_0$ een ge\"isoleerd punt.	
+\end{herhaling}
+
+\begin{definitie}
+	Zij $\Omega$ open $z_0 \in \Omega$ en $f: \Omega \setminus \{z_0\} \to \C$ holomorf.
+	Dan is $z_0$ een \emph{ge\"isoleerde singulariteit} van $f$. 
+	We kunnen een aantal gevallen onderscheiden.
+	\begin{enumerate}
+		\item \emph{Ophefbare singulariteit} als er een $w_0$ is zodat \[
+		z \in \Omega \mapsto  \begin{cases}
+			f(z) & \text{als }z \ne z_0 \\
+			w_0 & \text{als } z = z_0
+		\end{cases}
+		\]
+		holomorf is.
+	\item $f$ heeft een \emph{pool} is $z_0$ als het geen ophefbare sigulariteit heeft en $f$ geen nulpunten heeft van $z_0$ en $\frac{1}{f}$ heeft een ophefbare sigulariteit. 
+		Dan heeft $\frac{1}{f}$ een nulpunt in $z_0$ dus is de orde van pool van $f $ in $z_0$. Stel $n$ is de orde van dat nulpunt. Dan is $ n$ de orde van de pool. 
+
+	\item $f$ heeft een \emph{essentiele singulariteit} in $z_0$ als de singulariteit niet ophefbaar is en ook geen pool is.
+	\end{enumerate}
+\end{definitie}
+\begin{vb}
+	De functie \[
+		e^{\frac{1}{z}} = \sum_{k = -\infty}^{0} \frac{1}{(-k)!}z^{k}	
+	\]
+	heeft een essenti\"ele sigulariteit in $z =  0$.
+\end{vb}
+
+
+Stel dat $f$ een pool heeft in $z_0$ en dat \[
+	f(z) = \sum_{k = -n}^{\infty}c_k (z - z_0)^{k}
+.\] 
+Dan is $c _{-1}$ het residu van $f$ in $z_0$. 
+
+\begin{stelling}
+	[Residu stelling]
+	Zij $\Omega$ open $f$ holomorfh op $\Omega \setminus \{ z_1, z_2, \ldots, z_k\} $ met polen in $z_1, \ldots, z_k \in \Omega$. 
+	Zij $\gamma$ een gesloten contour in $\Omega$ met $z_j \in \gamma$ voor $j = 1 \ldots k$. 
+	Het gebied omsloten door $\gamma$ behoort tot  $\Omega$. 
+	Dan is \[
+		\oint_\gamma f(z) \dd z  = 2\pi i \sum_{z_j \text{ binnen countour}} \text{Res}_{z_j}(f)
+	.\] 
+\end{stelling}
+\begin{quote}
+	\textit{De residue stelling maakt van integreren algebra, wat veel makkelijker is dan analyse. - Arno Kuijlaars}
+\end{quote}
+\begin{proof}
+	Zij $\tilde \gamma$ dat gebied omsluit waar $f$ holomorf is. 
+	Volgens de afbeelding
+	\begin{align*}
+		\int_{\tilde \gamma} f(z) \dd  z &= 0 \\
+						 &= \oint_{\gamma}f(z)\dd z - \oint_{c_r(z_1)} f(z) \dd z - \oint_{c_r(z_2)} - \oint_{c_r(z_3)}f(z) \dd z
+	.\end{align*}
+\end{proof}
+\begin{figure}[ht]
+    \centering
+    \incfig{residue-stelling}
+    \caption{residue stelling}
+    \label{fig:residue-stelling}
+\end{figure}
+
+\begin{vb}
+	We willen \[
+		\int_{0}^{\infty} \frac{x^{\alpha}}{(1 + x)^2} \dd x
+	\] uitrekenen voor $-1 < \alpha < 1$.
+	Wat bedoelen we met $z^{\alpha}$? We bedoelen $e^{\alpha \ln z}$. Wat is $\ln z$?
+	 \[
+		 \ln(z) = \ln \abs z + i \mathrm{arg}(z)
+	.\] 
+	Hoe kiezen $\mathrm{arg}$? We kunen het tussen  $-\pi, \pi$ kiezen. Nu kiezen we tussen  $0 $ en $2\pi$.
+	met deze keuze is  $f$ meromorf een gebied dat $\R^{+}$ niet bevat.
+	Als $\delta \to 0$ vallen de twee rechten niet weg. Nee de functie is daar niet eens continue. We kunne wel het verschil van de bijdragen berekenen. 
+	Dus 
+	\begin{align*}
+		\int_{\epsilon}^{R} \frac{x^{\alpha}}{(1 + x)^2} \dd x + \int_{R}^{\epsilon }\frac{x^{\alpha} e^{i\alpha 2 \pi }}{( 1 + x)^2} \dd x &= (1 - e^{i\alpha 2 \pi}) \int_{\epsilon}^{R} \frac{x^{\alpha}}{(1 + x)^2 } \dd x 
+	.\end{align*}
+
+	ML afschatting geeft dat de integraal over  $C_{\epsilon}(0)$ naar nul gaat.
+	Dus \[
+		(1 - e^{i \alpha 2 \pi}) \int_{0}^{\infty}\frac{x^{\alpha}}{(1 + x)^2} \dd x	 = 2 \pi \mathrm{Res}_{-1}f
+	.\] 
+
+\end{vb}
+\begin{figure}[ht]
+    \centering
+    \incfig{contour-logaritme}
+    \caption{contour logaritme}
+    \label{fig:contour-logaritme}
+\end{figure}

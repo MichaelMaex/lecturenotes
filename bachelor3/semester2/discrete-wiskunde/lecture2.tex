@@ -1,0 +1,118 @@
+\lecture{2}{2020-02-18}{Title}
+\begin{definitie}
+	Twee kleuringen $k_1, k_2$ heten \emph{equivalent} als $\exists g \in G: k_1 = k_2 \circ g$.
+\end{definitie}
+In termen van groeps acties verloopt dit als volgt. 
+\begin{definitie}
+	Zij $V = K^\times = \{\text{kleuringen}\} $. 
+	De symmetriegroep  $G$ werkt langs rechts op $V$ via \[
+		V \times  G \to V: (k, g) \mapsto  k \circ g
+	.\] 
+	Twee kleuringen zijn equivalent als ze in dezelfde orbiet zitten. 
+\end{definitie}
+
+We gaan nu het lemma van Burnside bewijzen. (Stelling 4).
+\begin{proof}
+	Beschouw $\{(v, g) \in V \times  G \;|\; v \star g = v\} \subset V \times G$. 
+	Het aantal elementen in deze verameling is zowel gelijk aan \ldots
+	\[
+		\sum_{g \in G}^{} \abs{\fix g} = \sum_{v \in V} \abs{\stab v}
+	.\] 
+
+	Dus volgt dat 
+	\begin{align*}
+		\frac{1}{\abs G} \sum_{g \in G} \abs{ \fix g} &= \frac{1}{\abs G} \sum_{v \in V} \abs{\stab(v)} \\
+							      &= \sum_{v \in V} \frac{1}{\abs{\orbit v}} \\
+							      &= \abs{\frac{V}{G}} \\
+	.\end{align*}
+\end{proof}
+
+Laten we dit toepassen op ons probleem met de kubus.
+\begin{align*}
+	\abs{K^{\times }/ G} = \frac{1}{\abs G } \sum_{g \in G}\abs{\fix(g)}
+.\end{align*}
+
+\subsection{Symmetriegroep van de kubus} \label{sec:symmetriegroep_van_de_kubus}
+
+We proberen eerst de symmetriegroep te bepalen. Herinner dat $\abs G = \abs{ \orbit v} \cdot \abs{ \stab v}$. Door $v$ een vast vlak te benoemen zien we dat  $\abs G = 6\cdot 4 = 24$. 
+
+\begin{itemize}
+	\item $\id = (1)(2)(3)(4)(5)(6)$ Dit is er een 1
+	\item rotaties over een as door twee zijvlakken dit zijn er 9
+		 \begin{itemize}
+			 \item over 90 graden: $(3245)(1)(6)$
+			 \item over 180 graden: $(34)(25)(1)(6)$
+			 \item over 270 graden: $(5423)(1)(6)$
+		\end{itemize}
+		
+	\item rotaties over een as door twee ribben . Dat zijn er 6.
+
+		vb $(12)(56)(34)$
+	\item rotaties over een as door twee hoekpunten. Dit zijn er 8
+
+		vb $(132)(456)$.
+\end{itemize}
+Dus
+\begin{align*}
+	\abs{K^{\times }/ G} &= \frac{1}{\abs G } \sum_{g \in G}\abs{\fix(g)} \\
+			     &= \frac{1}{24}\left(m^{6} + 3\cdot m^{4} + 12 \cdot m^{3} + 8 \cdot m^{2}\right) 
+.\end{align*}
+\section{De gewogen stelling van Burside } \label{sec:de_gewogen_stelling_van_burside_}
+\subsection{Typische Toepassing} \label{sec:toepassin}
+\begin{vb}
+	\begin{enumerate}
+		\item Op hoeveel manieren zijn de zijvlakken van een kubus te kleuren met $R, G, B$ waarbij minstens 2 maal $R$ en 1 maal $B$ gerbuikt wordt
+		\item
+Op hoeveel manieren zijn de zijvlakken van een kubus te kleuven met $R, G, B$ waarbij er minstens 2 tegenoverstaande vlakken zijn met hetzelfde kleur.	
+	\end{enumerate}
+\end{vb}
+\begin{lemma}
+	[Gewogen lemma van Burnside]
+	Zij $w: V \to R$ (met $R$ een ring van char 0) een functie op de kleuringen die constante waarden aanneemt op de orbieten.
+	Dan geldt dat \[
+		\sum_{\orbit v \in V / G} w(v) = \frac{1}{\abs G} \sum_{g \in G} \sum_{v \in \fix g} w (v)
+	.\] 
+\end{lemma}
+\begin{opmerking}
+Als $w: V \to \Z: v \mapsto  1$ dan vinden we het gewone lemma van burnside terug.	
+\end{opmerking}
+
+\paragraph{Antwoord op 2}
+Definieer \[
+w:  K^{\times } \to \Z: v\mapsto  \begin{cases}
+	1 & \text{ als twee tg vlakken dezelfde kleur hebben} \\
+	0 & \text{ als anders}
+\end{cases}
+.\] 
+Pas nu gewogen Burnside toe.
+\[
+	\frac{1}{24}\left( m^{6} - m^{3}(m - 1)^{3} + 6m^3 + 3 m^{4} + 6m^{3} + 8m \right) 
+.\]
+
+\paragraph{Antwoord op vraag 1} 
+Kan ook met de gewogen stelling van Burnside. Maar het kan ook met een systematische discussie van de hand van Polya.
+We kiezen $R = \Z[r, g, b]$. 
+Als gewichtsfunctie: \[
+	w: K^{\times } \to R: k\mapsto \text{monoom die het aantal voorkomens van $r, g, b$ codeert}
+.\]
+\begin{intermezzo}
+	Kleuringen van $\begin{matrix} 1 & 2 \\ 3 & 4 \end{matrix} $ op rotaties na (weer met $r, g, b$). Dus  $X = \{1, 2, 3, 4\} $, $G = \{\id , (1243), (14)(23), (1342)\} $
+	
+	Gewogen Burnside geeft
+	\begin{align*}
+		\sum_{\orbit v \in K^{\times }/ G } w(v) &=  \frac{1}{\abs G} \sum_{ g\in G} \sum_{v \in \fix g} w(v) \\
+							 &= \frac{1}{v}((r + g + b)^{4} \\
+	.\end{align*} 
+\end{intermezzo}
+
+\begin{stelling}
+	[P\'olya's invetory theorem]	
+	Zij $V = K^{X }, \abs X = n$ en $w: K \to R$ een functie. 
+	Definieer (en noteer ook met $w$) \[
+		w: K^{X} \to R: k\mapsto \prod_{x \in X} w(k(x))
+	.\] 
+	Dan \[
+		\sum_{\orbit k \in K^{x} / G} w (k) = \frac{1}{\abs G} \sum_{g \in G} \prod_{i = 1}^{n} \left(\sum_{A \in K} w(A)^{i}\right)^{c_i(g)}
+	,\] 
+	met $c_i(g)$ het aantal disjuncte cycels van lengte $i$ in $g$.
+\end{stelling}

@@ -1,0 +1,40 @@
+\lecture{7}{2020-03-25}{Homotopien en enkelvoudig samenhangend}
+
+\section{Homotopien en enkelvoudig samenhangende domeinen} \label{sec:homotopien_en_enkelvoudig_samenhangende_domeinen}
+\begin{definitie}
+	[homotopie]
+	Zij $\Omega$ open in $\C$. 
+	Zij $\gamma_0, \gamma_1$ twee krommen van $a$ naar $b$ in $\Omega$. 
+	Dan $\gamma_0, \gamma_1$ homotoop als er een continue functie  \begin{align*}
+		h: [0,1] \times [0,1] &\longrightarrow \Omega 
+	.\end{align*}
+	Zodat $H(0, t) = \gamma_0(t)$ en $H(0, 1) \gamma_1(t)$ en $H(s, 0) = a, H(s, 1) = b$. 
+\end{definitie}
+We definieren $\gamma_s: [0, 1] \to \Omega: t\mapsto H(s, t)$ een kromme van $a$ naar $b$.
+
+\begin{definitie}
+	$\Omega$ is enkelvoudig samenhangend als $\Omega$ samenhangend is en elke twee krommen $\gamma_0, \gamma_1 $ met zelfde begin en eind homotoop zijn.
+\end{definitie}
+\begin{vb}
+	Een schijf is enkelvoudig samenhangend. 
+	$\C \setminus (-\infty, o] $ is enkelvoudig samenhangend. 
+	$D \setminus \{0\} $ is niet enkelvoudig samenhangend.
+\end{vb}
+
+\begin{stelling}
+	Zij $\Omega$ open en $f: \Omega \to \C$ holomorph. 
+	Neem aan $\gamma_0$ en $\gamma_1$ zijn homotoop. 
+	Dan is \[
+	\int_{\gamma_0}^{} f \dd z = \int_{\gamma_1}^{}  f \dd z  
+	.\] 
+\end{stelling}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{homotope-krommen}
+    \caption{homotope krommen}
+    \label{fig:homotope-krommen}
+\end{figure}
+\begin{proof}
+Zie tekening. Neem primitieven op schijven $D_i$. 
+\end{proof}

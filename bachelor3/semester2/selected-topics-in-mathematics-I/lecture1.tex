@@ -1,0 +1,69 @@
+\lecture{1}{2020-02-12}{Title}
+
+\setcounter{chapter}{-1}
+\chapter{About the Course} \label{chap:about_the_course}
+Check toledo. Lots of pdf with more information on there.
+Preliminaries
+\begin{itemize}
+	\item integrals, haar measure
+	\item Fourier Transform, abstract over groups
+	\item Gauss sums
+	\item geometry
+		\begin{itemize}
+			\item algebraic
+			\item differential
+		\end{itemize}
+	\item logic
+\end{itemize}
+We will roughly cover the book by neal koblitz.
+\section{Three examples of counting/sums} \label{sec:three_examples_of_counting/sums}
+\begin{example}
+	Let  $f$ be a polynomial in $n$ variables with integer coefficients. 
+	Let $N > 0$ be a positive integer.
+	\[
+		\abs{\left\{ x \in \left( \frac{\Z}{N\Z} \right) ^{n} \; \middle | \; f(x) = 0 \right\}  }
+	.\] 
+	There also is the finite exponential sum.
+	\[
+		\sum_{s \in (\Z / N \Z)^{n}} \exp\left( \frac{2\pi i}{N} f(x) \right) 
+	.\] 
+	The Gauss sum is a basic case where $f(x) = x^2$
+	The cases where $N = p^{m}$ are the most important as crt can be use to extend the result to other integers.
+	When $n  = p$, prime. We can work over a finite field. Then there is a third counting number.
+	 \[
+		 \abs{\left\{ x \in (\F_{p^{n}})^n \; \middle | \; f(x) = 0 \right\} }
+	.\] 
+	Lots of work on this was done by Deligne. He solved the Weil Conjectures.
+	This inspired Igusa to formulate similar conjuctures for the other two counting sums.
+
+\end{example}
+
+\chapter{Constructing the $p$-adic numbers} \label{chap:constructing_the_$p$-adic_numbers}
+We will construct a new metric on $\Q$ that is more related to modular arithmatic.
+
+\begin{definition}
+	Given $\frac{a}{b} \in\Q$. Then we can write $a = p^{l} a', b = p^{k}b'$, with $p \not |\; a', p \not |\; b'$. We define the  $p$-order of $\frac{a}{b}$ to be \[
+	\ord_p \frac{a}{b} = \begin{cases}
+		\infty  & a = 0 \\
+		l - k & x \ne 0
+	\end{cases}
+	.\] 
+\end{definition}
+\begin{definition}
+	For a prime $p$ the $p$-adic norm is defined as \[
+		\abs x _ p = p^{-\ord_p(x)}
+	.\] 
+\end{definition}
+\begin{definition}
+	The $p$-adic metric is defined as \[
+		d_p(x,y) := \abs{x - y}_p
+	.\] 
+\end{definition}
+\begin{lemma}
+	Let $x, y, z \in \Q$ with $|*| = |*|_p$. Then 
+	\begin{enumerate}
+		\item $\abs{x\cdot y}  = \abs x \cdot  \abs y$
+		\item $\abs{x + y} \le \max(\abs x, \abs y)$
+	\end{enumerate}
+\end{lemma}
+

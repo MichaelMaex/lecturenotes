@@ -1,0 +1,202 @@
+\lecture{3}{2020-02-27}{More about stalks}
+\begin{erratum}
+	Last time we discussed the squaring map. 
+	\begin{align*}
+		\phi: \mathcal{F}  &\longrightarrow \mathcal{F}  \\
+		f &\longmapsto f^2
+	.\end{align*}
+	Then the following sequence is exact
+	\[
+	 \begin{tikzcd}
+		 \mathcal{F(U)} \arrow[r, "\phi"] & \mathcal{ F(U)}  \arrow[r, "\phi"] & H^{1}(U, \ker \phi)
+	 \end{tikzcd}
+	.\] 
+\end{erratum}
+
+Suppose we have $X$ topologicla space, $x \in X$. Let $\mathcal{F} $ be a presheaf on $X$ with values in $\mathcal{C} = (\text{sets}), (\text{groups}), (\text{abelian groups}), (\text{modules over $R$}),  \ldots$. 
+
+\begin{definition}
+	Stalf of $\mathcal{F} $ at $x$ is \[
+		\mathcal{F}  = \{(u, f)| u \text{ open nbhd of } x \in X, f \in \mathcal{F} (U)\} / \sim 
+	,\] 
+	where $(u, f) \sim (V, g)$ iff there exists  $W$ such that $x \in W \open U \cap V$ and $f|_W  = g|_W$. 
+\end{definition}
+
+If $\mathcal{F} $ is a sheaf, then the properties of $\mathcal{F} $ are determined to a large extend by the stalks.
+\begin{example}
+	Let $\phi: \mathcal{F} \to \mathcal{G} $ be a morphism of sheaves with values in $\mathcal{C} $. 
+	Then $\phi $ is injective/surjective/isomorphism iff $\phi_x: \mathcal{F} _x \to \mathcal{G} _x$ this property for all $x \in X$.
+
+	In other words  $\phi_x: \mathcal{F} _x \to \mathcal{G} _x$ maps the equivalence calss of $(u, f)$ in $\mathcal{F} _x$ to the class of $(u, \phi(f))$ in $\mathcal{G} _x$.
+	Moreover, if $\psi: \mathcal{F}  \to \mathcal{G} $ is anothre morphism of sheaves then $\phi = \psi$ iff $\phi_x = \psi_x$ for all $x \in X$.
+\end{example}
+The equivalence class of $(U,f)$ is $\mathcal{F} _x$ is called the \emph{germ} of $f$ at $x$ and is open denoted by $f_x$.
+
+\paragraph{Sheafification}
+Let $\mathcal{C} $ be a setlike category. $\mathcal{F} $ presheaf on $X$ with valules in $\mathcal{C} $. can we turn $\mathcal{F} $ into a sheaf in a "universal way"?
+
+\begin{definition}
+	A sheafification of $\mathcal{F} $ is a sheaf $\mathcal{F}^{sh} $ on $X$ with values in $\mathcal{C} $ equipped with a morphism of presheaves $\phi: \mathcal{F}  \to \mathcal{F} ^{sh} $ with the following universal property. 
+
+	For any sheaf $\mathcal{G} $ on $X$ with values in $\mathcal{C} $, every morhpism $\psi: \mathcal{F}  \to \mathcal{G} $ factors uniquely through $\mathcal{F} $.
+	\[
+	\begin{tikzcd}
+		\mathcal{F} \arrow[r," \phi"] \arrow[dr, "\forall \psi"] & \mathcal{F} ^{sh} \arrow[d, "\exists \theta"]\\
+					      & \mathcal{G} 
+	\end{tikzcd}
+	.\] 
+\end{definition}
+If a sheafification exists, then it is unique up to unique isomorphism.
+
+Given sheafifications $\phi: \mathcal{F}  \to \mathcal{F} ^{sh}$ and $\psi: \mathcal{G}  \to \mathcal{G} ^{sh}$ and a morphiism $\theta: \mathcal{F}  \to \mathcal{G} $ there exists a unnique morphism $\theta^{sh}: \mathcal{F}^{sh} \to \mathcal{G} ^{sh} $
+such that \[
+\begin{tikzcd}
+	\mathcal{F}  \arrow[r, "\theta"] \arrow[d,"\phi"] & \mathcal{G} \arrow[d, "\psi"] \\
+	\mathcal{F} ^{sh} \arrow[r, "\theta^{sh}"] & \mathcal{G} ^{sh}
+\end{tikzcd}
+\] 
+commutes.
+
+We obtain a functor $\theta^{sh}$ from presheaves on $X$ with values in $\mathcal{C}  $ to sheaves on $X$ with values in $\mathcal{C} $.  Assuming that sheafifications exist.
+
+This a left adjoint of the embedding of sheaves in presheaves.
+
+\paragraph{Existence of sheafifications}
+Assume $\mathcal{C}  = (\text{sets}), (\text{groups}),\ldots$.
+Let $\mathcal{F} $ be a presheaf on $X$. 
+Then we define a presheaf $\mathcal{F} ^{sh}$ on $X$ in the following way. 
+For every open $U \subset X$, let $\mathcal{F} ^{sh}(U)$ be the set of tuples
+$(g_x)_{x \in X} \in \prod_{x \in U}F_x$ such that for every $u \in U$ there exists an open $u \in U' \subset U$ and a section $f \in \mathcal{F}(U) $ such that $g_x = f_x$ for all $x \in U'$. 
+
+We still have to define the restriction map. When ever $V \subset U \subset X$ we define the restriction map $\rho_V^{U}:\mathcal{F} ^{sh}(U) \to \mathcal{F} ^{sh}(V)$ to be the projection \[
+\begin{tikzcd}
+	\prod_{X \in U} \mathcal{F} _x \arrow[r, "\pi"] & \prod_{X \in V} \mathcal{F} _x \\
+	\mathcal{F} ^{sh}(U) \arrow[u] \arrow[r, "rho_V^{U}"] & \mathcal{F} ^{sh}(V) \arrow[u]
+\end{tikzcd}
+.\] 
+This defines $\mathcal{F} ^{sh}$ as a presheaf. 
+We also define a map $\phi: \mathcal{F}  \to \mathcal{F} ^{sh}$ by 
+\begin{align*}
+	\phi(U): \mathcal{F} (U) &\longrightarrow \mathcal{F} ^{sh}(U) \\
+	f  &\longmapsto (f_x)_x \in \prod_{x \in U} \mathcal{F}_x
+.\end{align*}
+
+\begin{exercise}
+	$\mathcal{F} ^{sh}$ is a sheaf and $\phi:\mathcal{F}  \to \mathcal{F} ^{sh}$ is a sheafification.
+	For every pointn $x \in X$, $\phi$ induces a bijection $\phi_x: \mathcal{F} _x \to \mathcal{F} ^{sh}_x$.	
+\end{exercise}
+
+\begin{example}
+	Let $A$ be any set. The constant sheaf with sections in $A$ is the sheafification of the constant presheaf with sections in $A$. 
+\end{example}
+\begin{notation}
+	$\underline{A}_X$
+\end{notation}
+\begin{exercise}
+	Show that $\underline A_x$ is the sheaf defined by $\underline A_x(U) = \{g : U \to A \text{ continuous }\} $ for every $U \open X$ (where de restriction maps are the ordinary restrictions of functions and $A$ is equipped with the discrete topology.)
+	Do this by checking the universal property.
+\end{exercise}
+\begin{proof}
+	Let $G$ be the presheaf on $X$ defined in the statement. 
+	Define $\phi: \mathcal{F}  \to \mathcal{G} : a \mapsto (x\mapsto a)$.
+	\begin{itemize}
+		\item $\mathcal{G} $ is a sheaf: obvious
+		\item $\phi: \mathcal{F}  \to \mathcal{G} $ satisfies the universal property. Let $\mathcal{G} '$ be a sheaf on $X$ and let $\psi: \mathcal{F}  \to \mathcal{G} '$ be a morphism. \[ 
+	\begin{tikzcd}
+				\mathcal{F} \arrow[r, "\phi"] \arrow[dr, "\psi"] & \mathcal{G} \arrow[d, dashed,"\theta ?"]\\
+							     & \mathcal{G} '
+			\end{tikzcd}
+		.\] 
+		We can construct $\theta$ as follows. 
+		Let $U$ be an open in $ X$ and $g \in \mathcal{G} (U) = \{g : U \to A \text{ continuous}\} $. 
+		Then for every $a \in A$ the set $U_a = g^{-1}(a)$ is open in $U$ and  $\{U_a | a \in A\} $ is an open cover of $U$. Define $\theta(g)$ to be the unique section $g' \in \mathcal{G} '(U)$ such that $g'|_{U_a} = \psi(A)$ for every $a \in A$. This gives a morphism $\theta: \mathcal{G}  \to \mathcal{G} '$ 
+		and this is the unnique such morphism that makes the triangle commute.
+	\end{itemize}
+\end{proof}
+
+\section{Subsheaves and images} \label{sec:subsheaves_and_images}
+
+\section{Kernels and cokernels} \label{sec:kernels_and_cokernels}
+read at home
+
+\section{Direct and inverse images of sheaves} \label{sec:direct_and_inverse_images_of_sheaves}
+Let $h: Y \to X$ continuous map of toppological spaces.
+Let  $\mathcal{G} $ be a presheaf on $Y$.
+The direct image of $G$ under $h$ is the presheaf $h_*\mathcal{G} $  on $X$ given by  \[
+	h_*\mathcal{G} \left(U \right)  = \mathcal{G} (h^{-1}(U))
+\] 
+with restriction maps induced by the one of $g$.
+If $G$ is a sheaf, then so is $h_* \mathcal{G} $.
+The dircet image is functorial in $\mathcal{G} $, i.e., defines a functor from (pre)sheaves on $Y$ to (pre)sheaves on $X$.
+
+\begin{example}
+	Let $x \in X, Y = \{ x\} $ and $h: Y \to X$ be the inclusion map. 
+	Let $A$ be any set, we can view it as a sheaf on $Y = \{x\} $ ( the constant sheaf $\underline A _Y$ ).
+
+	The direct image $h_* \underline A_Y$ is called the skyscraper sheaf at $x \in X$ with sections in $A$.
+
+	Explicitly: for every $U \open X$. \[
+		h_x\underline A_Y (U) = \begin{cases}
+			\text{singleton} & \text{ if } x \not\in U \\
+			A & \text{ if } x \in U
+		\end{cases}
+	\]
+	with the obvious restriction maps.
+	The stalk of this sheaf at $z \in X$ is $A$ if $z \in \overline{\left\{ x \right\} }$ or a singleton if $z \not\in  \overline{\left\{ x \right\} }$.
+\end{example}
+
+Now let $\mathcal{F} $ be a presheaf on $X$. We dine thi inverse image presheaf $h^{-1} \mathcal{F} $ on $Y$ by: \[
+	h^{-1}\mathcal{F} (U) = \colim_{h(U) \subset V \open X} \mathcal{F} (V)
+.\] 
+Even if $\mathcal{F}$ is a sheaf, the inverse image presheaf $h^{-1} \mathcal{F} $ usually is not.
+We define the inverse image \emph{sheaf} is the shefification of the inverse image presheaf. It is still denoted by $h^{-1} \mathcal{F} $.  
+This defines a functor $h^{-1}$ from the category of (pre)sheaves on $ X$ to the (pre)sheaves on $Y$.
+
+\begin{example}
+	Suppose $x \in X$ and $Y = \{x\} $ and $h:Y \to X$ is the inclusion. Then $h^{-1} \mathcal{F} $ is simply the (sheaf on $\{x\} $ associated with) the stalk $\mathcal{F} _x$. 
+\end{example}
+\begin{example}
+	Assume that $X$ is a singleton, then we identfy $\mathcal{F} $ with the set $A = \mathcal{F} (X)$. The inverse image \emph{presheaf} is the constant presheaf on $Y$ with sections in $A$.
+	The inverse image sheaf $h^{-1}\mathcal{F} $ is the constant sheaf $\underline A_Y$. 
+\end{example}
+\begin{example}
+	$h: Y \to X$ (inclusion) open embedding. Then  $h^{-1}\mathcal{J} $ is just the restriction of $\mathcal{F}$ to $Y$. It is denoted by $\mathcal{F} |_Y$. 
+\end{example}
+
+The definition of  $h^{-1}\mathcal{F} $ is not very transparent because of the colim and the need to sheafify. 
+In practice we mainly use the following properties:
+\begin{enumerate}
+	\item $h^{-1}$ preserves stalks: for every $y \in Y$ there is a natural bijection $(h^{-1} \mathcal{F} )_y = \mathcal{F} _{h(y)}$.
+	\item Adjunction property: $h^{-1}$ is left adjoint to $h_*$ or more explicitely.
+		\[
+			\forall U \open X, \mathcal{F} (U) \to h_* h^{-1}(U) = h^{-1}\mathcal{F} (h^{-1}(U)) = \mathcal{F} 
+		.\] 
+	There exists a natural morphism $\mathcal{F}  \to h_*h^{-1} \mathcal{F} $.
+	Given a morphism of sheaves $h^{-1}: \mathcal{F}  \to \mathcal{G} $ on $X$. we can apply $h_*$ and precompose with $\mathcal{F} \to h_*h^{-1} \mathcal{F} $ to get a morphism $\mathcal{F}  \to h_* \mathcal{G} $.
+	This defines a bijection 
+	\[
+	\{\text{morphisms } h^{-1} \mathcal{F}  \to \mathcal{G} \} \leftrightarrow \{\text{morphism } \mathcal{F} \to h_* \mathcal{G} \}
+	.\] 
+\end{enumerate}
+
+\begin{example}
+	Suppose $h:Y \to X$ is a morphism of differentiable manifolds.\[
+	h^\#: \mathcal{O} _X \to h_*\mathcal{O} _Y
+	.\]
+	morphism of sheaves of $\R$-algebras mapping a function $f \in \mathcal{O} _X(U)$ to the function $f \circ h \in (h_* \mathcal{O} _Y)(U)$.
+	By adjunction $h^\#$ also corrseponds to a unique morphism of sheaves of  $\R$-algebras $h^{-1}\mathcal{O} _x \to \mathcal{O} _Y$.
+\end{example}
+
+\section{Locally Ringed Spaces} \label{sec:locally_ringed_spaces}
+In our example $\mathcal{O} _X$ and $h^\#$ satisfy some sppecial properties.
+\begin{enumerate}
+	\item Let $x \in X$. \[
+			\text{ev}_x: \mathcal{O} _{X,x} \to \R: f \mapsto f(x)
+	\]
+	is  a ring morphism.
+	It is surjective so that $\text{ev}_x^{-1}(0)$ is a maximal ideal in $\mathcal{O} _{X,x}$, denoted by $m_{X,x}$ such that \[
+		\mathcal{O} _{X,x} / m_{X, x} \overset{\sim}\to \R
+	.\] 
+	Moreover, if $\text{ev}_x(f) \ne 0$ then $f$ is invertible on some opoen neighborhood of $x$ and this and thus in $\mathcal{O} _{X,x}$. Thus $O_{X,x}$ is a local ring with unnique maximal ideal in $m_{X,x}$
+\end{enumerate}
+

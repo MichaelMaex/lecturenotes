@@ -1,0 +1,148 @@
+\lecture{3}{2020-03-04}{Title}
+
+New lecturer: Joel Villatora
+
+\paragraph{reminders}
+Last time we saw the Hamiltonian view oa pont particle potential.
+
+\begin{itemize}
+	\item The cotantgent bundle $T^* Q$ is a symplectic manifold. $\theta \in \Omega'(T^*Q)$.
+		In adapted coordinates   $q^{i}p_i$ on $T^*Q$. 
+		\begin{align*}
+			\theta &=  \sum_{i} p_i dq^{i} \\
+			w &= \sum_{i}dq^{i} \wedge d p_i
+		.\end{align*}
+\end{itemize}
+\begin{example}
+	[2.5.7]	
+	Let $(Q, g)$ be a riemannian manifold.
+	Consider \begin{align*}
+		\|\cdot \|^2: TQ \to \R: v \mapsto  g(v,v)\\
+		g^{b}: TQ \to T^*Q, v\mapsto g(v, \cdot )
+	.\end{align*} 
+	Define $H:T^*Q \to \R: \|(g^{b})^{-1}\| = H$
+	Then $(T^*Q, \omega^{\text{can}, H}$ is a Hamiltonian Triple.
+	The integral curves of $X_H$ are exactly curves of the form $g^{b} \circ \gamma': U \subset \R \to T^*Q$, where $\gamma: U \to Q$ is a geodesic.
+\end{example}
+\begin{definition}
+	A symmetry of a hamiltonian triple $(M, w, H)$  is a Hamiltonian vf $X_F$ such that $\mathcal{L} _{X_f}H = 0 \iff \left\{ f, H \right\}  = 0$.
+\end{definition}
+\begin{theorem}
+	[Noether]
+	Let $X_f$ be a symmetry of $(M, w, H)$. Then $f$ is conserved by integral curves of $X_H$. 
+\end{theorem}
+\begin{proof}
+	\begin{align*}
+		\mathcal{L} _{X_f} = 0 \iff \left\{ f, H \right\}  = 0 \iff \mathcal{L} _{X_h}(f) = 0
+	.\end{align*}
+\end{proof}
+
+\section{Alsmost K\"ahler Manifolds} \label{sec:alsmost_kahler_manifolds}
+\begin{definition}
+	An almost complex structure on $M$ is a vector bundle morphism $J: TM \to TM$ st $J^2 = -\id_{TM}$. 
+\end{definition}
+\begin{definition}
+	An almost K\"ahler manifold is a triple  $(M, w, J)$ such that $(M< w)$ is symplectic and  $J$ is an almsot complex structure such that $w $ and $J$ are compatible, ie. $g(v, w) = \omega(v, Jw)$ 
+is a positive definite and symmetric.
+\end{definition}
+\begin{remark}
+	Every symplectic manifold has a compatible almost complex structure.	
+\end{remark}
+\begin{proof}
+	Lots of linear algebra fuss.
+\end{proof}
+
+\begin{proposition}
+	Suppose $(M, w, J)$ is an almost scalar structure and $N \hookrightarrow M$ is a submanifold st $J(TN) \subset TN$ then $N$ is a symplectic submanifold. 
+\end{proposition}
+\begin{proof}
+	Need to show $w|_{TN} $ is non-denerate. Suppose that $v \in TN$ such that $w(v, w) = 0$ for all $W \in TN$. 
+	Then $w(v, Jw) = 0$ for all $\forall w \in TN$. 
+	So $W(v, Jv) = 0 = g(v,v) $. Hence  $v = 0$.
+\end{proof}
+\begin{definition}
+	An almost complex structure is called complex if the Nijenhuis tensor vanishes. 
+	$X, Y \in \mathfrak{X} (M)$.
+	\[
+		N_j(X, Y):= [JX, JY] - [X,Y] J([JX, Y] - [X, JY])
+	.\] 
+\end{definition}
+\begin{exercise}
+Show that $N_J \in \Gamma (\wedge^2 T^* M)$ In other words $N_J(X,Y)_p$ depends only on $X_p, Y_p$.
+Hint: Show that $N_J$ is $C^{\infty}$ linear.
+\end{exercise}
+\begin{theorem}
+	[Newaldner-Nirenberg]
+	Let $J$ be an almost complex structuture on $M$. Then $N_J = 0 \iff \exists $ coordinate charts $\phi_i: U_i \subset \C^{n}\to M$ such that $\phi_{ij}: U_{j}\cap \phi^{-1}_j(\phi_i(U_i)) \to U_i \cap \phi^{-1} (U_i))$ are holormorphic annd when $J$ is restricted to such a chart its the standard complex structure on $\C^{n}$. 
+\end{theorem}
+
+\chapter{Submanifolds and Normal Forms} \label{chap:submanifolds_and_normal_forms}
+\section{Isotopes, homotopy operators and tubular neighborhoods} \label{sec:isotopes,_homotopy_operators_and_tubular_neighborhoods}
+Fix a manifold $M$. 
+\begin{definition}
+	An isotopy is a (smooth) family of diffeomorphisms $\{\rho_t: M \to M\} _{t \in I}$.  Ie  \[
+		I\times  M \to M: (t, x) \mapsto  \rho_t(x) 
+	\] is smooth 
+\end{definition}
+\begin{definition}
+	A time-dependent vectorfield is a smooth family of vectorfields $\{x^{t}\} _{t \in I}$. 
+\end{definition}
+\begin{definition}
+	A time-dep vecotr field is a smooth family of vector fields $\{X^{t}\} _{t \in I}$. ($I \times M \to TM$ is smooth).
+	There is a correspondence between time dep vector fields and isotropies.
+	\begin{equation}
+		(X^{s})_P := \frac{\dd}{\dd t}|_{t = s} \rho_t(q), q:= (\rho_s)^{-1}(p)
+	\end{equation}
+
+\end{definition}
+\begin{figure}[ht]
+    \centering
+    \incfig{correspondence-isotropy-time-dep-fv}
+    \caption{correspondence isotropy time dep fv}
+    \label{fig:correspondence-isotropy-time-dep-fv}
+\end{figure}
+\begin{remark}
+	The correspondence \[
+	\left\{ \text{isotpies} \right\} \to \text{time dep vf}
+	.\] is injective but not surjective.
+\end{remark}
+\begin{exercise}
+	Show this is surjetive if $M$ is compact.
+\end{exercise}
+
+\begin{exercise}
+	Suppose $\{\rho_t\} $ is an isotopy and $\rho_{t + s} = \rho_t \circ \rho_s, \forall 0 \le t, s, s + t \le 1$. Then the corresponding $X^{t}$ is time-independent.
+\end{exercise}
+
+\begin{proposition}
+	Let $\{\alpha_t\} _{t \in I}$ a smooth family of $k$-forms and $\rho_t$ is ann isotopy thenn .. \[
+		\frac{\dd}{\dd t} \left( (\rho_t)^{*}\alpha_t\right) = \rho^*_t\left(\mathcal{L} _{X_t} \alpha_t + \frac{\dd}{ \dd t}X_t\right) = \lim_{h \to 0} \frac{\rho_t^* \alpha_{t + h}- \rho^*_t \alpha_t}{h}
+	.\] 
+\end{proposition}
+\begin{proof}
+	Idea:
+\[
+	\frac{\dd }{\dd t}|_{t = t_0}(\rho^*_t \alpha_t) = \frac{\dd }{\dd t}|_{t = t_0} \rho^*_t \alpha_{t_0} + \rho^*_{t_0} \frac{\dd }{\dd t}|_{t = t_0} \alpha _t
+.\] 	
+enough to sow for $\alpha_t$ time indep.
+\begin{itemize}
+	\item take the case in local coord when $\alpha = \dd x^{i}$. 
+	\item Show if it holds for $\alpha$ annd $\beta$ then holds for $\alpha \wedge \beta$.
+	\item Show that if it hodls fo $\alpha$ is holsd for $f \alpha$ where $f \in C^{\infty}(M)$.
+\end{itemize}
+\end{proof}
+\begin{definition}
+	Let $f: M \to N$, for $i = 0, 1$ be smooth. 
+	A \emph{homotopy operator} between $f_0$ and $f_1$ is a linear map $Q: \Omega^{k}(N) \to \Omega ^{k-1}(N)$ such that  \[
+		f_1^{*} - f_0^* = \dd \circ Q + Q \circ \dd : \Omega^\bullet (N) \to \Omega^{\bullet}(M)
+	.\] 
+\end{definition}
+\begin{exercise}
+	Suppose $H: I \times  M \to N$ is a smooth function such that $H_{\{i\} \times  M } = f_i$ for $i = 0,1$. 
+	Define $I_t: M \to I \times M$.
+	Show that \[
+Q:= \int_0^{1}I_T^{*}\circ i_{\frac{\partial }{\partial t} } \circ H^* \dd t	
+	.\] 
+	is a homotopy operator from $f_0 $ to $f_1$.
+\end{exercise}
+

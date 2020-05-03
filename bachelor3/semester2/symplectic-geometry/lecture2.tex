@@ -1,0 +1,174 @@
+\lecture{2}{2020-02-19}{Title}
+\begin{proposition}
+	\begin{enumerate}
+		\item 
+	\[
+		\text{Lag}(\R^{2n}) = \{W \subset  \R^{2n} \;|\; W \text{ is Lagrangian w.r.t. $R_\text{can}$}\} 
+	.\] 
+	Can be equipped with the str. of smoothmanifold, called the \emph{Lagrangian-Grassmanian}. 
+\item $\text{Lag}(\R^{n})$ is can. diffeo. to $U(n) / O(n)$. 
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	$U(n)$ acts on $\text{Lag}(\R^{2n})$ by syplectic matrices. 
+	\paragraph{Group action is transitive}
+	Consider $\R^{n}\subset \C^{n}$ is lagranngian after pattinng with $\re \oplus \im$.
+	$W \subset  \C^{n}$ real subspace with is lagrangian with w.r.t $\Omega_\text{can} $. 
+	Pick orthonormal basis for $W$ w.r.t $g_\text{can} $ on $\R^{2n}: (w_1, \ldots, w_n)$.
+	The nthe preimage $(\re \oplus \im)^{-1}(w_1, \ldots, w_n)$ is orthonoamrl w.r.t. hermitio inner product on $\C^{n}$. (exercise)
+
+	So \[
+		A = \begin{pmatrix} | & | & & | \\ 
+		w_1 & w_2 & \ldots & w_n \\
+	| & |& & | \end{pmatrix} 
+	.\] 
+	is a unnitary matrix mapping $\R^{n} \subset \C^{n}$ to $W$. 
+	\paragraph{Stabiliser is $O(n)$}
+	$A \in U(n)$ such that $A \R^{n } = \R^{n} \iff A$ is real $ \iff A \in O(n)$. 
+\end{proof}
+
+\chapter{Symplectic manifolds} \label{chap:symplectic_manifolds}
+
+\section{Vectorbundles vector fields and differential forms} \label{sec:vectorbundles_vector_fields_and_differential_forms}
+
+During this whole section $M$ will be a smooth manifold. 
+
+\begin{definition}
+	A $k$-form on $M$ is a (smooth) section of $\Lambda^{k}T^*M$.
+	Write $S(\Lambda^{k}T^*M) = \Omega^{k}(M), \Omega^{0}(M) = C^{\infty}(\mu)$.
+	$\Omega^{\cdot}(M) = \bigoplus_{k \in \Z} \Omega^{k}(M)$.
+\end{definition}
+\begin{exercise}
+	Show that there exits a natural bijection \[\Omega^{k}(M)\to \{C^{\infty} \text{alternating multiniear maps: $\mathfrak{X}(M)\times \ldots \times \mathfrak{X}(M) \to C^\infty(M)  $}\} \]
+\end{exercise}
+
+\begin{definition}
+	an $\R$-algebra is a real vector space $A$ with some bilinear function $A \times A \to A: (a, b) \mapsto  a\cdot b$, which is associative.
+
+	An algebra is \emph{commutative} is $a\cdot b = b\cdot a$ for all $a, b \in A$.
+\end{definition}
+\begin{example}
+	$C^{\infty}$ is commutative algebra.
+\end{example}
+\begin{exercise}
+	$C^{\infty}$ is a commutative algebra.
+\end{exercise}
+\begin{definition}
+	A algebra mA derivation on $A$ is a $\R$-linear map $D: A \to A $ such that $D(a, b) = D(a) \cdot b + a \cdot  D(b)$. 
+	The derivations form a lie algerba, where $[D_1, D_2] = D_1 \circ D_2 - D_2 \circ D_1$.
+\end{definition}
+\begin{exercise}
+	\[
+		\text{Der}(C^{\infty}(M)) = \mathfrak{X} (M)
+	.\] 
+	For all $X \in \mathfrak{X} \left( M \right) $, $f \in C^{\infty}(M)$ is holds thas \[
+		X(fg) = X(f)g + fX(g)
+	.\] 
+\end{exercise}
+\begin{definition}
+	A \emph{Lie alg.} $L$ is a real vector space with antisymmetric bilinear map $[\cdot , \cdot ]: L\times L \to L: (v,w) \mapsto [v, w]$. 
+	This is called a \emph{Lie bracket}.
+	The bracket must satisfy the \emph{jacobi identity}.
+	\[
+		\sum_{\text{cycl } a, b, c} [a, [b, c]] = 0
+	.\] 
+	Or equivalently \[
+		[a, [b, c]] = [[a,b],c] + [b, [a, c]]
+	.\] 
+	The second form looks more like a derivation.
+\end{definition}
+\begin{example}
+Any algebra $A$ is a lie algebra by defining \[
+	[a, b] = ab - ba
+.\] 	
+\end{example}
+\begin{definition}
+A $\Z$-graded vector space is a vector space $V$ decomposition $V  = \oplus_{k \in \Z}V_k$. 	
+Elements of $V_k$ are called \emph{homogeneous elements of degree  $k$}.
+\end{definition}
+\begin{example}
+	$\R[X]$ polynomial ring. The homogenous elements are the monomials. 
+\end{example}
+\begin{definition}
+A $\Z$-graded algerba A is a  algebra that is a $\Z$ graded vectorspace such that for all $k, j \in \Z$, $A_k \cdot A_j \subset A_{k+ j}$.
+
+$A$ is \emph{graded commutative} if for all  $a \in A_k, b \in A_j$  \[
+	a\cdot b = (-1)^{kj}(b\cdot a)
+.\] 
+\end{definition}
+\begin{example}
+	The set of differential forms with the wedge product is a graded commutative algebra.
+\end{example}
+\begin{definition}
+	A degree $k$ derivative of a $\Z$-graded algebra $A$ is a linear $D: A \to D$ such that
+	\begin{itemize}
+		\item $\forall j  \in  \Z: D(A_j) \subset  A_{j+k}$ 
+		\item $\forall a \in A: b \in A$ 
+	\item $D(ab) = D(a) b + (-1)^{kj}a D(b)$
+	\end{itemize}
+	We write $\text{Der}_k(A)$. 
+	If $D \in \text{Der}_k(A) , D' \in \text{Der}_l(A)$ then \[
+		[D, D'] = D\circ D' - (-1)^{kl}D'\circ D \in \text{Der}_{k + l}(A) 
+	.\] 
+
+\end{definition}
+\begin{definition}
+	The  \emph{Lie derivative} of $f \in C^{\infty}(M)$ with respect to $X \in \mathfrak{X} (M)$ is $L_X(f)= X(f)$.  
+	\begin{enumerate}
+		\item The Lie derivatie of $Y \in \mathfrak{X} (M)$ \begin{align*}
+				(\mathcal{L} _x Y)_p :&= \frac{\dd}{\dd t}|_{t = 0}\left( \phi_X^{-t})_* Y _{\phi^{t}_Y}(p) \right) \\
+						      &= \lim_{\epsilon \to 0} \frac{(\phi_X^{-\epsilon})_*(Y_{\phi_Y^{\epsilon}(p)}) - Y_p}{\epsilon} \\ 
+						      &= [X,Y]_p \\
+			.\end{align*} 
+		\item $(\mathcal{L}_X \alpha))P = \frac{\dd}{\dd t} | _{t = 0} (\phi^{t}_x)^*(\alpha_{\phi^{t}_x (p)}) $
+	\end{enumerate}
+
+\end{definition}
+\begin{definition}
+\begin{enumerate}
+	\item \emph{de-Rham differential}:
+		\[
+			d: \Omega^{k}(M) \to \Omega ^{k +1}(M), \text{ for } \alpha \in \Omega ^{k}(M)
+		.\] 
+		It is defiend as 
+		\begin{align*}
+			&(d \alpha)(X_0, \ldots, X_n) \\
+			&= \sum_{i = 0}^{k} (-1)^{i} X_i(\alpha(X_0, \ldots, \hat{X_i}, \ldots, x_k)) \\ & + \sum_{0 \le i < j \le h}(-1)^{i + j} \alpha([X_i, X_j], X_0, \ldots, \hat{X_i}, \ldots, \hat{X_j}, \ldots , X_k)
+		.\end{align*}
+	\item The \emph{interior product} with a vector field $X \in \mathfrak{X} (M)$ is $i_X : \Omega^{k}(M) \to \Omega^{k-1}(m): (i_X, \alpha)(Y_1, \ldots, Y_{k-1}) = \alpha(X, Y_1, \ldots, Y_{k -1})$.
+\end{enumerate}	
+\end{definition}
+\begin{proposition}
+\begin{enumerate}
+	\item $\mathcal{L}_x, d, i_x$ are graded revics, of degree  $0, +1, -1$ resp.
+	\item The followin identities hold:
+		 \begin{enumerate}
+			 \item $[d, d] = 2d^2 = 0$
+			 \item $[i_x, i_y]  = i_x i_y + i_y i_x = 0$
+			 \item $[\mathcal{L} _X, \mathcal{L} _Y] = \mathcal{L} _X \mathcal{L} _Y - \mathcal{L}_Y \mathcal{L} _X = \mathcal{L}_{[X, Y]} $ 
+			 \item $[d, \mathcal{L} _X] = \dd \mathcal{L} _X - \mathcal{L} _x \dd = 0$
+			 \item $[\mathcal{L} _X, iY ] = \mathcal{L} _X i Y - i_Y \mathcal{L} _X = i_{[X,Y]}$
+		\end{enumerate}
+\end{enumerate}	
+\end{proposition}
+\begin{proof}
+	Exercise 
+
+	\begin{enumerate}
+		\item examinable
+		\item easy
+		\item fine
+		\item tedious
+		\item easy
+		\item easy
+	\end{enumerate}
+\end{proof}
+
+\section{Simplectic Manifolds} \label{sec:simplectic_manifolds}
+\begin{definition}
+	A \emph{simplectic manifold} is a pair  $(M, \omega)$ of a smooth manifolds an a simplectic form $\omega \in \Omega^2(M)$, i.e. 
+	\begin{enumerate}
+		\item $\dd \omega = 0$ (closed)
+		\item $\omega_p : T_pM \times T_pM \to \R$ is non-denerate and $(T_pM, \omega_p)$ is symplectic vectorspace.
+	\end{enumerate}
+\end{definition}

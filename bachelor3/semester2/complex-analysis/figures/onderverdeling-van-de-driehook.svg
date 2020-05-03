@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg8" inkscape:version="0.92.4 (unknown)" sodipodi:docname="figure.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 680.3 340.2"
+	 style="enable-background:new 0 0 680.3 340.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st1{font-family:'MyriadPro-Regular';}
+	.st2{font-size:12px;}
+	.st3{font-size:14.6869px;}
+</style>
+<polygon class="st0" points="325.8,233.6 214.2,101.5 145.2,251.2 "/>
+<polyline class="st0" points="285.2,163.9 264.9,161.5 264.9,176.3 "/>
+<polyline class="st0" points="188.8,183.4 172.8,191.4 168.5,176.3 "/>
+<polyline class="st0" points="212.2,263.6 235.5,242.4 212.2,230.1 "/>
+<polygon class="st0" points="533.4,139.4 477.7,73.4 443.3,148.2 "/>
+<polyline class="st0" points="513.2,104.6 503,103.4 503,110.8 "/>
+<polyline class="st0" points="465,114.3 457,118.3 454.9,110.8 "/>
+<polyline class="st0" points="476.7,154.3 488.3,143.8 476.7,137.6 "/>
+<polygon class="st0" points="598.2,214.2 542.5,148.2 508.1,223 "/>
+<polyline class="st0" points="578,179.3 567.9,178.2 567.9,185.6 "/>
+<polyline class="st0" points="529.9,189.1 521.9,193.1 519.7,185.6 "/>
+<polyline class="st0" points="541.5,229.1 553.2,218.6 541.5,212.4 "/>
+<polygon class="st0" points="493.2,219.1 437.5,153.1 403.1,227.9 "/>
+<polyline class="st0" points="473,184.3 462.9,183.1 462.9,190.5 "/>
+<polyline class="st0" points="424.9,194 416.9,198 414.7,190.5 "/>
+<polyline class="st0" points="436.5,234.1 448.2,223.5 436.5,217.4 "/>
+<polygon class="st0" points="443.3,152.7 499,218.7 533.4,143.9 "/>
+<polyline class="st0" points="463.5,187.5 473.6,188.7 473.6,181.3 "/>
+<polyline class="st0" points="511.6,177.7 519.7,173.8 521.8,181.3 "/>
+<polyline class="st0" points="500,137.7 488.3,148.3 500,154.4 "/>
+<g>
+	<g>
+		<path class="st0" d="M306.9,146.2c5.6-5.1,20.4-17.3,42.9-20.2c26-3.4,46.2,7.6,55.6,14"/>
+		<g>
+			<path d="M410.4,143.7c-3-0.8-7-1.5-10-1.2l4.3-2.9l1.5-5C406.8,137.5,408.7,141.1,410.4,143.7z"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 217.2182 79.3043)" class="st1 st2">$T^{(0)} =  T$</text>
+<text transform="matrix(1 0 0 1 468.5879 121.6924)" class="st1 st3">$T_1$</text>
+<text transform="matrix(1 0 0 1 429.4219 202.4697)" class="st1 st3">$T_2$</text>
+<text transform="matrix(1 0 0 1 482.5166 177.5137)" class="st1 st3">$T_3$</text>
+<text transform="matrix(1 0 0 1 533.4121 198.0283)" class="st1 st3">$T_4$</text>
+</svg>

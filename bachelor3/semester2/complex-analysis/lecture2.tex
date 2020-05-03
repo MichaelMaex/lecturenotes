@@ -1,0 +1,149 @@
+\lecture{2}{2020-02-19}{Cauchy's Theorem and Its Applications}
+
+\chapter{Stelling van Cauchy en zijn toepassingen} \label{chap:stelling_vann_cauchy_en_zijn_toepassingen}
+\setcounter{section}{-1}
+\section{Herhaling} \label{sec:herhaling}
+
+
+Als f een primitieve heeft in $\Omega$ en zij $\gamma$ een gesloten kromme in $\Omega$. Dan is $\oint_\gamma f(z) \dd z = 0$.
+We zagen ook dat \[
+	\oint_{C_r(0)} \frac{1}{z} \dd z = {2\pi i}
+.\] 
+\paragraph{ML afschatting}
+
+\[
+	\abs{	\int_\gamma f(z) \dd z } \le \ell(\gamma)\cdot \max_{z \in \gamma} \abs{f(z)}
+.\] 
+
+\section{Goursat's stelling} \label{sec:goursat's_stelling}
+Beschouw de 3-hoek $T = T(a, b, c)$. 
+Veronderstell dat $T \subset  \Omega$
+ \begin{stelling}
+	 [Goursat]
+	 Neem aan dat  $f$ holomorph is op $\Omega$, $T \subset  \Omega$ dan is \[
+		 \int_{\partial T} f(z) \dd z = 0
+	 .\] 
+\end{stelling}
+\begin{figure}[ht]
+    \centering
+    \incfig{onderverdeling-van-de-driehook}
+    \caption{onderverdeling van de driehook}
+    \label{fig:onderverdeling-van-de-driehook}
+\end{figure}
+\begin{proof}
+	Zij $T^(0) = T$. We verdelen $T$ op in 4 deeldriehoeken, $T_1, T_2, T_3, T_4$.	
+	Dan is $\sum_{j = 1}^{4} \int_{\partial T_j}f(z) \dd z = \int_{\partial T} f(z) \dd z$. 
+	Neem $T(1) = T_j$ zodat  \[
+		\abs{\int_{\partial T^{(0)}} f(z) \dd z } \le 4 \abs{\int_{\partial T^{(1)}} f(z) \dd z}
+	.\] 
+	Construeer zo een rij van 3-hoeken. Merk op dat $\ell(T^{(n+1)}) \le \frac{1}{2} \ell(T^{(n)})$
+	en analoog voor de diameter. Dus 
+	\begin{align*}
+		\ell(T^{(k)}) &= 2^{-k}\ell(T) \\
+		\text{diam}(T^{(k)}) = 2^{-k}\text{diam}(T)
+	.\end{align*}
+	Er is een $z_0 \in  \cap _{k \in \cap \N} T ^{(k)} $. 
+	F is holomorph in $z_0$. Dus $f(z) = f(z_0) + f'(z_0)(z-z_0) + R(z)$, met \[
+		\lim_{z \to z_0} \abs{\frac{R(z)}{z - z_0}} = 0
+	.\] 
+	Er geldt $\int_{\partial T^{(k)}}f(z) \dd z = \int_{\partial T^{(k)}} R(z) \dd z $ want $z\mapsto  f(z_0) + f'(z_0)(z - z_0)$ heeft een primitieve.
+	Vanwege de ML afscahtting \begin{align*}
+		\abs{\int_{\partial T^{(k)}}f(z) \dd z } &\le \ell(T^{(k)})\cdot \left( \max_{x \in \partial T^{(k)}} \abs{\frac{R(z)}{z - z_0}}\right)\cdot \left( \max_{z \in \partial T^{(k)}} \abs{z - z_0}\right)  \\
+							 &\le \ell(T^{(k)}) \cdot \text{diam}(T^{(k)}) \cdot  \max_{z \in T^{(k)}}\abs{\frac{R(z)}{z - z_0}}
+	.\end{align*} 
+	Dus \begin{align*}
+		\abs{\int_{\partial T} f(z) \dd z)} &\le 4^{k}\abs{\int_{\partial T^{(k)}}f(z) \dd z}\\
+						    &\le 4^{k}2^{-k}\ell(T) 2^{-k} \text{diam}(T) \cdot \max_{z \in T^{(k)}}\abs{\frac{R(z)}{z - z_0}} 
+	.\end{align*}
+	Dit gaat naar 0.
+\end{proof}
+
+\section{Lokale primitieven} \label{sec:lokale_primitieven}
+Zij $\Omega = D$ een  open schijf.
+\begin{stelling}
+	Zij $f$ holomorf op $D$. Dan heeft $f$ een primitieve functie op $D$. DUs er is een holomorfe $F$ met $F' = f$. 
+\end{stelling}
+\begin{figure}[ht]
+    \centering
+    \incfig{integraal-op-schijf}
+    \caption{integraal op schijf}
+    \label{fig:integraal-op-schijf}
+\end{figure}
+\begin{proof}
+	We morgen zonder verlies van algemeenheid aannemen dat $D = D_{r}(0)$. 
+	We voeren is $F(z) = \int_{[0,z]} f(w) dw$. 
+	Neem $z \in D$ vast. Neem $z + h \in D$. Ons doel is $\frac{F(z + h) - F(z)}{h}$ uit te rekenen. 
+	Zij $T = T(0, z, z+ h)\subset  D$. 
+	Er geldt dat $\int_{\partial T} f(w) \dd w = 0$. 
+	Dus is 
+	\begin{align*}
+		0 &=  \int_{[0, z]} f(w) \dd w + \int_{[z, z + h]} f(w) \dd w + \int_{[z + h, 0]} f(w) \dd w  \\
+		  &=  F(z) + \int_{[z, z + h]} f(w) \dd w - F(z + h) \\
+	.\end{align*}
+	Dus 
+	\begin{align*}
+		\frac{F(z+ h) - F(z)}{h} &= \frac{1}{h} \int_{[z, z + h]} f(w) \dd w \\
+		\frac{F(z + h) - F(z)}{h} - f(z) &= \frac{1}{h} \int_{[z, z+ h]} \left( f(w) - f(z) \right) \dd w\\
+		\abs{\frac{F(z + h) - F(z)}{h} - f(z) } &\le \max_{w \in [z, z + h]} \abs{f(w) - f(z)}
+	.\end{align*}
+\end{proof}
+\begin{gevolg}
+	Dus is $\int_{\gamma} f(w) \dd w = 0$ voor elke gesloten kromme in $\Omega$. 	
+\end{gevolg}
+\begin{opmerking}
+	Dit geldt voor alle enkelvoudig samenhangende open  $\Omega$, maar bijvoorbeeld niet voor een schijf meteen schijf uit. 
+\end{opmerking}
+\begin{figure}[ht]
+    \centering
+    \incfig{tegenvoorbeeld-cauchy}
+    \caption{tegenvoorbeeld cauchy}
+    \label{fig:tegenvoorbeeld-cauchy}
+\end{figure}
+
+\setcounter{section}{3}
+\section{Formule van Cauchy} \label{sec:formule_van_cauchy}
+\begin{stelling}
+	Zij $\Omega$ open, hscijf $D$ met $\overline{D} \subset \Omega$ en zij $f$ holomorph op $\Omega$. Dan is \[
+		\frac{1}{2\pi i } \int_{\partial D} \frac{f(w)}{w - z} \dd w = \begin{cases}
+			f(z) & \text{ voor $z \in D$}\\
+			0 & \text{ voor $z \in \Omega \setminus \overline{D}$}
+
+		\end{cases} 	
+	.\] 
+\end{stelling}
+\begin{figure}[ht]
+    \centering
+    \incfig{keyhole-argument}
+    \caption{keyhole argument}
+    \label{fig:keyhole-argument}
+\end{figure}
+\begin{proof}
+	We hebben dit al bewezen als $f(z):z\mapsto  1$.
+
+	Beschouw de functei $w\mapsto \frac{f(z)}{w - z}$. Deze is holomorph of het keyhole gebied $\gamma_{\epsilon, \delta}$. 
+Dan is \[
+	\int_{\gamma_{\epsilon, \delta}} \frac{f(w)}{w - z} \dd w = 0
+.\] 
+Laat eerst $\delta \to 0$. Dus is
+ \[
+	 \int_{C_r(a)} \frac{f(w)}{w - z }\dd w - \int_{C_\epsilon (z)}\frac{f(w)}{w - z} \dd w = 0
+ .\] 
+ We willen nu weten wat is in $C_\epsilon(z)$ gebeurd
+ \begin{align*}
+	 \int \frac{f(w)}{w - z} \dd w = \int_{c_\epsilon (z) } \frac{f(w) - f(z)}{w - z} + 2\pi f(z)
+ .\end{align*}
+ Er geldt \[
+	 \abs{\int_{C_\epsilon (z)} \frac{f(w) - f(z)}{w - z} \dd w } \le 2 \pi \epsilon \cdot \max_{w \in C_\epsilon (z)} \abs{\frac{f(w) - f(z)}{w - z}}
+ .\] 
+\end{proof}
+
+\begin{vb}
+	Beschouw de integraal \[
+		\int_{C_r(0)} \frac{e^{w}}{w} \dd w = 2 \pi i e^{0} = 2 \pi i
+	.\] 
+\end{vb}
+\begin{vb}
+	Definieer  $f(z) = \frac{1}{2\pi i} \int_{\partial D} \frac{f(w)}{w - z} \dd w$ op $D$. Afgeleide  \[
+		f'(z) = \frac{1}{2\pi i } \int _{\partial D} \frac{f(w)}{(w - z)^2} \dd w
+	.\] 
+\end{vb}

@@ -1,0 +1,101 @@
+\lecture{5}{2020-03-10}{stelling van Ellenberg-Gijswijt}
+
+\begin{definitie}
+	Als $(V, \mathcal{B} ) $ een block design is, dan is $A \subset  V$ een capp set als in geen blok $B \in \mathcal{B} $ zodat $B \subset A$.
+\end{definitie}
+
+\begin{stelling}\label{st:ellenberg_gijswijt}
+	[Ellenberg-Gijswijt 2017]
+	Zij $A \subset  \F_3^{n}$ een 'cap set'. Dan is $\abs A \le 3\cdot 2.756^{n}$. 
+\end{stelling}
+In ons geval is $V = \F_3^{n}$, $\mathcal{B} = \{\text{rechten}\} $. Voor $n = 4$ is dit de verzamling kaarten uit set zonder een set.
+
+\begin{proof}
+	[bewijs: (maakt gerbuik van de zogenaamde polynomiale methode)]
+
+Beschouw \[
+V \subset S_d \subset \F_3[x_1, \ldots, x_n]
+\]
+	Waar $S_d$ de vector ruimte voortgebracht is door monomen van graad hoogstens $d$, waarin elke variable hoogstens kwadratisch voorkomt, en  
+\[
+	V = \{ P \in S_d \st \forall  a \not\in -A, P(a) = 0\} 
+.\]
+We noemen $m_d = \dim S_d$, wat ook het aantal monomen is die $S_d$ genereren. We willen nu de dimentie van $V$ afschatten.
+Merk op dat $V$ gedefinieerd is al een de oplossingen van een stelsel van $3^{n} - \abs A$ lineaire vergelijkingen in $S_d$. 
+Dus is $\dim V \ge m_d  - 3^{n} + \abs A$, maw $\abs A \le \dim V + (3^{n} - m_d)$. 
+Merk op dat $(3^{n} - m_d)$ het aanal monomen is waarin elke variable hoogstens kwadratisch voorkomt van graad $> d$. 
+
+Beschouw de afbeelding
+\begin{align*}
+	\left\{\sum_{i}x_i^{a_i} \st \forall i: a_i \le 2, \sum_{i} a_i > d \right\}  &\longrightarrow  	\left\{\sum_{i}x_i^{a_i} \st \forall i: a_i \le 2, \sum_{i} a_i \le 2^{n} - d \right\}  \\
+	 \mu &\longmapsto \frac{x_1^2 x_2^2 \ldots x_n^2}{\mu}
+.\end{align*}
+
+\begin{lemma}
+	Er bestaat een $P \in V$ die niet nul wordt op minstens $\dim V$ element van $-A$. 
+\end{lemma}
+\begin{proof}
+	[bewijs (lemma)]
+	Zij $P \in V$ en zij $-a_1, \ldots, -a_n$ element van $-A$ waarop $P$ niet nul wordt. Neem aan dat $r \le \dim V$. 	
+	Wegens het argument van daarnet bestaat er een veelterm $Q \in V$ die nul wordt op $-a_1, \ldots, -a_r$. 
+	We claimen(*) nu dat er een element $-a$ bestaat waarop $Q$ niet nul wordt. 
+	Herhaal dan de procedure van $P + Q$ indien nodig. 
+
+	Om de claim(*) te te bewijze nis het voldoende in te zien dat elk niet-nul element van $V \subset S_d \subset S_{2n}$ ook niet-nul is wanneer bekeken als functie van $\F_3^{n} \to  \F_3$.   
+	Beschouw de map \[
+		\psi: S_{2n} \to \F_3^{\F_3^{n}}: P \mapsto  \text{bijhorende evaluatie functie.}
+	.\] 
+	We willen bewijzen dat deze functie injectief. Het is een functie tussen eindige verzamelingen, met zelfde cardinaliteit $\abs{\F_3^{\F_3^{n}}} = 3^{3^{n}} = \abs{S_{2n}}$. 
+	Dus is het voldoende te bewijzen dat $\psi$ surjectief is.
+	
+	Kies lukraark een functie $f: \F_{3}^{n} \to \F_3$. Het doel is dit te schrijven als een veelterm.
+	Merk op dat
+	\begin{align*}
+		\psi\left( \sum_{a = (a_1, \ldots, a_n) \in \F_3^{n}}f(a) \prod_{i = 1}^{n}(1 - (x_i - a_i)^2)\right)  = f
+	.\end{align*}
+\end{proof}
+We gaan nu verder met het bewijs van stelling \ref{st:ellenberg_gijswijt}.
+
+We bouwen een matrix
+\[
+	B = \left( P(a_1 + a_2) \right) _{a_1, a_2 \in A} \in \F_3^{A \times A}
+.\] 
+Dit is een diagonaal matrix.
+Stel dat $a_1 \ne a_2$. Dan is $a_1 + a_2 \not\in -A$. Inderdaad, als dat niet het geval was zou $a_1 + a_2 + a_3 =0$, maar $A $ is een cap set. 
+Op de diagonaal staan de elementen van de vorm $P(2a) = P(-a)$ voor $a \in A$. 
+Dus minstens $V$ niet-nullen op diagonaal. 
+Dus  $\dim V \le \text{rang }B$. 
+
+We herschrijven \[
+	P(x + y) = \sum_{\mu \in S_d}c_\mu (x + y)
+.\] 
+Merk op dat $\mu(x + y)$ nog seeds een monoom van graad $\le d$ in de variablen $x_1, \ldots, x_n, y_1,\ldots y_n$ waarin elke van hoogstens kwadratisch voorkomt. 
+Dus kunnen we schrijven
+\begin{align*}
+	\mu(x + y) &= \sum_{\mu \in S_{d /2}} \mu(x)F_\mu(y) + \sum_{\mu \in S_{d / 2}} \mu(y) G_\mu(x)
+.\end{align*}
+Dus 
+\[
+	P(x + y) = \sum_{\lambda \in S_{d / 2}} \lambda(x) F_\lambda(y) + \sum_{\nu \in S_{d / 2}} \nu (y) G_\nu(x)
+.\]  
+Noem \[
+	B = (P(a_1 + a_2))_{a_1, a_2} = \sum_{\lambda \in S_{d / 2}}(\lambda(a_1)F_\lambda(a_2))_{a_1, a_2} + \sum_{\nu \in S_{d /2 }} \left( \nu (a_2)G_\nu(a_1) \right) _{a_1, a_2}. 
+.\] 
+Merk op dat rang $\text{rang }(\lambda(a_1)F_\lambda(a_2))_{a_1, a_2}\le 1$.
+Want alle $2 \times 2$ minoren zijn 0.
+Dus $\dim V \le \text{rang }B \le 2m_{d / 2}$. 
+Er volgt dat $\abs A \le \dim V + m_{2n - d} \le 2m_{d / 2} + m_{2n - d}$ 
+Als we $d = \frac{4n}{3}$ nemen volgt dat $\abs A \le 3m_{2n / 3}$.
+
+Er rest nog aan te tonen $m_{2n / 3} \le 2.756^{n}$.
+
+Merk op: all deze monomen komen voor in $\prod_{i = 1}^{n}(1 + x_i + x^2_i)$. 
+Wij zijn geintereseert in het aantal termen van graad $\le \frac{2n}{3}$. 
+Of nog: we willen de som van de coefficienten in \[
+	T(x) = \left( \frac{1 + x + x^2}{x^{2 /3 }} \right) ^{n}
+.\] 
+die horen bij termen van negatieve graad.
+Weweten dat $m_{\frac{2n}{2}}$ voor alle $\alpha \in (0, 1]$. 
+Zoek nu de  $\alpha$ waarvoor $T(\alpha)$ minimaal is.
+We bekomen $\alpha = \frac{-1 + \sqrt{33} }{8}$. Dus $T(\alpha) \simeq 2.7551046$.
+\end{proof}	

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg8" inkscape:version="0.92.4 (unknown)" sodipodi:docname="figure.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 680.3 243.1"
+	 style="enable-background:new 0 0 680.3 243.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st1{font-family:'MyriadPro-Regular';}
+	.st2{font-size:16.8705px;}
+	.st3{font-size:12px;}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" id="base" inkscape:current-layer="layer1" inkscape:cx="284.27627" inkscape:cy="182.72055" inkscape:document-units="mm" inkscape:guide-bbox="true" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="995" inkscape:window-maximized="1" inkscape:window-width="2520" inkscape:window-x="20" inkscape:window-y="65" inkscape:zoom="0.99437388" pagecolor="#ffffff" showborder="true" showgrid="false" showguides="true" width="200mm">
+	<inkscape:grid  dotted="false" empspacing="4" id="grid815" spacingx="10" spacingy="10" type="xygrid" units="mm">
+		</inkscape:grid>
+</sodipodi:namedview>
+<g id="layer1" transform="translate(0,-177)" inkscape:groupmode="layer" inkscape:label="Layer 1">
+</g>
+<path class="st0" d="M345.2,29.5c-100.5,0-182.1,81.5-182.1,182.1h157.5c0-16.8,13.6-30.4,30.4-30.4c16.8,0,30.4,13.6,30.4,30.4
+	h145.8C527.3,111.1,445.8,29.5,345.2,29.5z"/>
+<text transform="matrix(1 0 0 1 309.1727 228.1654)" class="st1 st2">$-\epsilon$</text>
+<text transform="matrix(1 0 0 1 376.5943 228.1656)" class="st1 st2">$\epsilon$</text>
+<text transform="matrix(1 0 0 1 516.8607 230.2606)" class="st1 st2">$R$</text>
+<text transform="matrix(1 0 0 1 146.3102 228.1657)" class="st1 st2">$-R$</text>
+<text transform="matrix(1 0 0 1 231.386 201.2799)" class="st1 st3">$I_1$</text>
+<text transform="matrix(1 0 0 1 447.6963 205.2006)" class="st1 st3">$I_3$</text>
+<text transform="matrix(1 0 0 1 340.1577 169.8782)" class="st1 st3">$I_2$</text>
+<text transform="matrix(1 0 0 1 333.9863 19.605)" class="st1 st3">$I_4</text>
+<circle cx="353.1" cy="211.6" r="5.2"/>
+<text transform="matrix(1 0 0 1 345.2417 202.9556)" class="st1 st3">$0$</text>
+</svg>

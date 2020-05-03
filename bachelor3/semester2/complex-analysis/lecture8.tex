@@ -1,0 +1,131 @@
+\lecture{8}{2020-04-01}{Gamma functie}
+\section{Gamma en Zeta Functie} \label{sec:gamma_en_zeta_functie}
+
+\begin{definitie}
+	De \emph{gamma functie} is gedefinieerd adhv het volgende voorschrift \[
+		\Gamma(z) = \int_{0}^{\infty} e^{-t}t ^{z -1} \dd t, \re z > 0 
+	.\] 
+\end{definitie}
+\begin{propositie}
+	$F(z)$ is holomorf voor $\re z > 0$.
+\end{propositie}
+\begin{proof}
+	Neem $0 < \epsilon < R < \infty$. 
+	Bekijk  
+	\[
+		f_{\epsilon, R}(z) = \int_{\epsilon}^{R} e^{-t}t ^{z-1} \dd t 
+	.\]
+	Dit is een gehele functie (Morera).
+	We willen nu bewijzen dat \[
+		\lim_{\substack{\epsilon \to 0 \\ R \to \infty}}  f_{\epsilon, R} (z) = \Gamma(z)
+	\] 
+	uniform op $0 < \delta < \re z < M < \infty$. 
+
+	\begin{align*}
+		\abs{ \Gamma(z) - f_{\epsilon, R}(z)} &= \abs{\left( \int_{0}^{\epsilon} + \int_{R}^{\infty} e^{-t}^{z-1}\dd t   \right) } \\
+		\abs{\int_{0}^{\epsilon} e^{-t}t ^{z -1} \dd t}  &\le \int_{0}^{\epsilon} t ^{\re z - 1} \dd t , \epsilon < 1 \\
+								 &\le \int_{0}^{\epsilon} t ^{\delta -1} \dd t \to 0 , \text{ als } \epsilon \to 0 \\
+		\abs{\int_{R}^{\infty} e^{-t}t ^{z - 1}\dd t} &\le \int_{R}^{\infty} e^{-t} t ^{\re z - 1} \dd t \\
+							      &\le \int_{R}^{\infty} e^{-t} t ^{M -1} \dd t \to 0 \text{ als } R \to \infty 
+	.\end{align*}
+
+
+\end{proof}
+\begin{eigenschap}
+\begin{enumerate}
+	\item $\Gamma(1) = \int_{0}^{\infty} e^{-t}dt = 1 $ 
+	\item $\Gamma(2) = 1 $
+	\item $\Gamma(n + 1) = n!$
+	\item Functionaal vergelijking \[
+			z \Gamma(z) = \Gamma(z + 1), \re z > 0
+	.\] 
+\end{enumerate}		
+\end{eigenschap}
+\begin{proof}
+\begin{align*}
+	z \Gamma(z) &= \int_{0}^{\infty} e^{-t}z t ^{z - 1} \dd t \\
+		    &= \int_{0}^{\infty} e^{-t} \dd t ^{z}  \\
+		    &= \int_{0}^{\infty} e^{-t}t ^{z} \dd t = \Gamma (z + 1)  
+.\end{align*}	
+\end{proof}
+\begin{stelling}
+	$\Gamma$ heeft een mermorphe uitbreiding tot $\C$ met polen in $0, -1, -2, -3, \ldots$. 
+\end{stelling}
+\begin{proof}
+	Bekijk $F_1(z) = \Gamma(z + 1) / z$ voor $\re z > -1$.
+	Dan is  $F_1(z) = \Gamma(z)$ als $\re z > 0$. En $F_1(z) $ is gedefinieerd voor $\re z > -1$. 
+	Ook geld \[
+		z F_1(z) = F_1(z + 1)
+	.\] wegens de identiteits stelling. 
+	Dit blijven we herhalen\ldots
+\end{proof}
+\begin{stelling}
+	[Spiegelingsprinciepe voor gamma functie]
+	\[
+		\Gamma(z) \Gamma(1 - z) = \frac{\pi}{\sin \pi z}, \text{ voor } z \in \C
+	.\] 
+\end{stelling}
+\begin{proof}
+	We bewijzen het voor $(0, 1)$,$0< z = x < 1$. Dan geeft de identiteitststelling dat het overal gelijk is.
+	Dan 
+	\begin{align*}
+		\Gamma(x) \Gamma(1 - x) &= \int_{0}^{\infty} e^{-s} s^{x  - 1} \dd s \int_{0}^{\infty} e^{-t} t ^{-x} \dd t  \\
+		&= \int_{0}^{\infty} \int_{0}^{\infty} e^{-s-t}s^{x-1}t ^{-x}\dd s \dd t   
+	.\end{align*}
+	We voeren nieuwe coordinaten in 
+	\begin{align*}
+		s &= r \cos^2 \theta\\
+		t &= r \sin^2 \theta
+	.\end{align*}
+	De jacobiaan is $2r \cos \theta \sin \theta$. 
+	Dan wordt de integraal 
+	\begin{align*}
+		&\int_{0}^{\infty} \int_{0}^{\frac{\pi}{2}} e^{-r}(r\cos^2\theta)^{x-1}(r \sin^2\theta)^{-x}2r \cos \theta \sin \theta \dd \theta \dd r \\
+		&= 2 \int_{0}^{\infty} e^{-r}\dd r \int_{0}^{\frac{\pi}{2}} (\cos \theta)^{2x -1}(\sin \theta)^{-2x+1} d \theta   \\
+		&= 2 \int_{0}^{\frac{\pi}{2}} (\tan \theta)^{-2x} \dd \theta  
+	.\end{align*}
+	We doen opnieuwe een substitutie.
+	\begin{align*}
+		\tan \theta &= u \\
+		\theta &=  \arctan u  \\
+		\dd \theta &= \frac{1}{1 + u^2} \dd u
+	.\end{align*}
+	Dan vinden we 
+	\begin{align*}
+		2 \int_{0}^{\frac{\pi}{2}} (\tan \theta)^{1-2x} \dd \theta &= 2 \int_{0}^{\infty} \frac{u^{1 - 2x}}{1 + u^2} \dd u \\
+									   &= 2 \frac{\pi}{2 \cos\left( \frac{(1 - 2x)\pi}{2} \right) } \\
+									   &= \frac{\pi}{\sin(\pi x)} 
+	.\end{align*}
+\end{proof}
+\subsection{Zetafunctie} \label{sec:zetafunctie}
+\begin{definitie}
+	De zeta functie is \[
+		\zeta (s) = \sum_{n=1}^{\infty} \frac{1}{n^{s}}, \re s > 1
+	.\] 
+	Deze functie is holomorph.
+\end{definitie}
+Een belangrijke eigenschap is
+\[
+	\zeta(s) = \prod_{p \text{ priem}}^{} (1 - p^{-s})^{-1} 
+.\] 
+
+\begin{stelling}
+	[prime number theorem]
+	\[
+		\pi(x) = \# \{\text{priem } p \le x\} 
+	.\] 
+	Dan is \[
+		\pi(x) \sim \frac{x}{\log x} \text{ als } x \to \infty
+	.\] 
+\end{stelling}
+Er is een analystische voorzetting van de $\zeta$-functie tot $\C \setminus \{1\} $. 
+Dit tonen we aan met een hulpfunctie  \[
+	\xi (s) = \pi^{-s x/2}\Gamma\left(\frac{s}{2}\right) \zeta(s)
+.\] 
+Deze heeft een functie vergelijking
+\[
+	\zeta(s) = \xi(1-s)
+.\]
+Dan heeft de $\zeta$ functie nulpunten in $s = -2, -4, -6, \ldots$ . Dit zijnn triviale nulpunten.
+De niet trivaiale nulpunten bevinden zich tussen $0 \le \re s \le 1$. 
+Niet triviale nulpuntenn bevindenn zich in $0 < \re S < 1$ impliceert de prime number theorem.

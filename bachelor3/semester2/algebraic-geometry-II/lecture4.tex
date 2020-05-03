@@ -1,0 +1,201 @@
+\lecture{4}{2020-03-03}{Geometric Space}
+So far our guiding example has been a differentiable manifold, $(X, \mathcal{O} _X)$.
+This has a couple of special properties.
+\begin{enumerate}
+	\item $\forall x \in X, \mathcal{O}_{X,x} $ is a local ring whose maximal ideal consists of the germs of differentiable functions that vanish at $x$.
+	\item Suppose $h: W \to X$ is a differentiable map and take $y \in Y$ and suppose $x = h(y)$.  
+	Then $h^{\#}: \mathcal{O} _X \to h_* \mathcal{O}_Y : f\mapsto f \circ h$ induces a ring morphism $\mathcal{O} _{X,x} \to \mathcal{O} _{Y,y}$. 
+	\begin{description}
+		\item[formal definition] Via adjunction $(h^{-1}\mathcal{O}_X)_y \to \mathcal{O} _{Y, y}$
+		\item[explicitly]
+			$\mathcal{O} _{X,x}\to \mathcal{O} _{Y,y}$ maps the germ of a function $f: U \open X \to \R$ at $x$ to the germ of $f\circ h: h^{-1}(U) \to \R$ at $y$. 
+	\end{description}
+\end{enumerate}
+
+\begin{note}
+	if $f(x) = 0$  then $(f\circ h)(y) = 0$. Thu the morphism $\mathcal{O} _{X, x} \to \mathcal{O} _{Y, y}$ sends elements in the maximal idal of $\mathcal{O} _{X,x} $ to the elemetn in the maximal ideal of $\mathcal{O} _{Y, y}$ such a morphis between local rings is a called a local morhpism.
+\end{note}
+\begin{definition}
+	A ringed space is a pair $(X, \mathcal{O} _X)$ where $X$ is a topological space and  $\mathcal{O} _X$ is a sheaf of rings on $X$. A morphism of ringed spaces $h: (Y, \mathcal{O} _Y) \to (X, \mathcal{O}_X)$ consists of 
+	\begin{itemize}
+		\item  a continous map $h: Y \to X $. 
+		\item a morhpism of sheaves of rings $h^{\#}: \mathcal{O} _X \to h_* \mathcal{O} _Y$ or equivalently $h^{-1} \mathcal{O} _X \to \mathcal{O} _Y$. 
+	\end{itemize}
+	
+	We say that $(x, \mathcal{O} _X)$ is \emph{locally} ringed if $\forall x \in X,  \mathcal{O} _{X,x}$ is a local ring. 
+	If $h : (Y, \mathcal{O} _Y) \to (X, \mathcal{O} _X)$ is a morphism of ringed spaces and $(X, \mathcal{O} _X)$ and $(Y, \mathcal{O} _Y)$ are locally ringed, then we say that $h$ is a morphism of locally ringed spaces if $\forall y \in Y$, the map $\mathcal{O}_{X, h(y)} \to \mathcal{O} _{Y, y} $ is local.
+\end{definition}
+\begin{example}
+	[or exercise]
+	Suppose that $X, Y$ are differentiable manifolds. Then to every differentiable map  $h: Y \to X$ we have associated a morphism of locally ringed spaces.
+	$h: (Y , \mathcal{O} _Y) \to (X, \mathcal{O} _X)$. 
+	
+	Every morphism of locally ringed spaces in $\R$-algebras arises in this way from a unique differentiable map $Y \to X$. 
+\end{example}
+Let $(X, \mathcal{O} _X)$ locally rnged space $x \in X, \mathcal{O} _{X, x} $  with unique maixmal ideald $m_{X, x}$. 
+The risdue field  $\kappa(x) = \mathcal{O} _{X, x} / m_{X,x}$ is called the risude field of $(X, \mathcal{O} _X)$ as $x$.
+
+If $x \in U \open X $, $f \in \mathcal{O} _X(U)$ then we can define $f(x)$sa the image in $\kappa(x)$ of the germ $f_x \in \mathcal{O}_{X, x}$. In this way we obtain a function \[
+	\tilde f : U \to \coprod_{x \in U}\kappa(x):x\mapsto f(x)
+.\] 
+\begin{example}
+	If $(X, \mathcal{O}_X) $ is a differentiable manifold then $\kappa (x) = \R$ for all $x \in X$ and $\tilde f  = f$. 
+	But in general we cannot recover $f $ from $\tilde f$. 
+
+	For example if  $X = \{\text{pt}\} $ and $\mathcal{O} _{X} = \underline R_x$ with $R$ a local ring. 
+	Then $\mathcal{X} (X) = R$ but fo revery $f \in \mathcal{O}_X (X) = R$. The $\tilde f(x)$ is the projection of $f$ to the residue field $\kappa(x) $ of $R$.
+\end{example}
+
+\subsection{Gluing locally ringed spaces} \label{sec:gluing_locally_ringed_spaces}
+We start with a family of locally ringed spaces \[
+	\{(U_i, \mathcal{O} _{U_i} \;|\; i \in I\} 
+.\] 
+We want to glue these together with gluing data. 
+For every $  i, j \in I$ let $U_{ij}$ be an open in $U_i$ and denote by $\mathcal{O} _{U_{ij}}$ the restriction of $\mathcal{U} _{U_i}$ to $U_{ij}$. 
+Assume that we have for all $i, j \in I$ an isomorphism of rinnge spaces \[
+	\phi_{ij}:(U_{ij}, \mathcal{O} _{U_{ij}}) \to (U_{ji}, \mathcal{O} _{U_{ij}})
+.\] 
+Assume that $U_{ii} = U_i$ and $\phi_{ii } = \id $ for all $ i \in I$. 
+\begin{figure}[ht]
+    \centering
+   % \incfig{gluing-maps}
+    \caption{gluing maps}
+    \label{fig:gluing-maps}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+   % \incfig{cycle-condition}
+    \caption{cycle condition}
+    \label{fig:cycle-condition}
+\end{figure}
+The cocicle condition states that $\phi_{ik} = \phi_{jk} \circ \phi_{ij}$. 
+
+If this cocycle condition is satisfied, then there exits a locally ringed space $(U, \mathcal{O} _U)$ endowed with morphism of locally ringed spaces $\psi_i : (U_i, \mathcal{O} U_i) \to (U, \mathcal{O} _U)$, satisfying the following properties. 
+\begin{enumerate}
+	\item $U$ has n open cover $\{V_i | i \in I\} $ such that $\psi _i $ is an \emph{iso} onto $(V_i, \mathcal{O} _U |_{v_i})$.
+	\item $U_{ij}$ is the inverse image of $V_i \cap V_j$ under $\psi_i$, for all $i,j \in I$. 
+	\item $\phi_{ij} = \psi^{-1}_j \circ \psi_i$ for all $i, j \in I$. 
+\end{enumerate}
+This locally ringed space (equipped with the morphisms $\psi_i$ ) is unique upp to unique isomorphismism.
+
+\section{Abstract algebraic varieties} \label{sec:abstract_algebraic_varieties}
+Let $k$ be an algebraiclly closed field. Let $X$ be a quasiprojective $k$-variety $\mathcal{O} _X$ sheaf of regular functions: \[
+	\forall U \open X, \mathcal{O} _X(U) = \{f: U \to k \text{regular function}\} 
+\] 
+with the usual restriction.
+
+For every $x \in X$, the pstalk $\mathcal{O} _{X, x}$ is precisely the local ring of $X$ at $x$ as defined in AG1. So $(X, \mathcal{O} _X) $ is a locally ringed space. 
+ 
+Let $h: Y \to X$ be a morphism of quasiprojective $k$-varieties. So \[
+	h^\#: \mathcal{O} _X \to h_* \mathcal{O} _Y: f\mapsto  f \circ h
+.\] 
+This yields a morhpism of locally ringed spaces in $k$-algebras $h:(Y, \mathcal{O} _Y \to (X, \mathcal{O} _X)$. 
+We get a functor (qproj $k$-varieties) to locally ringed spaces in $k$-algebras. 
+This functor is fully faithful.
+If $X, Y$ are quasiprojective $k$-varieties then every morphism of locally ringed spaces in $k$-algebras $(Y, \mathcal{O} _Y) \to (X, \mathcal{O} _X)$ arises from a unique morphism fo $k$-varieties $Y \to X$.
+
+We can define an intermediate category \[
+	\left( \substack{\text{qproj}\\$k$ \text{-variteties}} \right) \to \left( \substack{\text{locally ringed spaces} \\ \text{in $k$-algebras that are} \\ \text{locally isomrophic} \\ \text{to affile $k$-vareties}} \right) \to  \left( \substack{\text{locally rindeg spaces} \\ \text{in $k$-algebras} } \right) 
+.\] 
+This solves the gluing problem, but not the other two problems from the intro:
+\begin{itemize}
+	\item What if $k$ is not an algebraically closed field?
+	\item Nilpoptent structure?
+\end{itemize}
+For this we need schemes.
+
+\chapter{Schemes} \label{chap:schemes}
+\begin{quote}
+	I think it's barbaric to think about rings without unit.
+\end{quote}
+In classical algebraic geometry there is a correspondence (nullstellenzatz)
+\[
+\begin{tikzcd}
+	\text{reduced $k$-algebras of finite type } \arrow[r, leftrightarrow] & \text{Algebraic set in some $k$} \\
+	\left( \text{commutative ring} \right)  \arrow[r, leftrightarrow, "\text{according to Grothendieck}"] & \left( \text{affine schemes} \right) \\
+	R \text{ commutative ring} \arrow[r] & \spec R 
+\end{tikzcd}
+.\] 
+\begin{definition}
+	$\spec R$ is the set of prime ideals in $R$. And $\mspec R$ is set of maximal ideals.
+\end{definition}
+\begin{lemma}
+	Let $I, J$ be ideals in $R$ 
+	\begin{enumerate}
+		\item $V(0) = \spec R, V(R) =  \emptyset$
+		\item $V(I \cap J)  = V(I) \cup V(J)$
+		\item $J = \{I_s \;|\; s \in S\} $ family of ideals in $R$ ; $I$ the ideal generated by $J$. 
+			Then $V(I) = \bigcap_{s \in S}  V(I_s)$ 
+		\item if $I \subset J$ then $V(J) \subset V(I)$ 
+		\item $\spec R = \empty$ if $ R = \{0\} $.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	It is clear that 1, 2, 4, 5 hold. We will prove $2$.
+	It is clear that  $V(I \cap  J) \supset V(I) \cup V(J)$. Conversely, let $\mathcal{P} $ be a prime ideal in $R$ containning $I \cap J$ and suppose that $I \not \subset  \mathcal{P} $. Then $\exists i \in I$ such that $i \not\in  \mathcal{P} $. 
+	For every $j \in J$, $ij \in I \cap J \subset  \mathcal{P} $. 
+	SInce $\mathcal{P} $ is pirme and $i \not\in \subset \mathcal{P} $ it follwos that $j \in \mathcal{P} $ thus $J \subset \mathcal{P} $. 
+\end{proof}
+So there is a unique toplogy on $\spec R$ whose closed sets are the sets $V(I)$ with $I$ and ideal of $R$. 
+This is called the \emph{Zarisky topology}.
+\begin{exercise}
+	Let  $\mathcal{P}  \in \spec R$. Show that $\{\overline P\}  $ in $\spec R$ is $V(\mathcal{P} )$. 
+	Conclude that $\{ \mathcal{P}  \}$ is closed $\iff$ $\mathcal{P} $ is maximal
+\end{exercise}
+\begin{proof}
+	$\overline{\{\mathcal{P} \} } $ is the unique smallest closed set in $\spec R$ containgi $P$. 
+	$V(\mathcal{P} )$ is closed and tontains $\mathcal{P} $. If $V(I)$ is nother closed set containing $\mathcal{P} $ then $I $ is an ideal containgin $\mathcal{P}$.
+\end{proof}
+
+How much of an ideal $I$ in $R$ is remembered by $V(I)$?
+\begin{itemize}
+	\item $V(I) = V(\sqrt{I} )$
+	%\item $\sqrt{I}  = \bigcap \substack{\text{primes ideals $\mathcal{P}$ in $R$} \\ \text{containing $I$}  = \left\{ \mathcal{P}  \in V(I) \right\} $
+\end{itemize}
+Thus $V(I) \subset V(J)$ iff $J \subset \sqrt{I} $.
+annd the map $I \mapsto V(I)$ is an inclusion reversig bijection between the set of radical ideals in $R$ and the set of closed sets. 
+
+For ever $S \subset R$, we set $D(S) = \{ \mathcal{P}  \in \spec R \;|\; \mathcal{P} \cap S = \emptyset\} $.
+
+\begin{proposition}
+	\begin{enumerate}
+		\item if $S$ is finite then $D(S)$ is open.
+		\item The sets $D(s)$ with $s \in R$ form a basis for the topology on $R$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+	\item If $S = \{s_1, \ldots, s_n\} $.  Then \[
+			D(S) = \spec R \setminus (V(s_1) \cup \ldots \cup V(s_n)
+			= \spec R \setminus V(s_1 \cdot \ldots \cdot s_n
+		\]
+	\item Let $U = \spec R \setminus V(I)$ be ann open subset of $\spec R$. Take $\mathcal{P}  \in U$. 
+		Sinnce $P \not\in  V(I)$, we have $I \not \subset \mathcal{P} $. 
+		Let $s \in I$ such that $s \not\in \mathcal{P} $.
+		Then $D(s) \subset U = \spec R \setminus V(i)$.  So $\mathcal{P}  \in D(s)$.
+If $s, s' \in R$ then $D(s) \cap D(s') = D(ss')$. 
+It follows that the sets $D(s)$ form a basis for the Zariski tolopogy on $\spec R$. 
+\end{enumerate}
+\end{proof}
+
+
+Let $f: R \to R'$ be a morhpism of rings . 
+Then we define $\spec f: \spec R' \to \spec R : \mathcal{P} ' \mapsto f^{-1}(\mathcal{P} ')$. 
+\begin{proposition}
+	$\spec f$ is continous with respect to the Zariski topology.
+\end{proposition}
+\begin{proof}
+	It suffices to show that, for every ideal $I $ in $R$, $\spec f)^{-1}(V(i))$ is closed in $\spec I $ in $R$. 
+\end{proof}
+For every $\mathcal{P} ' \in \spec R'$, 
+\begin{align*}
+	P' \in (\spec f)^{-1} (V(I))\\
+	\iff f^{-1}(P') \in V(I) \\
+	\iff I \subset f^{-1}(P') \\
+	\iff f(I) \subset \mathcal{P} '
+.\end{align*}
+THus if we denote by  $I'$ the ideal in $R'$ generated by $f(I)$, then $(\spec f)^{-1} (V(i)) = V(I')$. 
+We obtain a functor
+\[
+	\spec: (\text{rings}) \to (\text{top spaces})
+.\] 

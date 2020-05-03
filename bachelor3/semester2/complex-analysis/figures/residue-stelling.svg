@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg8" inkscape:version="0.92.4 (unknown)" sodipodi:docname="figure.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 680.3 270.9"
+	 style="enable-background:new 0 0 680.3 270.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{font-family:'MyriadPro-Regular';}
+	.st1{font-size:12px;}
+	.st2{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st3{fill:#010202;}
+	.st4{fill:none;}
+	.st5{fill:none;stroke:#000000;stroke-miterlimit:10;}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" id="base" inkscape:current-layer="layer1" inkscape:cx="284.27627" inkscape:cy="182.72055" inkscape:document-units="mm" inkscape:guide-bbox="true" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="995" inkscape:window-maximized="1" inkscape:window-width="2520" inkscape:window-x="20" inkscape:window-y="65" inkscape:zoom="0.99437388" pagecolor="#ffffff" showborder="true" showgrid="false" showguides="true" width="200mm">
+	<inkscape:grid  dotted="false" empspacing="4" id="grid815" spacingx="10" spacingy="10" type="xygrid" units="mm">
+		</inkscape:grid>
+</sodipodi:namedview>
+<g id="layer1" transform="translate(0,-177)" inkscape:groupmode="layer" inkscape:label="Layer 1">
+</g>
+<text transform="matrix(1 0 0 1 291.5505 32.4078)" class="st0 st1">$\tilde \gamma$</text>
+<path class="st2" d="M420.7,171.5c-3.4,3.7-8.8,5.1-13.7,3.1c-6.3-2.6-9.3-9.8-6.7-16c2.6-6.3,9.8-9.3,16-6.7
+	c4.9,2,7.8,6.9,7.6,11.9l37.7,15.5c8.3-20.3,12-41.4,9.7-58.5c-8-57.9-64.8-78.9-154.2-73.5c-42.7,2.6-80.7,11.4-107.4,25l46.2,15.4
+	c3.1-3.9,8.5-5.7,13.5-4c6.4,2.1,9.9,9.1,7.8,15.5c-2.1,6.4-9.1,9.9-15.5,7.8c-5-1.7-8.2-6.3-8.4-11.3l-53.4-17.8
+	c-22.7,14.3-34.1,32.9-28.1,54.5c9.4,34.3,53.6,55.1,106.9,79.7v-39.4c-4.7-1.7-8.1-6.2-8.1-11.5c0-6.8,5.5-12.3,12.3-12.3
+	s12.3,5.5,12.3,12.3c0,5.3-3.4,9.8-8.1,11.5V216c17.3,8,35.5,16.5,53.6,26c51.7,27.2,96.1-10,117.6-55.1L420.7,171.5z"/>
+<circle class="st3" cx="266.2" cy="95.8" r="1.7"/>
+<text transform="matrix(1 0 0 1 282.1428 97.419)" class="st0 st1">$z_1$</text>
+<text transform="matrix(1 0 0 1 300.8366 160.6124)" class="st0 st1">$z_2$</text>
+<text transform="matrix(1 0 0 1 414.8279 147.8106)" class="st0 st1">$z_3$</text>
+<circle class="st3" cx="283" cy="161.1" r="1.7"/>
+<circle class="st3" cx="411.3" cy="163.6" r="1.7"/>
+<path class="st4" d="M531.4,86.1c0,0,24-23.1,24.9-42.2"/>
+<path class="st5" d="M415.7,44.2c0,0-12,8.2-20.3,6.9c8.1,2.1,15.8,14.4,15.8,14.4"/>
+</svg>

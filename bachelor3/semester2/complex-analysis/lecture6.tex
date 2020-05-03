@@ -1,0 +1,168 @@
+\lecture{6}{2020-03-17}{Singulariteiten en Argument principe}
+
+\section{Geisoleerde singulariteiten} \label{sec:geisoleerde_singulariteiten}
+\begin{herhaling}
+	Er zijn 3 types. 
+	\begin{itemize}
+		\item Ophefbaar
+		\item pool
+		\item essentieel
+	\end{itemize}
+\end{herhaling}
+
+\begin{stelling}
+	[Riemann over ophefbare singulariteiten]
+
+	Zij $\Omega $ open, $z_0 \in \Omega$ en zij $f: \Omega \setminus \{ z_0\} \to \C$ holomorf. 
+	Neem aann dat er een $r > 0$ is met $D_r(z_0) \in \Omega$ en dat $f$ begrensd is op $D_r(z_0)\setminus \{z_0\} $. 
+	Dan is $z_0$ \emph{ophefbaar}.
+\end{stelling}
+Deze de conclusie van de stelling is een nodige voorwaarde voor ophefbaarheid, maar het blijkt ook voldoende. 
+\begin{proof}
+	Het bewijs is anders dan is het boek. 
+	We beschouwen een hulpfunctie \[
+	g: \Omega \to \C: z\mapsto \begin{cases}
+		(z - z_0)^2f(z) & \text{ als } z \ne z_0\\
+		0 & \text{ als } z = z_0
+	\end{cases}
+	.\] 
+	We willen tonen dat $g$ holomorf is. Het is duidelijk holomorf buiten $z_0$. Op $z_0$ rekenen we het differentie quotient uit. 
+	\[
+		\frac{g(z) - g(z_0)}{z - z_0} = (z- z_0)^2f(z) \text{ als } z\ne 0	
+	.\] 
+	Wat altijd naar 0 zal convergeren als $z \to z_0$ wans $f$ is begrensd. 
+	Er is dus een convergente machtreeks van $g$ rond $z_0$. 
+	De eerste twee termen gaan nul zijn want $g(0), g'\left(0 \right)  = 0$.
+	Dus \[
+		g = \sum_{n=2}^{\infty} a_n (z - z_0)^{n}	
+	.\] 
+	Dus is op $\Omega \setminus \{z_0\} $\[
+		f = \sum_{n = 0}^{\infty} a_{n + 2} (z - z_0)^{n}
+	.\] 
+	Dit duidelijk ophefbaar. 
+\end{proof}
+
+\begin{gevolg}
+	$z_0$ is een pool van $f$ als en slechts als $\lim_{z \to z_0} \abs{f(z)} = \infty$.
+\end{gevolg}
+\begin{proof}
+	Neem aan dat $\lim_{z \to z_0}\abs{f(z_0)} = \infty$. 
+	Dan heeft $\frac{1}{f(z)} \to 0 $ als $z \to z_0$. 
+	Volgens de stelling van Riemann is $z_0$ een ophefbare singulariteit van $\frac{1}{f}$. Dus dus is het een pool voor $f$. 
+\end{proof}
+\begin{stelling}
+	[Casoratie-Weierstrass]	
+	Zij $z_0$ een ge\"isoleerde essenti\"ele singulariteit van $f$. 
+	Dus $f(D_r(z_0) \setminus \{z_0\}) $ dicht in $\C$. 
+\end{stelling}
+\begin{proof}
+	We bewijzen het uit het ongereimde. 
+	Dan is er een $w_0 \in \C$ en $\delta > 0$ zodat 
+	\[
+		D_\delta(w_0) \cap \overline{f(D_r(z_0) \setminus \{z_0\} } = \emptyset
+	.\] 
+	Als $z \in D_r(z_0) \setminus \{ z_0\} dan \abs{f(z) - w_0} \ge \delta$. 
+	Dan is $\frac{1}{f(z)-w_0}$ begrensd op $D_r(z_0) \setminus \{z_0\} $. 
+	Deze functie heeft een ophefbare singulariteit. 
+	Definieer \[
+		g = \frac{1}{f(z) - w_0}
+	.\] 
+	Met $g$ holomorf in $D_r(z_0)$. Dan is $f(z) = w_0 + \frac{1}{g(z)},$ voor $z \in D_r(z_0) \setminus \{z_0\} $. 
+	Dals $g(z) = 0$ dan hefet $f $ een pool, als $g(z) \ne 0$ dan is de singulariteit ophefbaar. 
+	Dit is een contradictie \contra
+\end{proof}
+\begin{vb}
+	$e^{\frac{1}{z}}, \cos 1/z$	
+\end{vb}
+Voor veel bekende functies het gedrag op oneindig een singulariteit. We kunnen dit gedrag bekijken op de riemann sfeer, $\C \cup \{\infty\} $. 
+\section{Het Argumentprincipe} \label{sec:het_argumentprincipe}
+
+Beschouwen integral van de vorm 
+\[
+	\frac{1}{2 \pi i} \oint_{\gamma} \frac{f'(z)}{f(z)} \dd z
+.\] 
+met $\gamm$ een gesloten contour en $f$ holomorf op $\Omega$ met geen polen en nulpunten van $f$ op $\gamma$. 
+Zij $N$ het aantal nulpunten van $f$ binnen $\gamma$ en $P $ het aantal polen binnen $\gamma$. Tellen met multipliciteit.
+\begin{stelling}
+	[argumentprincipe]
+\[
+	\frac{1}{2 \pi i} \oint_{\gamma} \frac{f'(z)}{f(z)} \dd z = N - P
+.\] 	
+\end{stelling}
+\begin{proof}
+	We passen de residu stelling toe. 
+	\begin{lemma}
+		Als $z_0$ een nulpunt is van $f$ dan is $\res_{z_0} \frac{f'}{f}$ de orde van het nulpunt.
+
+		Als $z_0$ een pool is van $f$ dan is $\res_{z_0} \frac{f'}{f} = - \text{ orde van de pool }$.
+	\end{lemma}
+	\begin{proof}
+		We weten dat \[
+			\frac{f'}{f} = \left( \ln f \right) '
+		.\] 	
+		Er geld dus dat \[
+			\frac{\left( fg \right) '}{fg } = \frac{f'}{f} + \frac{g'}{g}, \;\;\; \frac{(f^{n})'}{f^{n}} =  n \frac{f'}{f}
+		.\] 
+		Stel $z_0$ is een nulpunt van  orde $n$, dan is $f(z) = (z - z_0)^{n}g(z)$ met $g$ holomorfm op $g(z_0) \ne 0$. 
+		Dus is \[
+			\frac{f'(z)}{f} = \frac{n}{z-z_0} + \frac{g'(z)}{g(z)}
+		.\] 
+		Merk op dat de tweede term holomorf is. Dus is het residu $n$. 
+
+
+		Voor de pool is het analoog. 
+		We schrijven $f(z) = (z - z_0)^{-n}g(z)$ met $g(z)$ holomorf en niet nul in $z_0$. De rest is analoog.
+	\end{proof}
+
+	De residu stelling geeft nu dat 
+	\[
+		\frac{1}{2 \pi i }\oint _{\gamma} \frac{f'(z)}{f(z)} \dd  = \sum_{j = 1}^{n} \res_{z_i} \frac{f'}{f}
+	.\] 
+\end{proof}
+Waarom heet het nu het argument principe?
+ Het telt het aantal keren dat de te curve $f\circ \gamma$ rond 0 gaat. Dus is het een geheel getal. 
+
+\begin{align*}
+	\frac{1}{2 \pi i} \oint_{\gamma} \frac{f'(z)}{f(z)}  \dd z &=  \frac{1}{2 \pi i} \int_{0}^{1} \frac{f'(\gamma(t))}{f(\gamma(t))} \gamma'(t) \dd t    \\
+								   &= \frac{1}{2 \pi i} \int_{0}^{1} \frac{(f\circ \gamma)'(t)}{(f\circ \gamma)(t)} \dd t \\
+								   &= \frac{1}{2\pi i} \int_{0}^{1}  \frac{r'(t)}{r(t)} \dd t + \frac{1}{2 \pi i} \int_{0}^{1} i \theta'(t) \dd t   \\
+								   &= \frac{1}{2 \pi } \Delta_{f\circ g} \text{arg}\\
+.\end{align*}
+\begin{stelling}
+	[Stelling van Rouch\'e]
+	Zij $\gamma$ de contour van $U \subset \Omega$. 
+	Neem aan dat $\abs{f(z) - g(z)} < \abs{g(z)}$ voor alle $z \in \Gamma$. 
+	Dan hebben $f$ en $g$ hetzelfde aantal nulpunten op $U$. 
+	\begin{opmerking}
+		$f$ en $g$ hebben geen nulpunten op $\gamma$. 
+	\end{opmerking}
+\end{stelling}
+\begin{proof}
+	Het bewijs is weer anders dan in het boek. 
+	Er geldt \[
+		\abs{\frac{f(z)}{g(z)} - 1} \le 1 \text{ voor } z \in \gamma
+	.\] 
+	Deze beeld kromme bevind zich in het halfvlak $\re z > 0$. Dus het arument veranderd niet. 
+	Dus 
+	\begin{align*}
+		\frac{1}{2 \pi i} \oint_{\gamma} \frac{\left( \frac{f}{g} \right) '}{\left( \frac{f}{g} \right) } \dd z &=  0 \\
+		= \frac{1}{2 \pi i} \oint_{\gamma} \left( \frac{f'}{f} - \frac{g'}{g} \right) \dd z &= \frac{1}{2 \pi i} \oint_{\gamma}  \frac{f'}{f} \dd z - \oint_{\gamma} \frac{g'}{g} \dd z = 0 
+	.\end{align*}
+	Hieruit volgt dat het aantal nulpunten gelijk moet zijn.
+\end{proof}
+
+Zij $f$ holomorf opp $\Omega$ en $\gamma$ een gesloten kromme. 
+Het aantal nulpunten van $f$ binnen $\gamma$ is het aantal keer  $f \circ \gamma$ rond 0 draait. 
+
+\begin{stelling}
+	[open mapping theorem]
+	Zij $\Omega$ samenhangend en open en $f: \Omega \to \C$ holomorf  en niet constant. 
+	Dan is $f$ een open afbeelding.
+\end{stelling}
+
+\begin{proof}
+	Stel $U$ open en neem een punten $f(U)$. 
+	Zij $z_0 \in U$ met $w_0 = f(z_0)$.  
+	Neem $r > 0 $ klein genoeg zodat $D_r(z_0) \subset U$. 
+\end{proof}
+

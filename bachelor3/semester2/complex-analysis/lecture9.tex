@@ -1,0 +1,147 @@
+\lecture{9}{2020-04-21}{Conforme afbeeldingen}
+
+\chapter{Conforme Afbeeldingen} \label{chap:conforme_afbeeldingen}
+
+\begin{definitie}
+Zij $U, V$ open in $\C$. 
+	Een functie $U\to V$ is een conforme afbeelding van  $U$ naar $V$ als $f$ holomorf en bijectief is. 
+
+	$U$ en $V$ zijn conform equivalent als er een conforme afbeelding van $U$ naar $V $ bestaat. 
+\end{definitie}
+
+\begin{opmerking}
+	Het volgt uit de openmapping theorem dat $f^{-1}:V \to U$ ook holomorf is.
+\end{opmerking}
+
+Het is een nodige voorwaarde dat als $f$ conform is, dat de afgeleide nergens nul zal worden. 
+Dit volgt uit het argument principe door het beeld van een cirkel rond $z_0$ te beschouwen.  
+
+\begin{propositie}
+	Als $f$ holomorf is $z_0 \in U$, $f'(z_0) \ne 0$. Dan bewaard $f$ de hoeken tussen twee gladde krommenn die elkaar snijden in $z_0$. 
+\end{propositie}
+\begin{proof}
+	Beschouw de twee krommen in $U$:  
+	\begin{align*}
+		\alpha: [0,1] \to U: \alpha(0) = z_0, \alpha'(z_0) \ne 0\\
+		\beta[0,1] \to U: \beta(0) = z_0, \beta'(z_0) \ne 0\\
+	.\end{align*}
+
+	We weten dat $\theta = \arg \beta'(0) - \arg \alpha'(0)$. 
+	\[
+		\frac{(f\circ \beta)'\left( 0 \right) }{(f \circ \alpha)'(0)} = \frac{f'(z_0)\beta'(0)}{f'(z_0) \alpha'(0)} = \frac{\beta'(0)}{\alpha'(0)}
+	.\]  
+\end{proof}
+
+Wat als $f'(z_0) = 0$ en $f''(z_0) \ne 0$? Dan worden hoeken verdubbeld. 
+Walt als $f'(z_0) = \ldots = f^{(n-1)}(z_0) = 0$ en $f^{(n)} \ne 0$. Dan worden nhoeken met factor $n$ vermenigdvuldigd. 
+Dit volgt uit lokale vorm van $f$. Schrijf  in een omgeving $D_z(z_0)$ van $z_0$: \[
+	f(z) = f(z_0) + g(z)^{n} \text{ met } g \text{ holomorf } g(z_0) = 0, g'(z_0) \ne 0  
+.\]
+Dit kan zo want 
+$f(z) = f(z_0) + (z-z_0)^{n}h(z)$ met $h(z_0) \ne 0 $. 
+Er is een $r > 0$ en een funcntie $k(z)$ zodat $h(z) = k(z)^{n}$ voor $z \in D$. Neem dan $g(z) = (z - z_0)k(z_0)$. 
+
+\begin{vb}
+	$f(z) = e^{z}$ it niet conform van $\C \to \C$ want het is niet injectief. Hett is ook niet surjectief want $0 \not\in f(\C)$.
+	Als we ons beperken tot $U = \{z \st 0 < \im z < 1\} $ dan $f_U$ een conforme afbeelding van $U$ nnaar $f(U)$. 
+\end{vb}
+\section{Mubius transformaties} \label{sec:mubius_transformaties}
+Deze worden ook wel fractional linear tranformations genoemd.
+\begin{definitie}
+	Een \emph{Mobius transformatie} is een functie van de vorm 
+	\[
+		f(z) = \frac{az + b}{cz + d} \text{ met } ad - bc \ne 0
+	.\] 
+\end{definitie}
+\begin{opmerking}
+	Er zijn 7 belangrijke eigenschappen.
+	\begin{enumerate}
+		\item Deze fucties zijn uitbreidbaar nnaar $\overline{\C} = \C \cup \{\infty\} $ door 
+			\begin{align*}
+				&\begin{cases}
+					f(\infty) = \frac{a}{c} \\
+					f\left(-\frac{d}{c}\right) = \infty
+				\end{cases} &\text{ als } c\ne 0 
+				\\
+				&f(\infty) = \infty &\text{ als } c = 0
+			.\end{align*}
+		\item $f: \overline{\C} \to \overline{\C}$ is een bijectie en de inverse functie is ook een mobius transformatie.
+		\item De samenstelling van twee mobius transformaties is een mobius transformatie.
+			De mobius transformaties vormen dus een groep.
+		\item Er zijn 4 eenvoudige vormen 
+			\begin{description}
+				\item[translatie] $z\mapsto z + b$ 
+				\item [rotatie] $z\mapsto e^{i\theta} z$ 
+				\item [dilatatie] $z\mapsto rz$, $r \in \R$ 
+				\item[inversie] $z \mapsto z^{-1}$
+			\end{description}
+		\item Deze vormen brengen de groep voort. 
+			\begin{proof}
+				\begin{align*}
+					\frac{az + b}{cz + d} - \frac{a}{c} &= \frac{c(az+ b) - a(cz+ d)}{c(cz + d)} \\
+									    &= \frac{bc - ad}{c(cz + d} \\
+					\frac{az + b}{cz + d} &= \frac{bc - ad}{c(cz + d)} + \frac{a}{c}
+				.\end{align*}
+			\end{proof}
+		\item Een MT wordt bepaald door 3 punten en hun beelden.
+			Als  $z_0, z_1, z_2 \in \overline{\C}$ onderling verschillend en $w_0, w_1, w_2 \in \overline{C}$ onderling verschillend. Dan is er een unieke MT $f$ met $f(z_j) = w_j$.
+
+			Neem $w_0 = 0, w_1 = 1, w_2 = \infty$. 
+			Dan voldoet \[
+			f: z\mapsto \frac{z - z_0}{z - z_2} - \frac{z_1 - z_2}{z_1-z_0}
+			.\]  
+			Analoog bestaat er een $g: w_0\mapsto 0, w_1\mapsto 1, w_2\mapsto  \infty$. 
+			Dan voldoet $g^{-1} \circ f$.
+		\item Een mobius transformatie beeldt een cirkel of een rechte op een cirkel of rechte.
+			\begin{opmerking}
+				Een rechte is eigenlijk een cirkel met oneindige straal die door de pool gaat. 
+			\end{opmerking}
+			Het volstaat om het te checken door de generators van de groep. 
+			Het is oke voor translatie rotatie en dilatie. Is het ook waar voor inverse?
+			Zij $\abs{z - a} = r \ge 0$ een cirkel. Dan kunnen we die schrijven als
+			$(z - a) (\overline{z} - \overline{a}) = r^2$. 
+			Neem $z = \frac{1}{w}$. 
+			Dan $(\frac{1}{w} - a) (\frac{1}{\overline{w}} - \overline{a}) = r^2$. 
+			Dus
+			\begin{align*}
+				(1 - aw) (1- \overline{a}\overline{w}) &= r^2 \overline{w}w \\
+				(\abs{a}^2 - r^2) \overline{w}w - aw - \overline{aw} + 1 &= 0 
+			.\end{align*}
+			Als $|a|^2 - r^2  = 0$. Dan staat er de vergelijking van een rechte. 
+			Neem aann dat $\abs a ^2 - r^2 \ne 0$. 
+			\begin{align*}
+				w \overline{w} - \frac{a}{|a|^2 - r^2} - \frac{\overline{a}}{ |a^2| - r^2}\overline{w} + \frac{1}{|a|^2 - r^2} &= 0 \\
+				w \overline{w} - b \overline{w} - \overline{b} w + \abs b ^2 &= \abs b ^2 - \frac{1}{\abs a ^2 - r^2}\\ 
+				(w - b)(\overline{w} - \overline{b})&=  \abs b ^2 - \frac{1}{|a|^2 - r^2}\\
+			.\end{align*}	
+			Dit is een cirkel als $|b|^2 - \frac{1}{|a|^2 - r^2} > 0$. 
+			Maar dat is zeker zo aangezien er punten opliggen.
+	\end{enumerate}
+
+\end{opmerking}
+
+	Maak een connforme afbeelding van $U$ naar $V$ voor zekere $U$ en $V$. 
+	Met $V = \mathbb D = \{\abs z < 1\} $ 
+	Dit kan als $U$ enkelvoudig samenhangend is.  (dit is de Riemann afbeelding stelling). 
+\begin{vb}
+
+	In het geval dat  $U = \C^{+} = \{\im z > h\} = \mathbb H$. 
+	We kunnen een transformatie zoeken die de $\R$-as afbeeld op de eenheids cickel. Dan wordt het bovenste halfvlak op de binnen of buitenkant van de circkel afgebeeld. 
+
+	We nemen 3 punten $0, 1, \infty$. Dus we sturen $0 \mapsto  1, 1\mapsto i, \infty \mapsto  -1$. Deze tranformatie beeld de $\R$-as af op de eenheids cirkel. 
+	Het bovengebied gaat naar binnen de cirkel omdat de transformatie hoeken bewaart. 
+	Vergelijk dan de normaal van de rechte en het beeld. 
+\end{vb}
+\begin{vb}
+We nemen $U = \{z \st 0 < \arg z < \frac{\pi}{4}\} $. Hoe mappen we dit naar de eenheids cirkel?
+We maken een tussenstap langs $\mathbb H$. We beginnen met  $z\mapsto z^{4}$.
+\end{vb}
+\begin{vb}
+	Neem $U = \{0 < \im  z < 1\} $. Dit gaat niet met machten van  $z$ of de mobius transformatie. 
+	De $e$ macht gaat wel. Wat is het beeld van $z\mapsto  e^{z}$. 
+We weteen dat $e^{z} e ^{x + iy} = e^{x} e ^{iy}$
+Dus dit wordt afgebeeld of de sector  $ \{0 < \arg e ^{z} < 1 \} $. 
+We kunnen naar het halfvlak gaan door $z\mapsto  z^{\pi}$ .
+
+We hadden dit vanaf het begin kunnen doen door eerst naar de strook $\{ 0 < \im z < \pi \} $ te gaan. En dan gaat $z\mapsto e^{z}$ naar $\mathbb{H}$.
+\end{vb}

@@ -1,0 +1,38 @@
+\lecture{2}{2020-02-17}{Nog meer herhaling}
+\section{Verband tussen projectieve en affiene meetkunde} \label{sec:verband_tussen_projectieve_en_affiene_meetkunde}
+\subsection{Eigenlijke en oneigenlijke punten} \label{sec:eigenlijke_en_oneigenlijke_punten}
+
+\subsection{Van projectieve naar affiene transformaties} \label{sec:van_projectieve_naar_affiene_transformaties}
+Stel $\phi = [A]: KP^{n} \to KP^{n}$ is een projectieve tranformatie. 
+Stel dat $\phi H_\infty = H_\infty$.
+\begin{lemma}
+	Tangenti\"ele coordinaten van een hypervlak transfomreren als \[
+		(\alpha_0, \ldots, \alpha_n) \mapsto  (\alpha_0, \ldots, \alpha_n) A^{-1}
+	.\] 
+\end{lemma}
+\begin{proof}
+	Stel $H \leftrightarrow \alpha_0 x_0 + \ldots + \alpha_n x_n = 0$. Dus we kunnen eisen dat 
+	\begin{align*}
+		\left[ \begin{pmatrix} x_0 \\ \ldots \\ x_n   \end{pmatrix}  \right]  \in \phi H &\iff \phi^{-1}\left( \left[ \begin{pmatrix} x_0 \\ \ldots \\ x_n \end{pmatrix}  \right]  \right) \in H \\
+		&\iff \left[ A^{-1} \begin{pmatrix} x_0 \\ \vdots \\ x_n \end{pmatrix}  \right] \\
+		&\iff (\alpha_0, \ldots, \alpha_n) A^{-1} \begin{pmatrix} x_0 \\ \ldots \\ x_n \end{pmatrix} 
+	.\end{align*}
+\end{proof}
+
+\subsection{Van projectieve naar affiene deelruimten} \label{sec:van_projectieve_naar_affiene_deelruimten}
+
+	\paragraph{Stelling in $\aff^2$}
+	De diagonalen van een paralellogram snijden elkaar midden door.
+
+	\paragraph{Overeenkomstige stelling in $\R P^2$}
+	Gegeven 4 rechten in $\R P^2$, waarvan geen 3 concurrent zijn (volledige vierzijde).
+	Noem de 3 rechten die telkens 2 snijpunten niet, op eenzelfde zijde, verbinden "diagonalen". Op elke diagonaal vormen de snijpunten met de andere diagonalen, samen met 2 hoekpunten op de diagonaal een harmonisch puntenviertal.
+\begin{figure}[ht]
+    \centering
+    \incfig{projectieve-versie-van-parallellogramstelling}
+    \caption{projectieve versie van parallellogramstelling}
+    \label{fig:projectieve-versie-van-parallellogramstelling}
+\end{figure}
+\begin{oef}
+	Affiene stelling door zijde als $\l_\infty$ te kiezen?	
+\end{oef}

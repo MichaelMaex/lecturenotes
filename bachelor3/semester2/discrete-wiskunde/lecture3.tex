@@ -1,0 +1,74 @@
+\lecture{3}{2020-02-25}{Polya's inventaris stelling en blok designs}
+\section{Polya's inventarisstelling} \label{sec:polya's_inventarisstelling}
+Zij $X$ een verzameling van objecten en $K$ de verzameling van kleuren. Zij $n = \abs X, m = \abs K$. 
+Dan is $K^{X}$ de verzameling van kleuren. Zij  $G \subset \sym (X)$  de symmetrie groep. $G$ werkt langs rechts op $K^{X}$. 
+We willen de orbieten kennnen.
+Zij $w: K \to R$ een gewichtsfunctie $R$ is een ring.
+Hiermee construeren we een gewichtsfunctie $w: K^{X}\to R: k\mapsto \prod_{x \in X}w(k(x))$.
+
+\begin{voorbeeld}
+	De kubus heeft vlakken $X = \{1, 2, 3, 4, 5, 6\} $. De kleuren zijn  $K = \{b, g, r\} $. Zij $w: K \to \Z[B,G,R]: b\mapsto B, g\mapsto G, r\mapsto R$.
+\end{voorbeeld}
+
+\chapter{Block Designs} \label{chap:block_designs}
+
+\begin{vb}
+	Een student is op zoek naar een vriendin en hij heeft keuze uit 7 kandidaten. 
+	Hij vraagt zich af: kan ik de kandidates in groepjes van 3 ontmoetenn zodat elk paar kandidates in precies 1 groepje voorkomt.
+\end{vb}
+\begin{figure}[ht]
+    \centering
+    \incfig{het-fano-vlak}
+    \caption{Het Fano vlak}
+    \label{fig:het-fano-vlak}
+\end{figure}
+Het fano valk is een vlak in $\proj^2(\F_2)$
+
+\begin{definitie}
+	Een $t$-$(v, k, \lambda)$ block design is een koppel $(V, \mathcal{B} )$ waarbij 	\begin{itemize}
+		\item $V$ een eindige verzameling is met $v$ elementen
+		\item $\mathcal{B} \subset  \mathcal{P} (V)$ een collectie deelveramelingen $B \subset V$ met $k$ elementen
+		\item elke deelverzameling van  $V$ bestaande uit $t$ elementen is bevat in precies $\lambda$ blokken $B \in \mathcal{B} $.
+	\end{itemize}
+\end{definitie}
+
+\begin{vb}
+	De student op zoek naar een vriendin wou een 2-(7,3,1) block design.
+\end{vb}
+
+\begin{lemma}
+	[formule voor het aantal blokken]
+Zij $b = \abs\mathcal{B} $. Dan is \[
+ \lambda \begin{pmatrix} v \\ t \end{pmatrix}  = b \begin{pmatrix} k \\t \end{pmatrix} 
+.\] 
+\end{lemma}
+\begin{proof}
+	Beschouw $X = \{(T, B) | T \subset B \subset V, \abs T = t, B \in \mathcal{B} \} $. 
+	De kardinaliteit van $X$ is \[
+	\lambda \begin{pmatrix} v \\t \end{pmatrix}  = b \begin{pmatrix} k \\t \end{pmatrix} 
+	.\] 
+\end{proof}
+\begin{gevolg}
+	\[
+	\begin{pmatrix} k \\ t \end{pmatrix} \mathbin| \lambda \begin{pmatrix} v \\t \end{pmatrix} 
+	.\] 
+\end{gevolg}
+\begin{stelling}
+	Zij $(V, B)$ een $t$-$(k, k, \lambda)$-design met $t >2$. Dan is $(V, \mathcal{B} )$ ook een $t-1$-$(v, k , \lambda \frac{v -t + 1}{k - t + 1})$-design.
+\end{stelling}
+\begin{proof}
+	We moeten aantonen: elke $T \subset  V$ met $\lambda \frac{v - t + 1}{k - t + 1}$ blokken.
+	Zij $\lambda'_T$ het aantla blokken die $T$ omvatten. 
+	\[
+		X = \{ (x, B) \in V \times \mathcal{B}  | x \in B \setminus T, T \subset B\} 
+	.\] 
+	Op twee manieren tellen
+	\begin{itemize}
+		\item $v - (t -1)$ mogelijkheden voor $X$. $\Lambda$ modelijkheiden voor  $b$. 
+		\item $\lambda'_T$ mogelijkheden voor $B$  en $k-(t-1)$ nog voor $x$. 
+	\end{itemize}
+	Dus $\lambda(v - t + 1) = \lambda'_T(k -t + 1)$.
+	Dus \[
+	\lambda'_T = \lambda \frac{v-t +1}{k - t + 1}
+	.\] 
+\end{proof}

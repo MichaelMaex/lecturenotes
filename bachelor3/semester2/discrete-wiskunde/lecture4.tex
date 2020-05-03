@@ -1,0 +1,130 @@
+\lecture{4}{2020-03-03}{Block designs (vervolg)}
+\begin{herinner}
+	Eeen $t - (v, k \lambda)$ block design is een koppel $(V, \mathcal{B} )$ warbij 
+	\begin{enumerate}
+		\item $\abs V = v$ 
+		\item $\mathcal{B} \subset  P(V)$, voor elke $B \in \mathcal{B} $ en $\abs B = k$.
+		\item Elke deelverzameling $T \subset V$ met $\abs T = t$ zit bevat in precies $\lambda$ blokkenn $B$. 
+	\end{enumerate}
+\end{herinner}
+Niet voor elke keuze van $t,v, k, \lambda$ bestaat er een block design. Classificatie is een zeer moeilijk en verre van opgelost probleem.
+
+We hadden al enkele nodige voorwaarden
+\begin{enumerate}
+	\item $b = \lambda \begin{pmatrix} v \\ t \end{pmatrix} / \begin{pmatrix} k \\ t \end{pmatrix} $ is geheel en is gelijhk aan $\abs \mathcal{B} $.
+	\item elk $t-(v, k, \lambda)$ met $t \ge 2 $ is ook een $(t-1)-(v, k, \lambda \frac{v - t + 1}{k - t + 1})$ design.
+	\item $b \le \begin{pmatrix} v \\ k \end{pmatrix} $
+\end{enumerate}
+
+\subsection{2-designs} \label{sec:2-designs}
+\begin{definitie}
+	De incidentiematrix van een $2 - (v, k, \lambda)$ design is \[
+		A = \begin{pmatrix}  &  \\ & \end{pmatrix} \in \{0,1\}^{b\times v} 
+	.\] 
+	Met de rijen geindexeerd door $\mathcal{B} $ en de kolommen met $V$ en met een $1$ als het element in de blok zit en $0$ als het er niet in zit.
+\end{definitie}
+\begin{voorbeeld}
+	Beschouw opnieuw het fanovlak. De matrix is \[
+		\begin{pmatrix} 1 & 1 & 0 & 0 & 0 & 0 &0 \\ 0 & 0&0 & \ldot \\ \vdots \end{pmatrix} 
+	.\] 
+\end{voorbeeld}
+\paragraph{Eigenschappen}
+\begin{eigenschap}
+	\begin{enumerate}
+		\item Elke rij bevat precies $k$ eentjes.
+		\item elke kolom bevat precies $r = \lambda \frac{v - 1}{k-1}$ eentjes
+		\item inproduct van elk paar verschillende kolommen is $\lambda$. 
+	\end{enumerate}
+\end{eigenschap}
+Dus is  \[
+	A^{T}\cdot A = \begin{pmatrix} r & \lambda & \lambda & \ldots & \lambda \\ 
+	\lambda & r & \lambda & \ldots & \lambda \\
+\lambda & \lambda & r & \ldots  \\
+\vdots & \vdots & \vdots & \ddots \\ 
+\lambda & \lambda & \lambda & \ldots & r\end{pmatrix}  
+= \lambda J + (r - \lambda)I \in \Z^{v\times v}
+.\] 
+Deze matrix heeft aan aantal makkelijk te vinden eigenwaarden
+\begin{itemize}
+	\item $r - \lambda$ met meetkundige mult $v -1$ = algbraische multipliciteit
+	\item  $r + (v - 1)\lambda$ met meetkunde en algebraische multipliciteit $1$.
+\end{itemize}
+Dus de determinant $(r - \lambda)^{v -1}(r + (v - 1)\lambda)$. Merk op dat $v - 1 \ne 0$ tenzij het design triviaal is (en zelf dan is vaak $v - 1 \ne 0$). 
+
+\begin{stelling}
+	Als $\mathcal{B} \ne \{ V\} $ dan is $b \ge v$ (Fisher).
+\end{stelling}
+
+\begin{definitie}
+	Een niet triviaal 2-design waarvoor $b =  v$ wordt een symmetrisch $2$-design genoemd.
+\end{definitie}
+\begin{opmerking}
+	$b = v$ is equivalent met $k = r$. 
+\end{opmerking}
+\begin{eigenschap}
+	Zij $A$ de incidentie matrix van zo'n symmetrisch $2$-design. Dan is $A^{T}$ ook de incidentiematriv van een $2$-design.
+\end{eigenschap}
+\begin{oef}
+	Als $A \in \{0,1\} ^{b \times v}$ zodat elke zij $k$ eentjes bevat en het inproduct van elk paar disjuncte kolommen  $\lambda$ is dan is $a$ de incidentie matrix van een  $2-(v,k,\lambda)$ design.
+\end{oef}
+\begin{proof}
+WEgenns de oefeningn volstaat het om aan te tonnen ndat \[
+	\det (A^{T})^{T} \cdot A ^{T} = A \cdot A^{T} = \lambda J = (r- \lambda)I 
+.\] 	
+Omdat $b = v$ is $A$ een vierkante matrix met $\det (A)^2 = \det (A^{T}A) \ne 0$, dus $A$ is inverteerbaar. 
+\begin{align*}
+	A A^{T} = A A^{T} A A^{-1} &=\ldots \text{staat in de cursus}  \\
+.\end{align*}
+\end{proof}
+\paragraph{Typeboorbeeld van een symmetrisch $2$ design.}
+\begin{vb}
+	$\proj^2(\F_q) $ Dan is $(V , \mathcal{B} ) = (\proj^2(\F_q), \{\text{rechten}\} )$ een $2-(q^2 + q + q, q + 1, 1)$ design.
+\end{vb}
+\begin{definitie}
+	Een "projectief vlak" van orde $n \in \Z_{\ge_2}$ is een $2-(n^2 + n + 1, n + 1, 1)$-design. (automatisch symmetrisch)
+\end{definitie}
+\begin{conjectuur}
+	[wellicht de bekendste open vraag over block designs]	
+	Volgt automatisch dat $n$ een macht is van een priemgetal?	
+\end{conjectuur}
+\begin{opmerking}
+	Het is nochtans geweten dat er projectieve vlakken bestaan die niet overeenkomen met meetkundige projectieve vlakken (dit zijn "niet-desarguaanse vlakken".
+\end{opmerking}
+\begin{definitie}
+	Een "affien vlak" van orde $n \in \Z_{\ge 2}$ is een $2-(n^2, n , 1)$-design.
+\end{definitie}
+\begin{eigenschap}
+	Zij $(V, \mathcal{B} )$ een affien vlak van orde $n$ en zij $ B \in \mathcal{B} $ ee n rechte. 
+	Zij $P \in V \setminus B$ dan is er een uniek bestaat er een unieke rechte/block $B' \in \mathcal{B} $ zodat $P \in B'$ en $B \cap B' = \emptyset$
+\end{eigenschap}
+\begin{proof}
+	Merk eerst op dat \[
+		b = \frac{p\begin{pmatrix}  v \\ 2 \end{pmatrix} }{\begin{pmatrix} k \\ 2 \end{pmatrix} } = n(n+1) = n^2 + n
+	.\] 
+	Zij $B = \{P_1, \ldots, P_n\} $ voor $ i = 1, \ldots, n$ en zij $B_i$ het unieke blok dat $\{P, P_i\} $ omvat.
+	Het aantal blokken door $P$ is $r = \lambda \frac{v - 1}{k -1} = n +1$.
+	Dus er bestaat een uniek blok door $ P$ dat geen van de $P_i$ 's bevat.
+\end{proof}
+
+
+\begin{vb}
+	In het spel set zijn de sets blokken is het disign $(\aff^{4}(F_3), \{\text{rechten}\} )$ is een $2-(81, 3, 1)$ design).
+\end{vb}
+\begin{definitie}
+	Een cap set is een verzameling $A \subset V$ die geen enkel blok omvat.
+\end{definitie}
+\begin{table}
+	[ht]
+	\begin{tabular}{l | l}
+		dimensie & max cap set\\
+		2 & 4 \\
+		3 & 9 \\
+		4 & 20 \\
+		5 &45 \\
+		6 & 112 \\
+		7 & ? \\
+		n & cn
+	\end{tabular}
+\end{table}
+
+Tot voorkeel kort was de beste asymptotische ggrens $c_n = O(3^{n}/n)$

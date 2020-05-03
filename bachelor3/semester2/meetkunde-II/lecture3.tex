@@ -1,0 +1,74 @@
+\lecture{3}{2020-02-24}{Hyperkwadrieken en kegelsnedes}
+
+\chapter{Gecomplexifieerde gecompleteerde ruimte} \label{chap:gecomplexifieerde_gecompleteerde_ruimte}
+
+Stel de ruimte is $\C P^{n}$ en de transformatie  groep is $\text{PL}(n +1, \C)$. In een Gecomplixifeerde gecompleplementeerde ruimten is de transformatie group $\text{PL}(n + 1, \R)$. 
+
+\begin{definitie}
+	$z = (z_1, \ldots, z_n) \in \C^{n}$ is een isotrope vector als $z \cdot z = z_1^2 + \ldots + z_n^2 = 0$, maar $z \ne 0$. Het punt $\left[ \begin{pmatrix} 0 \\ z \end{pmatrix}  \right] $ l in de gecomplexifieerde gecompleteerde Euclidische ruimse noemen we dan een isotroop punt.
+\end{definitie}
+\begin{opmerking}
+	Als $\tilde A \in O(n)$, dan is $\left[ \begin{pmatrix} 1 & 0 \\ b & \tilde A \end{pmatrix} \begin{pmatrix} 0 \\ z \end{pmatrix}  \right] $ isotroop als $\left[ \begin{pmatrix} 0 \\ z \end{pmatrix}  \right] $ is.
+\end{opmerking}
+
+\begin{vb}
+	\begin{description}
+		\item[Isotrope vectoren in $\C^2$ ] $\lambda\begin{pmatrix} 1 \\i  \end{pmatrix} , \lambda \begin{pmatrix} 1 \\ -i \end{pmatrix} $ met $\lambda \in \C_0$.
+		\item[Isotrope punten in g.g.E. vlak:  $\left[ \begin{pmatrix} 0 \\ 1 \\ i \end{pmatrix}  \right]  , \left[ \begin{pmatrix} 0 \\ 1 \\ -i \end{pmatrix}  \right] $
+	\end{description}
+\end{vb}
+
+\chapter{Hyperkwadrieken en kegelsneden} \label{chap:hyperkwadrieken_en_kegelsneden}
+\section{Definities en voorbeelden} \label{sec:definities_en_voorbeelden}
+\begin{definitie}
+	Zij $K $ en veld met $\text{char}\left( K \right) \ne 2$ en zij $f \in K[x_0, \ldots, x_n]$ een homogene veelterm van graad 2.  
+	Dan is \[ \mathcal{K}   =  \{[(x_0, \ldots, x_n)] \in KP^{n} | f(x_0, \ldots, x_n) = 0\} \]
+	een \emph{hyperkwadriek}.
+\end{definitie}
+
+\begin{opmerking}
+	$f$ homogeen van graad 2. Dus nulpunten op een projectieve ruimte zijn goed gedefinieerd.
+\end{opmerking}
+
+\subsection{Matrixvoorstelling} \label{sec:matrixvoorstelling}
+\begin{align*}
+	\left[ (x_1, \ldots, x_n) \right] \in \mathcal{K} &\iff f(x_0, \ldots, x_n) = 0 \\
+							  &\iff \sum_{i = 0}^{n} \sum_{j = 1}^{n} a_{ij}x_i x_j = 0\\
+							  &\iff (x_0, \ldots, x_n)
+	\begin{pmatrix} a_{00} & \frac{a_{01}}{2} & \ldots & \frac{a_{0n}}{2} \\
+		\frac{a_{01}}{2}& a_{11} & \ldots & \vdots \\
+		\vdots & \vdots & \ddots & \vdots\\
+		\frac{a_{0n}}{2} & \ldots & \ldots& a_{nn}
+	\end{pmatrix}
+	\begin{pmatrix} x_0 \\ \vdots \\ x_n \end{pmatrix} = 0 
+.\end{align*}
+
+We kaan opzoek aan een projectieve tranformatie $[A]$ zodat de verglijking van  $[A] \mathcal{K} $ zo eenvoudig mogelijk wordt.
+
+\begin{align*}
+	\left[ \begin{pmatrix} x_0 \\ \vdots \\ x_n \end{pmatrix}  \right]  \in [A] \mathcal{K}  &\iff [A]^{-1}\left[ \begin{pmatrix} x_0 \\ \vdots \\ x_n \end{pmatrix}  \right]  \in \mathcal{K} \\
+	&\iff \left[A^{-1} \begin{pmatrix} x_0 \\ \vdots \\ x_n \end{pmatrix} \right] \in \mathcal{K} \\
+	&\iff (x_0, \ldots, x_n)(A^{-1})^{t} M A^{-1}\begin{pmatrix} x_0 \\ \vdots \\ x_n \end{pmatrix} 
+.\end{align*}
+
+Uit lemma 7 volgt dat er een tranformatie bestaat zodat 
+ \[
+\mathcal{K}  \leftrightarrow \lambda_0x_0^2 + \ldots + \lamda_n x_n^2 = 0
+.\] 
+
+\paragraph{Affien}
+Zij \[
+	\mathcal{K}  \leftrightarrow f(x_0,x_1, \ldots, x_n) = 0
+\] 
+een hyperkwadriek in $KP^{n}$. Kies $\ell_\infty \leftrightarrow x_0 = 0$ en $y_1 = \frac{x_1}{x_0}, \ldots, y_n = \frac{x_n}{x_0}$.
+\[
+	f(x_0, \ldots, x_n) = \alpha_2(x_1, \ldots, x_n) + \alpha_1(x_1, \ldots, x_n) x_0 + \alpha_0 x_0^2
+.\] 
+Dan is
+\begin{align*}
+	f(x_0, \ldots, x_n) = 0 &\iff \frac{1}{x_0^2}f(x_0, \ldots, x_0) = 0\\
+				&\iff \alpha_2(y_1, \ldots, y_n) + \alpha_1(y_1, \ldots, y_n) + \alpha_0
+.\end{align*}
+\begin{definitie}
+	Zij $K$ een veld met $\text{char}(K) \ne 2$ en $F \in K[y_1, \ldots, y_n]$ met $\deg F = 2$. Dan is $\mathcal{K}  = \{(y_1, \ldots, y_n \in A^{n}(N) | F(y_1, \ldots, y_n) = 0\} $ een \emph{hypekwadriek} is $A^{n}(K)$.
+\end{definitie}

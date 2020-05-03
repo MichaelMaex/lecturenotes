@@ -1,0 +1,227 @@
+\lecture{1}{2020-02-11}{Inleiding}
+
+\setcounter{chapter}{-1}
+\chapter{Over het Vak} \label{chap:over_het_vak}
+Les wordt gegeven door Wouter Castryck met oefenzittingen door Robin van der Var.
+Er staan cursus nota's op toledo. Examenmoment moet nog vastgelegd worden.
+
+\section{Wat is Discrete wiskunde} \label{sec:wat_is_discrete_wiskunde}
+Hoofdstukken 
+\begin{enumerate}
+	\item Duivenhok princiepe
+	\item Polyatheorie: Tel problemen op symmetrie na.
+	\item Block designs
+	\item Matroid 
+	\item Foutenverbeterende codes
+	\item Cryptografie
+	\item Hypergeometrische sommen
+\end{enumerate}
+
+\section{Project} \label{sec:project}
+Er komt een programeer projet in Sage. Het telt mee voor 2 punten. Het is verplicht om te maken. 
+
+\chapter{Duivenhok Princiepe} \label{chap:duivenhok_princiepe}
+Stel dat we $n+1$ duiven hebben en $n$ hokken dan is er minstens een hok dat twee duiven bevat. Meer wiskundig zouden we dit formuleren als volgt.
+\begin{stelling}
+	Stel dat $S, S'$ eindige verzamelingen zijn en $\#S > \#S'$. Zij  $f: S \to S'$ een functie. Dan is $f$ niet injectief.
+\end{stelling}
+
+\section{Voorbeelden van Toepassingen} \label{sec:voorbeelden_van_toepassingen}
+Vaak geeft het duivenhok princiepe mooie argumenten.
+Er is het volgende lemma van Erdos.
+\begin{lemma}
+	Zij $S \subset \{1, 2, \ldots, sn\} $. Stel dat $|S| = n+1$. Dan bestaan er $a, b$ zodat $a |b$.
+\end{lemma}
+\begin{proof}
+	Elk natuurlijk getal $a =2^{l}q$ met $q $ oneven. Voor de getallen in $S$ zijn er apriori slechts $n$ mogelijkheden voor $q$. 
+	Wegens het duideven hok princiepe bestaan er $a, b \in S$ zodat $a = 2^l q$ en  $b = 2^k q$. 
+	Dus moet  $a | b$ of $b | a$. 
+\end{proof}
+\begin{lemma}[Erdos-Szekeres]
+	Beschouw $a_1, a_2, \ldots, a_{nm + 1} \in \R$ paarsgewijs disjuncte getallen. Veronderstel zvva dat $m \ge n\ge 0$. 
+	Er bestaat een strikt stijgende of dalende rij van lengte  $n+1$.
+\end{lemma}
+\begin{proof}
+	We gaan een sterkere uitspraak bewijzen. Er bestaat een strikt stijgende deelrij van lengte $m+1$ of er bestaat een strikt dalende deelrij van lengte  $n + 1$.
+	We bewijzen dit uit het ongereimde. 
+	Verondestel dat geen van dergelijke rijen bestaat.
+	Aan elke index $a_i$ koppelen we $(l_i, l_i')$ waar  $l_i$ de lengte van de langste stijgende rij die eindigt in  $a_i$ en $l_i'$ is de lengte van de lansgte dalende rij die eindigt in $a_i$.
+	Uit onze aanname volgt dat  $l_i \le m, l_i' \le  n$. Dus  $(l_i, l_i') \in \{1,\ldots,m\} \times \{1, \ldots, n\} $. 
+	Wegens het duivenhok princiepe zijn er dus $i < j$ zodat $(l_i, l_i') = (l_j, l_j')$. 
+Maar dit kan niet want als  $a_i < a_j$ dan kunnen we een stijgende rij die eindigd in  $a_i$ uitbreiden met  $a_j$ dus zou $l_j > l_i$. Analoog als  $a_j < a_i$ dan is $l_j' < l_i$. 
+\end{proof}
+
+De volgende stelling zou de eerste formele toepassing van DHP zijn.
+\begin{stelling}
+	[Stelling van dirichlet over diophantische benadering]
+	Zij $\alpha \in \R \setminus \Q$. Dan bestaan er oneindig veel $\frac{a}{b} \in \Q$ zodat $|\alpha -\frac{a}{b}| < \frac{1}{b^2}$.
+\end{stelling}
+\begin{proof}
+	Kies $N \ge 2$. Bekijk nu $\{0 \alpha\} , \{1 \alpha\} , \{2 \alpha\} , \ldots, \{N \alpha\} $. Uit het duivenhok princiepe volgt dat er  $\exists i > j$ zodat $\{i \alpha\} , \{ j \alpha\} $ tot hetzelfde deelinterval behoren.
+	Dus 
+	\begin{align*}
+		|(i\alpha  - \left\lfloor i \alpha \right\rfloor - (j\alpha - \left\lfloor j\alpha \right\rfloor ) | &< \frac{1}{N} \\
+		|(i -j) \alpha - (\left\lfloor i \alpha \right\rfloor - \left\lfloor j \alpha \right\rfloor)| &< \frac{1}{N}\\
+		|b\alpha - a| < \frac{1}{N} \implies |\alpha - \frac{a}{b}| < \frac{1}{Nb} < \frac{1}{b^2}
+	.\end{align*}
+
+	We kunnen nu ook bewijzen dat er oneindig veel $\frac{a}{b}$ zijn. Zij $\delta = |\alpha - \frac{a}{b}|$. Kies $N > 1 / \delta$. 
+	Passen we het bewijs opniew toe met $N$ dan vinden we een betere (en dus verschillende) benadering.
+\end{proof}
+\begin{stelling}
+	[stelling van Roth]
+	Zij $\alpha \in \overline{\Q} \setminus \Q$. Dan zijn er $\forall \epsilon > 0$ slechts eindig veel $\frac{a}{b} \in \Q$ zodat $|\alpha - \frac{a}{b}| < \frac{1}{b^{2+\epsilon}}$
+\end{stelling}
+
+\begin{oef}
+Zij $S \subset \{1, 2, \ldots, 14\} $. Zij $|S| = 6$. 	
+Toon aan dat er twee verschillende deelverzamelingen van $A, B \subset  S$ zodat $\sum_{a \in A} a = \sum_{b \in B}$. 
+\end{oef}
+ \begin{proof}
+Naieve poging:
+
+Er zijn $2^6 -1 =63$ niet lege deelveramelingen van S. De grootst mogelijke som in $9 + 10 + 1+ \ldots + 14 = 69$. Duivenhok princiepe in dit geval is niet naief toepasbaar.
+
+Betere poging 1:
+
+Zij $m = \min S$. De mogelijke sommen behoren tot de range  $m, m + 10 + 11 + \ldots + 14 = m  + 60$. Duivenhok princiepe geeft nu het gevraagde.
+
+Betere poging 2:
+
+Lata $S$ zelf buiten beschouwing. \ldots
+\end{proof}
+
+\begin{oef}
+	Beschouw een 3 op 7 rooster. Elk vakje is zwart of wit. Toon aan dat er een deelrechthoek bestaat (minstens 2x2) waarvan  de 4 hoekpunten dezelfde kleur hebben.
+	(Hint: Kijk naar kleuringen van de kolommen)
+\end{oef}
+\begin{proof}
+Er zijn 8 mogelijke configuraties voor de kolommen
+\[
+\begin{matrix}
+	z \\ z \\z
+\end{matrix}, 
+\begin{matrix}
+	z \\ z \\ w
+\end{matrix}, 
+\begin{matrix}
+z \\ w \\ z	
+\end{matrix}
+, 
+\ldots, 
+\begin{matrix}
+	w \\ w \\ w
+\end{matrix}
+.\] 
+Merk op dat als twee kolommen hetezelfde patroon hebben dat we de zulke rechthoek kunnen vindenn.
+We kunnen devolgende kollommen als hetzelfde hok beschouwen
+\[
+\left\{
+\begin{matrix}
+	z \\ z \\w
+\end{matrix}
+,
+\begin{matrix}
+	z \\ z \\ z
+\end{matrix}
+\right\}
+, 
+\left\{ 
+\begin{matrix}
+	w \\ w \\ z
+\end{matrix},
+\begin{matrix}
+	w \\ w \\ w
+\end{matrix}
+\right\} 
+, 
+\left\{ 
+\begin{matrix}
+	z \\ w \\z 
+\end{matrix}
+\right\} 
+,
+\left\{ 
+\begin{matrix}
+	w \\ z \\ z
+\end{matrix}\right\} ,
+\left\{ 
+\begin{matrix}
+	w \\ z \\ w
+\end{matrix}\right\},
+\left\{ 
+\begin{matrix}
+	z \\ w \\ w
+\end{matrix}\right\} 
+.\] 
+\end{proof}
+
+\chapter{Polya-theorie} \label{chap:polya-theorie}
+Polya-theorie is het tellen van kleuringenn van een object, rekenign houdend met zijn symmetrie. Als leidraad voor vandaag:
+Op hoeveel mannieren kunnen we de vlakken van een cubus kleuren met $m$ kleuren, op rotaties in $\R^3$ na.
+\begin{enumerate}
+	\item[m = 1]  slechts 1 mannier
+	\item[m = 2] 10 mannieren
+		\begin{itemize}
+			\item 1: alles zwart
+			\item 1: 1 wit vlak
+			\item 2: 2 witte vlakken
+			\item 2: 3 witte vlakken
+			\item 2: 4 witte vlakken
+			\item 1: 5 witte vlakken
+			\item 1: 6 witte vlakken
+		\end{itemize}
+	\item[m = 3] Heel veel geprusts of gebruik maken van Polya-theorie.
+\end{enumerate}
+
+\section{Algemene Opzet}
+Zij $X$ een eindige verzameling die we willen kleuren. Zij $K$ een eindige verzameling kleuren.
+
+\begin{definitie}
+	Een kleuring is een afbeelding $X \to K$ is een kleuring. De verzameling van alle kleuringen is $K^{X}$.	
+\end{definitie}
+
+We noemen $G \subset  \sym(X)$ een groep van symmetrien.
+
+\begin{definitie}
+	Een rechtse actie van een groep $G$ op een verzameling $V$ is een afbeelding $V \times  G \to V: (v,g) \mapsto  v \star $, zodat
+	\begin{enumerate}
+		\item $\forall v \in V: v \star e = v$ 
+		\item $\forall v \in V, \forall g_1, g_2: (v \star g_1) \star g_2 = v \star (g_1 g_2)$
+	\end{enumerate}
+\end{definitie}
+
+\begin{definitie}
+	Zij $v \in V$. De orbiet $\orbit(V) = \{v \star g \;|\; g \in G\} \subset  V$.
+\end{definitie}
+
+\begin{definitie}
+	Zij $v \in V$. De stabilisator van $v$ is \[
+		\stab(v)  = \{g \in G \;|\; v \star g = v\} 
+	.\] 
+\end{definitie}
+\begin{theorem}[orbit-stabiliser]
+Als  $|G|$ eindig is, dan geldt  $\forall v \in V$ \[
+	|G| = |\orbit(v)|\cdot |\stab(v)|
+.\] 
+\end{theorem}
+
+We kunnen nu ons kleuringsprobleem herformuleren.
+Onze groep van symmetrieen $G$ ageert langs rechts op $K^\times $ via $(k, g) \mapsto k \circ g$.
+
+\begin{opmerking}
+	Twee kleuringen zijn equivalent als en slechts als ze tot dezelfde orbiet behoren. Ons doel is dus het aantal orbieten bepalen.
+\end{opmerking}
+
+\begin{definitie}
+	Beschouw $G$ werkend (langs rechts) op $V$. Dan definieren we voor elke $g \in G$  \[
+		\fix(g) = \{v \in V \;|\; v \star g = v\} 
+	.\] 
+\end{definitie}
+
+\begin{stelling}
+	[Burnside]
+	Zij $G$ een eindige groep werkend (langs rechts) op een eindige verzameling $V$. Dan is het aantal orbieten orbieten gelijk aan \[
+		\frac{1}{|G|}\sum_{g \in G}|\fix(g)|
+	.\] 
+\end{stelling}

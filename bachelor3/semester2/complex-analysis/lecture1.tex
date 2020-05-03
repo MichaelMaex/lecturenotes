@@ -1,0 +1,88 @@
+\lecture{1}{2020-02-12}{Inleiding}
+
+\setcounter{chapter}{-1}
+\chapter{Over het Vak} \label{chap:over_het_vak}
+
+\begin{enumerate}
+	\item Boek mag gebruikt worden op het examen.
+	\item Elke week vrijblijvende huistaak. Kan bonus mee verdienen, maximaal 4 punten.
+\end{enumerate}
+
+\chapter{Inleiding} \label{chap:inleiding}
+\section{Het Complexe Vlak} \label{sec:het_complexe_vlak}
+
+We werken in het complexe vlak $\C$. 
+Stel \[
+z = x + iy = re^{i\theta}
+.\] 
+Dan is $\tan \theta = \frac{x}{y}$ en \[
+\theta = \begin{cases}
+	\arctan \frac{x}{y} & x>0\\
+	\arctan \frac{x}{y} & x < 0
+\end{cases}
+.\] 
+
+\subsection{Convergentie} \label{sec:convergentie}
+Er bestaan rijen. De afstand is de euclidische afstand.
+Het is een volledige ruimte.
+
+\subsection{Deelverzamelingen van $\C$} \label{sec:deelverzamelingen_van_$\c$}
+Er zijn open en gesloten verzamelingen. De openschijf noteren we als \[
+	D_r(z_0) = \{z \in \C \;|\; |z - z_0| < r\} 
+.\]
+
+\section{Complexe functies} \label{sec:complexe_functies}
+We zullen functies van de volgende vorm bestuderen
+\[
+f: \Omega \subset  \C \to \C
+.\] 
+Vaak zal $\Omega$ open zijn.
+\begin{definitie}
+Een complexe functie $f$ is complex afleidbaar in $z_0 \in \Omega$ als \[
+	\lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}
+.\] 
+bestaat. Als deze limiet bestaat is het de afgeleide $f'(z_0)$. 
+\end{definitie}
+Elke functie $f: \Omega \to \C$ kan ontbonden worden in twee functie $u,v: \Omega \to \R$ zodat \[
+	f = u + iv
+.\] 
+Dus $u = \re (f), v = \im f$.
+ \begin{stelling}
+	 [vergelijking van Cauchy-Riemann]
+	 Een complexe functie $f = u + iv$ is complex afleidbaar in $z_0 = x_0 + iy_0$ als en slechts als $u, v$ reeel afleidbaar zijn met  \[
+		 \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \text{ en } \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x} \text{ in } (x_0,y_0)
+	 .\] 
+\end{stelling}
+\begin{definitie}
+	Een complexe functie is \emph{holomorf of analytisch} als $f$ complex afleidbaar is in elk punt van haar domein.
+\end{definitie}
+\begin{vb}
+	\begin{enumerate}
+		\item Veeltermen  
+		\item rationale functies
+		\item tegenvoorbeeldden \begin{align*}
+				f(x + iy) &= x^3 - y^3 + i(2xy)\\
+				f(z) &= \overline{z}\\
+				f(z) &=  \re z 
+			\end{align*} 
+		
+	\end{enumerate}
+\end{vb}
+\subsection{Machtreeksen} \label{sec:machtreeksen}
+\[
+	f(z) = \sum_{k=0}^{\infty} a_k z^{k}, \text{ met } a_k \in \C
+.\] 
+\begin{definitie}
+	Er bestaat een $r \in [0, \infty]$ zodat de reeks convergeest als  $\abs z < r$ en divergeert als  $\abs z > r$. Dit is de convergentie straal.
+\end{definitie}
+\begin{stelling}
+	De convergentiestraal is gelijk aan \[
+		r = \left( \limsup_{k \to \infty} \abs{a_k}^{1 / k} \right) ^{-1}
+	.\] 
+\end{stelling}
+ \begin{stelling}
+	 Neem aan dat $f(z) = \sum_{k = 0}^{\infty} a_k(z - z_0)^{k}$ een machtreeks is met connvergenntiestraal $R > 0$. Dan is $f$ holomorf op  $D_R(z_0)$ en op die schijf is \begin{align*}
+		 f'(z) &= \sum_{k = 1}^{\infty} k a_k(z-z_0)^{k-1}\\
+		       &= \sum_{k = 0}^{\infty} (k+1)a_k (z-z_0)^{k} 
+	 .\end{align*} 
+ \end{stelling}

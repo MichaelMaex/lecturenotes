@@ -1,0 +1,121 @@
+\lecture{1}{2020-02-12}{Title}
+\setcounter{chapter}{-1}
+\chapter{About the Course} \label{chap:about_the_course}
+
+
+\chapter{Symplectic Linear Algebra} \label{chap:symplectic_linear_algebra}
+\section{Symplectic Vector Spaces} \label{sec:symplectic_vector_spaces}
+\begin{definition}
+	A symplectic vector space is a pair $(V,\Omega)$ and a bilinear form $\Omega: V \times  V \to \R$ such that 
+	\begin{enumerate}
+		\item $\forall v, w \in V: \Omega(v, w) = - \Omega(w,v)$
+		\item $\ker \Omega = \{v \in V \;|;\ \forall w \in V \Omega(v, w) = 0\}  = \{0\} $
+	\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+	Let $(V,\Omega)$ a symplectic VS, and $V^\times $ its dual. Define \[
+		\tilde \Omega: V \to V^\times : v\mapsto \Omega(v, \cdot)
+	.\]
+	Show that $\tilde \Omega$ is an isomorphism.	
+\end{exercise}
+\begin{exercise}
+	An $n \times n$ matrix $A$. Let  $\Omega(v,w) = v^T A W$ be a bilinear form.
+	Show that $\Omega$ is non degenerate iff $\det A \ne 0$.
+\end{exercise}
+\begin{exercise}
+	Let $A \in M_{n \times n} \R$ such that $A^T =- A$.
+	Show that if  $n$ is odd , $\det A = 0$. 
+\end{exercise}
+\begin{exercise}
+	Deduce that every symplectic vs is of even dimension.
+\end{exercise}
+\begin{example}
+	Let $\R^{2n}$ with standard basis $(e_1, \ldots, e_n, f_1, \ldots, f_n)$. 
+	$\Omega_\text{can} $ is the unnique antisymmetric blin form such that $\Omega_\text{can} (e_i, e_j) = 0, \Omega_\text{can} (f_i, f_j) = 0, \Omega_\text{can} (e_i, f_j) = \delta_{ij}$
+	In essense
+	\[
+		\Omega_\text{can} (v,w) = v^T \begin{pmatrix} 0& I_n \\ -I_n & 0 \end{pmatrix} w
+	.\] 
+\end{example}
+\begin{exercise}
+	Show that $(\R^{2n}, \Omega_\text{can} )$ is symplectic.	
+\end{exercise}
+\begin{definition}
+	$(V, \Omega)$ symplectic. Suppose that $W \subset V$ is subspace.
+	The symplectic orthogonal to $W$ is \begin{equation}
+		W^{\Omega} = \{v \in V \;|\; \forall w \in W, \Omega(v, w) = 0\} 
+	.\end{equation} 
+\end{definition}
+\begin{exercise}
+What is the symplectic orthoganal of the following subspaces of the standard symplectic space?	
+\begin{enumerate}
+	\item $\R^{2n}$
+	\item $\{0\} $
+	\item $\left<e_1, \ldots, e_n\right>$
+	\item $\left<f_1, \ldots, f_n\right>$
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+	$(W^\Omega)^\Omega = W$
+\end{exercise}
+\begin{exercise}
+Show that $\dim W + \dim W^{\Omega} = \dim V$	
+\end{exercise}
+\begin{exercise}
+	Show that 
+	\begin{align*}
+		& W^{\Omega} \cap W = \{0\} \\
+		& \iff (W, \Omega|_{W\times W}) \text{ is a simplectic vs}\\
+		& \iff (W^{\Omega}, \Omega|_{W^{\Omega}\times  W^\Omega} \text{ is a symplectic vs}
+	.\end{align*}	
+\end{exercise}
+
+\begin{definition}
+	Let $(V_1, \Omega_1) , (V_2, \Omega_2)$ be two symplectic vs. A \emph{linear symplectic morphism} is a linear isomorphism $\phi: V_1, \to V_2$ such that $\Omega_1(v,w) = \Omega_2(\phi(v), \phi(w))$.
+
+	We write $(\phi^*\Omega_2) $ for the pull bac for the pull back.
+\end{definition}
+
+$\phi$ is a morphism is simplectic iff $\Omega_1 = \phi^*\Omega_2$.
+\begin{example}
+	Consider $(\R^{2n}, \Omega_\text{can} )$ and let $A \in M_{2n\times 2n}\R$
+	Then $A$ is a simplectic automorphism iff \[
+		A^{T} \begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix} A = \begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix} 
+	.\] 
+\end{example}
+\begin{proposition}
+	If $(V, \Omega)$ is a symplectic vs. Then $\exists n \in \N$ and lin symp $\phi(\R^{2n}, \Omega_\text{can} ) \to (V, \Omega)$.
+\end{proposition}
+\begin{proof}
+	We already know $\dim V = 2n$ for some $n \in \N$.
+	Finding an isomorphism $\phi$ is equivalent to finding a basis of $V$ $(e_1, \ldots, e_n, f_1, \ldots, f_n)$ such that $\Omega(e_i, e_j) = 0, \Omega(f_i, f_j) = , \Omega(e_i, f_j) = \delta_{ij}$.
+
+	We will prove this by induction.
+	\begin{enumerate}
+		\item [n = 1]
+			Then $\dim V = 2$
+			Pick  $s_2 \in V` \setminus \{0\} $. So there exists $f'_1 \in V$ such that $\Omega(e_2, f'_1) \ne 0$.
+			Scale $f_1'$ such that $\Omega(e_1, cf'_1) = 1$, $c \in \R \setminus \{0\} $ 
+			So $\{e_1, cf_1'\} $ is such  a basis.
+		\item[n > 1]
+			Assume the claim holds for all $k < n$.  
+			There exists $(e_1, f_1)$ such that $\Omega(e_1, f_1)  = 1$, Let $W = \left<e_1, f_1\right>$. From exercise 8 we get that $\dim W^{\Omega} = 2n - 2$.
+			Exercise 9 and 10 tell us that $\Omega \cap  \Omega^{W} = \{0\} $. and that $(W^{\Omega}, \Omega)$  is symplectiv vector space.
+			To there exits $(e_2, \ldots, e_n, f_2, \ldots ,f_n)$ of $(W^{\Omega}, \Omega)$.
+			Note that $\Omega(e_1, e_i) = \Omega(f_1, f_i) = \Omega(e_1, f_i) = \delta_{1i}$
+	\end{enumerate}
+\end{proof}
+\begin{exercise}
+	LEt $V$ be a VS, $g$ a scalar product. Let $J: V \to V$ be a complex structure $\Omega(v, w) = (gV, -J, Vw)$. 
+	Show that $\Omega$ is a symplectic iff $g(J v, Gw) = g(v, w)$
+\end{exercise}
+\begin{exercise}
+	If $J_1, J_2$ are 2 compatile complex structures on $(V, \Omega)$. Assume $\Omega(v, J w)  = \Omega(v, J_2 w)$. Then $J_1 = J_2$. 
+\end{exercise}
+\begin{exercise}
+	Recall: \[
+		U(n) = \{ A \in M_{n \times  n} \C | A^{\dagger}A = 1\} 
+	.\] 
+	Consider the isomorphism of real VS $\C^{n} \to \R^{2n}$. Show that the action of  $U(n)$ on $\R^{2n}$ given by this isomorphism is a symplecic isomorphism.
+\end{exercise}

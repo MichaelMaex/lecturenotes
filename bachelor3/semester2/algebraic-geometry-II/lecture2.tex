@@ -1,0 +1,207 @@
+\lecture{2}{2020-02-20}{Sheaves in general}
+\section{General definitions} \label{sec:general_definitions}
+
+Let $X$ be a topological space and $\mathcal{C} $ be a category.
+
+\begin{definition}
+	A presheaf $\mathcal{F} $ on $X$ is an assignment \[
+		\mathcal{F} : U \mapsto \mathcal{F} (U) 
+	,\] 
+	that attaches to every open $U$ in $X$ and object $\mathcal{F} (U)$ in $\mathcal{C} $ and to every inclusion $V \subset U$ a \emph{restriction morphism} \[
+		\rho_V^{U}: \mathcal{F} (U) \to \mathcal{F}(V)
+	,\]
+	satisfying:
+	\begin{enumerate}
+		\item $\rho_{U}^{U}$ is the identity on $\mathcal{F} (U)$ 
+		\item if $W \subset V\subset U \subset X$ then \[
+		\rho_{W}^{U} = \rho _{W}^{V} \circ \rho_V^{U}
+		.\] 
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	[functorial definition]	
+	Let $\text{open}_X$ be the category with objects the opens in $X$ and \[
+		\text{Hom}_{\text{Open}_X}(V,U) = \begin{cases}
+			\text{singleton} & \text{ if } V \subset U\\
+			\emptyset & \text{ if } V \not \subset U
+		\end{cases}
+	.\] 
+
+	In this context a presheaf $\mathcal{F} $ on $X$ with values in $\mathcal{C} $ is nothing but a contravariant functor \[
+	\mathcal{F} : \text{Open}_X^{c} \to \mathcal{C} 
+	.\] 
+\end{definition}
+
+\begin{example}
+	The structure sheaf $\mathcal{O} _X$ of a differentiable manifold is a presheaf on $X$ with values in the category of $\R$-algebras, with restriction morphisms given by restrictions of functions to smaller opens.
+
+	Indeed: $\mathcal{O} _X(U)$ is a $\R$-algebra $\forall U \subset X$; if $V\subset U$ then $\mathcal{O} _X(U) \to \mathcal{O} _X(V): f \mapsto f|_V$ is a morphism of $\R$-algebras. These restriction maps satisfy the functoriality conditions.
+\end{example}
+\begin{intuition}
+	If $\mathcal{F} $ is a presheaf on $X$ with values in $\mathcal{C} $, we think of $\mathcal{F} (U)$ as a "certain set functions" on $U \subset X$ and of $\rho_V^{U}$ as restrictions of functions.
+\end{intuition}
+\begin{remark}
+	The intuition above might be misleading since $\mathcal{F} (U)$ is just an object of $\mathcal{ C} $ and not necessarily a set.
+	Never the less in the cases relevant to this course $\mathcal{C} $ will be a category of sets (possibly with extra structure).
+	In that case the elements $f \in \mathcal{F} (U)$ are called the \emph{sections} of $\mathcal{F} $ on $U$ and we also write $f|_V$ for $\rho^{U}_V (f)$ if $V\subset U$.
+\end{remark}
+
+\begin{definition}
+	A concrete category is a category $\mathcal{C}$ endowed with a faithful functor $\mathcal{C}  \to (\text{sets})$
+\end{definition}
+\begin{example}
+	\begin{itemize}
+		\item $C = \left( \mathsf{sets} \right)  $
+		\item $C = (\mathsf{groups}) \mapsto (\mathsf{sets})$
+			\item $C = \mathsf{rings} \to \mathsf{set } $
+	\end{itemize}
+\end{example}
+\begin{definition}
+	A final object in $\mathcal{C} $ is an object $\mathcal{C} _f$ such that for every object $C$ in $\mathcal{C}$ there exists a unique morphism $c \to C_f$
+\end{definition}
+\begin{remark}
+	If $C_f$ exists then it is unique op to unique isomorphism
+\end{remark}
+\begin{example}
+	\begin{description}
+		\item[sets] singleton
+		\item[groups] trivial group
+		\item[rings] trivial ring
+		\item [modules] trivial module
+	\end{description}
+\end{example}
+
+\begin{definition}
+	[Only in this course]
+	We that a concrete category $\mathcal{C} $ is "set-like" if it has a final object whose underlying set is a singleton.	
+\end{definition}
+For this kind of category we can define a sheave.
+
+Suppose that we have a topological space $X$ and let $\mathcal{C} $ be a set-like category. 
+Suppose that $\mathcal{F} $ is a presheaf on $X$ with values in $\mathcal{C} $.
+
+\begin{definition}
+	We say that $\mathcal{F} $ is a \emph{sheaf} if it satisfies the following properties.
+	\begin{description}
+		\item[local nature of identity] Let $U \subset X$ be an open subset and let $\{U_i \;|\; i \in I\} $ be an open cover of $U$. Let $f, g \in \mathcal{F} (U)$.
+			Then $f = g$ iff $f|_{U_i} = g|_{U_i}$ for every $i \in I$.
+		\item[Gluing] Let $U$ be an open in $X$ and let $\{U_i | i \in I\} $ be an open cover of $X$. Let $f_i \in \mathcal{F} (U_i)$ for every $i \in I$ such that \[
+		f_i|_{U_i \cap U_j} = f_j |_{U_i \cap U_j}
+		,\]  
+		for all $i, j \in  I$.
+		Then there exits $f \in \mathcal{F} (U)$ such that $f|_{U_i} = f_i$ for all $i \in I$. Note that $f$ is unique by (1).
+	\item[normalization] $\mathcal{F} (\emptyset)$ is a final object of $\mathcal{C} $. 
+	\end{description}
+\end{definition}
+\begin{remark}
+	If every object in $\mathcal{C} $ whose underlying set is a singleton is final, then the normalization axiom follows from the other two. 
+	(Consider the empty cover of $\emptyset$.)
+\end{remark}
+\begin{definition}
+	Presheaves that only satisfy local nature of identity  are called $\emph{separated}$.
+\end{definition}
+
+\begin{example}
+	The structure sheaf on a differentiable manifold is a sheaf of $\R$-algebras.
+\end{example}
+\begin{exercise}
+	Let $A$ be a set. 
+	The constant presheaf on $X$ with sections in $A$ is given by \[
+		U \underset{\text{open}}\subset X \mapsto  \begin{cases}
+			A & \text{ if }U \ne \emptyset \\
+			\text{singleton} & \text{ if }U = \emptyset
+		\end{cases}
+	.\] 
+	
+Assume that $\abs A \ge 2$.  Show that $\mathcal{F}  $ is a sheaf of sets on $X$ iff every open subset of $X$ is connected. 
+\end{exercise}\begin{proof}
+	\ltr Assume $U \subset X$ is disconnected. Write $U = U_1 \cup  U_2$ disjoint open.
+	Take $a_1 \ne a_2 \in A$. Consider the sections $a_1 \in \mathcal{F}(U_1) $ and $a_2 \in \mathcal{F} (U_2)$. 
+	These agree on $U_1, \cap U_2 \in \emptyset$ but they don't glue to a section in $\mathcal{F} (U)$.
+\rtl
+Assume that every open in $X$ is connected.
+The only non-trivial property is the guling property is the gluing property.
+Let $U \subset X$ and let $\{U_i | i \in I\} $ be an open cover of $U$.
+We may assume  $U_i \ne \emptyset $ for every  $i \in I$. FOr every $i  \in I$, let $a_i \in \mathcal{F} (u_i) = A$. 
+Assume that $a_i|_{U_i \cap U_j} = a_j|_{U_i \cap U_j}$ for all $i, j \in I$. 
+Assume for a contradition that the $a_i $ are not all equal. Suppose that $a_{i_0} \ne a_{i_1}$ with $i_0, i_1 \in I$. 
+Now $U_{i_0} \cup U_{i_1}$ is a disconnected open subset of $U$. 
+
+
+With a little extra work one can prove the stronger statement that $ U$ is disconnected.
+\end{proof}
+\begin{remark}
+	Every open in $X$ is connected iff $X = \emptyset$ or $X$ is irreducible.
+\end{remark}
+\begin{definition}
+	A (pre)sheaf is a (pre)sheaf of sets. An abelian (pre)sheaf =  (pre)sheaf of abelian  groups.
+\end{definition}
+\section{Morphisms of (pre)sheaves}\label{sec:morphisms_of_(pre)sheaves}
+Let $X$ be a topological space, and $\mathcal{C} $ be a category (assumed to be set-like if we discus sheaves).
+Let $\mathcal{F} , \mathcal{G}  $ be presheaves with values in $\mathcal{C}$.
+
+A morphism of presheaves $\phi: \mathcal{F}  \to \mathcal{G} $ is natural transformation from $\mathcal{F} : \text{Open}_X^{c} \to \mathcal{C} $ to $\mathcal{G}: \text{Open}_X^{c} \to \mathcal{C}$.
+If $\mathcal{F} $ and $\mathcal{G} $ are sheaves then a morphism of sheaves $\mathcal{F}  \to \mathcal{G} $ is just a morphism of sheaves.
+
+Explicitly, giving a morphism of presheaves $\phi: \mathcal{F}  \to \mathcal{G} $ amounts to giving morphisms $\phi(U): \mathcal{F} \left( U \right) \to \mathcal{G} (U)$ in $\mathcal{C}  $ for all opens $U $ in $X$ such that the square \[
+\begin{tikzcd}
+	\mathcal{F} (U) \arrow[r, "\phi(u)"] \arrow[d,"\rho^U_V"] & \mathcal{G} (U) \arrow[d, "\rho_V^U"] \\
+	\mathcal{F} (V) \arrow[r, "\phi(V)"] & \mathcal{G} (U)
+\end{tikzcd}
+\] commutes. 
+\begin{definition}
+	A morphism of presheaves $\phi:\mathcal{F}  \to \mathcal{G} $ is called injective/surjective. if for every open  $U \subset X$, the map $\phi(U):\mathcal{F} (U) \to \mathcal{G} (U)$ is injective/surjective.
+	(here we assume that $\mathcal{C} $ is set-like)
+
+	A morphism of \emph{sheaves} $\phi:\mathcal{F}  \to \mathcal{G} $ is injective if it is so as a morphism of presheaves.
+
+	We call $\phi$ \emph{surjective} if for every open $U \subset X$ and every $g \in \mathcal{G} (U)$, there exists and open cover $\{U_i | i \in I\} $ of $U$ such that $g|_{U_i}$ lies in the image of $\phi(U_i): \mathcal{F} (U_i) \to \mathcal{G} (U_i)$.
+\end{definition}
+
+\begin{motivation}
+	Assume $\mathcal{C} = \mathsf{sets}$. Then the injective/surjective morphisms of (pre)sheaves are precisely the monomorphism/epimorphisms in the category of (pre)sheaves.
+	Moreover, a morphism of (pre)sheaves is an isomorphism iff it is both injective and surjective.
+\end{motivation}
+
+There are many examples of surjective morphisms of sheaves that are not surjective as morphisms of presheaves. This observation is at the basis of sheaf cohomology.
+
+\begin{example}
+	Let $X = \C$ with the euclidean topology. $\mathcal{F} $ sheaf of invertible holomorphic functions on $X$ for every open $U\subset X$, 
+	$\mathcal{F} (U) = \left\{\substack{\text{nowhere vanishing} \\ \text{holomorphic functions} \\ f : U \to \C}\right\} $
+
+	This a sheaf of abelian groups (with multiplication as the group operation). Consider the morphism of sheaves \[
+	\phi: \mathcal{F}  \to \mathcal{F} : f\mapsto  f^2
+	.\] 
+	This a surjective morphism of sheaves because every nowhere vanishing holomorhpic function has  a square root locally.
+
+	However, $\phi$ is not surjective as a morphism of presheaves. 
+	For instance, the section \[
+	f: \C \setminus \{0\}  \to \C: z\mapsto z
+	\] 
+	does not have a holomorphpic square root on the whole of $U$ and thus does not lie in the image of $\phi(U): \mathcal{F} (U) \to \mathcal{F} (U)$. 
+
+	This is due to the ambiguity in choosing a squre root locally.
+	This ambiguity is measured by sheaf coholomology. 
+	\[
+		\mathcal{F}(U) \overset{\phi(u)}\to \mathcal{F} (U) \to H^1(U, \mathcal{F} )  
+	.\] 
+	This is a exact sequence.
+\end{example}
+
+Stalks of sheaves are introduced to  detect the "local behaviour" of sheaves at points of $X$. 
+Let $\mathcal{F} $ be a (pre)sheaf with values in $\mathcal{C} $ on $X$.  Assume that $\mathcal{C}  $ admits filtered\footnote{filtered is a condition on the index set of the colimit} colimints.  
+\begin{definition}
+	A category $\mathcal{I}$ is called filtered if for all objects $I_1, I_2$ in $\mathcal{I} $ there  exists an object $I_3$ admitting morphisms 
+	\[
+	\begin{tikzcd}
+		I_1 \arrow[d] \\
+		I_3 & I_2 \arrow[l]
+	\end{tikzcd}
+	.\] 
+\end{definition}
+\begin{definition}
+	Then  the \emph{stalk} of $\mathcal{F} $ at $x$ is defined as \[
+		\mathcal{F} _x = \colim_{x \in U} \mathcal{F} (U)
+	.\] 
+\end{definition}

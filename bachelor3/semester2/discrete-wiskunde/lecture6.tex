@@ -1,0 +1,184 @@
+\lecture{6}{2020-04-05}{Handtekeningen gebaseerd op elliptische krommen}
+
+\section{Handtekeningen op Basis van Elliptische Krommen} \label{sec:handtekeningen_op_basis_van_elliptische_krommen}
+\subsection{Het ECDSA protocol} \label{sec:het_ecdsa_protocol}
+
+Allice wil een bericht naar Bob sturen en wil die handtekenen zodat Bob zeker is dat Alice de boodschap heeft verstuurd.
+
+We gebruiken $E(\F_p), \oplus, P \in E(\F_p), n = \# \left< P \right> = \ord\left(P \right) $ 
+Een private sleutel $a \in \{1, \ldots, n-1\} $ en een publike sleutel $a P$.
+
+Het stappenplan
+ \begin{enumerate}
+	 \item beschouw $M$ als element van $\frac{\Z}{(n)}$ (via hashfunctie).
+	 \item Kies uniform random $\lambda \in \{1, \ldots, n - 1\} $ (copriem met $n$ )
+	 \item Bereken $R = \lambda P = (r_1, r_2) = (r_1 : r_2 :1)$
+	 \item Interpreteer  $r_1 \subset  \F_p$ als elemennt van  $\Z / (n)$ (door bijvoorbeeld een representant van $r_1$ mod $p$ te kiezen en dit mod $n$ te beschouwen). 
+	 \item De handtekening $S$ is het koppel $(r_1, \underbrace{\lambda^{-1}(M + r_1a)}_{= s})$. 
+		 Dit is de handtekening.
+\end{enumerate}
+De handtekening is $S = (r_1, s)$ met $\lambda P  = (r_1, r_2), s = \lambda^{-1}(M + r_1a)$ inverteerbaar  mod $n$. 
+Verificatie
+\begin{align*}
+	\s^{-1}(r_1Q + MP) &=  s ^{-1} (r_1 a P + MP)  \\
+			   &= s ^{-1} (M + r_1a)P \\
+			   &= \lambda  P = R = (r_1, r_2)
+.\end{align*}
+Bob checkt dan of de $x$-coordinaat van $s ^{-1}(r_1 Q + MP)$ inderdaad gelijk is aan $r_1$.
+Indien het gelijk is is bob overtuigd dat Alice de handtekenign heeft geplaatsd.
+
+
+Sony in 2010 gebruikte ECDSA om hun software voor de PS3 te handtekenen. De hadden een fout gemaakt. Ze namen $\lambda$ niet willekeurig, maar altijd dezelfde. 
+$S = \lambda ^{-1}(M + r_1a )$. Stel ze sturen nu $s' = \lambda ^{-1}(M' + r_1'a)$. 
+Als we de twee berichten delen vinden we  \[
+\frac{s}{s'} = \frac{M + r_1a}{M' + r_1'a}
+.\] 
+Dit kan opgelost worden naar $a$. 
+
+
+ECDSA is een ellpitische-krommen-variant van DSA. Dit dateert uit 1991. 
+Echter reeds in 1989 had Schnor een alternatief system beschreven waarvan men kan "bewijzen" dat handtekenen vervalsen equivalent is met discrete logaritmes bereken.
+Schnor heeft er een patent op genomen. In 2008 is het patent gevallen. 
+
+Heel kort het protocol
+\begin{enumerate}
+	\item Kies $\lambda \in  \{1, \ldots, n\} $ en bereken $R = \lambda P = (r_1, r_2)$ 
+	\item Hash $M  | | r_1$ samen tot een element  $H \in \Z / (n)$. 
+	\item bereken $s = \lambda - Ha$, handtekening is $(H, s)$
+\end{enumerate}
+Verificatie 
+\begin{align*}
+	s P + H &=  sP + aHP \\
+		&= (s + aH) P \\
+		&= \lambda p = R = (r_1, r_2)
+.\end{align*}
+checkt of $\text{hash}(M | | r_1) = H$. 
+
+\section{Algoritmes voor Factorisatie} \label{sec:algoritmes_voor_factorisatie}
+
+Zij $N = pq$ met $pq$ grote priemgetallen. 
+Er zijn 3 soorten algoritmes
+\begin{enumerate}
+	\item Naieve methodes
+		\begin{itemize}
+			\item trial division \hfill $L_N(1;\frac{1}{2})$
+			\item Pollard-p \hfill $L_N(1, \frac{1}{4})$
+		\end{itemize}
+	\item Algebraische groepsmethodes \hfill $L_n(\frac{1}{2}, \sqrt{2}) $
+	\item Factorbasismethodes \hfill $L_n(\frac{1}{3}, \sqrt[3]{\frac{64}{9}}) $
+\end{enumerate}
+ 
+ \begin{definitie}
+	 [L-notatie]
+	 \[
+		 L_N(\gamma, c) = e^{(c +  o(1)) (\log N)^{\gamma}(\log \log N)^{1- \gamma}}
+	 .\] 
+	 Een soort interpolatie tussenn polynomiaal en exponentieel.
+\end{definitie}
+\begin{opmerking}
+	De invoergrootte is $\log N$. 
+	\begin{align*}
+		\gamma &=  1 &(\log N)^{c + o(1)} \tag{polynomiaal}\\
+		\gamma &= 0 &e^{(c + o_{1}) \log N} \tag{exponentieel}\\	
+	.\end{align*}
+	Als $0< \gamma< 1$ dan noemen we het subexponentieel.
+\end{opmerking}
+
+\subsection{Na\"ive methodes} \label{sec:na\"ive_methodes}
+\subsubsection{Trial division} \label{sec:trial_division}
+We testen gewoon alle candidaat priemen of ze delers zijn van $N$. Dit is $O(\sqrt{N}) = L_N(1, \frac{1}{2})$.
+
+\subsubsection{Pollard's $P$-methode} \label{sec:pollard's_$p$-methode}
+We weten wegens crt het ringsmorphisme \[
+\frac{\Z}{N\Z} \simeq \F_p \times \F_q
+.\] 
+We nemen een random walk in $\F_p$. Wat is een random walk? Het herhadelijk iterern van een functie $f: \F_p \to \F_p: x \mapsto x^2+1$. 
+We zoeken hoe lang het duurt voor een waarde om 2 keer voor te komen. 
+We verwachten dit na $\sqrt{p} $ stappen. 
+We kunnen wel niet een lijst van alle waarden opslaan. 
+We passen \emph{Floyd's cycle finding trick} toe. 
+
+We leggen hetzelfde pad af maar aan dubbele snelheid. $y_0 \mapsto y_1 \mapsto \ldots.$ met $y_{i} = f(f(y_{i_1}))$. 
+Dan na $O(\sqrt{q} )$ vinden we $x_i = y_i$. 
+
+
+Dus beschouwe de functie \[
+f: \frac{\Z}{N\Z} \to \frac{\Z}{N\Z}: x \mapsto x^2 + 1
+.\]
+EN $x_i = f(x_{i-1}), y_i = f^2(x_{i-1})$. 
+Na $O(\sqrt{p} ) $ stappen is $x_i - y_i \equiv 0 \mod p$.
+
+\subsection{Algebraische Groepsmethodes} \label{sec:algebraische_groepsmethodes}
+
+Prototype is Pollards  $(p-1)$-methode.
+Dus 
+ \begin{align*}
+	 \left( \frac{\Z}{N\Z} \right) ^{\times } \simeq \F_p^{\times } \times \F^{\times }_q
+.\end{align*}
+Onze hoop is een $M$ te vinden zodat $\#\F_p^{\times  } = p-1 | M$ en $\# \F_q^* = q-1 \not | M$.
+
+Neem een lukrake $a \in \left( \frac{\Z}{N\Z} \right) ^{\times }$. Dan is 
+\begin{align*}
+	a^{M} \equiv 1
+.\end{align*}
+Hoe vinden we zo'n $ M$?
+Maar als $p-1$ zou splitsen in kleine priemfactoren. $p-1 = \prod_{i = 1}^{r}l_i^{e_i}$ met $l_i \le B$ dan is dit een deler van $\prod_{l \le B}l ^{\left\lfloor \log_l N \right\rfloor}$ 
+
+\paragraph{Concreet} Pollard's $(p-1)$-methode van smoothnes bound $B$, 
+Kies $a \in (\frac{\Z}{N})^{\times }$. 
+Dan $b = a$. 
+Voor $f \in \{\text{priemen }\le B\} $. 
+Zie cursus voor het algoritme.
+
+De kans dat het toepasbaar is is echter zeer klein. 
+
+\subsubsection{Pollard's $(p+1)$-Methode} \label{sec:pollard's_$(p+1)$-methode}
+
+We werken met de groep $\F^{\times }_{p^2} / \F^{\times }_p$ met $p + 1$ elementen.
+We nemen $\F_{p^2} = \frac{\F_p[x]}{x^2 -a}$ met $a \in \F_p$ geen kwadraat als model voor $\F_{p^2}.$.
+Als we $M$ kunnen vinden zodat $p + 1 | M$. 
+
+Stel we vinden een $a$ dat geen kwadraat is mod $p$ noch mod $q. $ dan is
+ \[
+	 \frac{\Z / N\Z [x]}{(x^2 - a)} \simeq \frac{F_q[x]}{(x^2 - a)} \times  \frac{\F_q[x]}{(x^2-a)} \simeq \F_{p^2}\times  \F_{q^2}
+.\] 
+Stel $p + 1 | M$ maar $q + 1 \not | M$. 
+Kies $B \in \frac{\Z / N \Z [x]}{(x^2 - a)} $ lukraak.
+Als $b^{M} = \alpha x + \beta$  dan is $\alpha$ deelbaar door $p$ maar niet door $q$ dus  $p = \gcd(\alpha, N)$.
+
+\begin{opmerking}
+	Hoe vinden we zo'n $a$?
+	Door lukraak te proberen. De kans is 1/2 dat dit geen kwadraat is mod $p$. 
+\end{opmerking}
+
+\subsubsection{Lenstra's ECM (ellpitic curve method, 1983)} \label{sec:lenstra's_ecm_(ellpitic_curve_method,_1983)}
+
+We beschouowen $E: y^2 = x^3 + A x + b,\; A, B \in \Z / N \Z$.
+We beschouwen dit modolo $p, q$. 
+Dan is op een subtiliteit of oneindig na 
+\[
+	E\left( \frac{\Z}{N\Z} \right) \simeq E_p(\F_p) \times E_q(\F_q) 
+.\] 
+Hoop: vind een $M$ zodat $\# E_p(\F_p) | M, \# E_q(\F_q) \not |M$. 
+Dan kunnen we een lukraak punt  $p \in E\left( \frac{\Z}{N\Z} \right) $ nemen. Dan is $M*P = \mathcal{O}  \text{ op }E_p(\F_p) $ maar $\ne \mathcal{O}  \text{ op } E_q(\F_q)$.
+
+Twee punten sommeren tot oneindig als ze vebonden zijn door een verticale rechte. 
+Dus als $\lambda = \frac{3x_1^2 + A}{2y_1}$. 
+Dus bij een bepaalde stap in de brekening $M_P$ gaan we een noemer krijgen die we niet kunnen inverteren. Dus is $\gcd(y_1, N) = p$. 
+
+Hoe kiezen we zo'n lukraak punt? Hier is dat absoluut niet triviaal. 
+Hoe vinden we zo'n oplossing
+\[
+y^2 = x^3 + Ax + B \text{ over } \frac{\Z}{N\Z}
+.\] 
+Dit gaat echter niet. Er is wel een truc om dit te omzeilen. 
+Kies een punt en kies dan een $A, B$ zodat het punt op de curve ligt.
+
+\begin{opmerking}
+	Wat is de kans op succes? Zij $M = \text{product van kleine factoren}$,  dus als $\#E_p(\F_p)$ spitst in kleine factoren. 
+	Dit is vergelijkbaar met de vorige methodes. Maar in dit geval kunnen we een andere kromme nemen en opnieuw proberen. 
+\end{opmerking}
+\begin{herinner}
+	Hasse: $\#E_p(\F_p) \in [p + 1 - 2 \sqrt{p} , p + 1 + 2 \sqrt{p} ]$
+\end{herinner}
+Volgens Lenstr is er succes na een sub-exponentieel aantal pogingen, $L_N(\frac{1}{2})$.

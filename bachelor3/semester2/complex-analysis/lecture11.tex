@@ -1,0 +1,155 @@
+\lecture{11}{2020-05-04}{Normale famillies en Montel's theorema}
+
+\section{Afbeeldingstelling van Riemann} \label{sec:afbeeldingstelling_van_riemann}
+\begin{stelling}
+	[Afbeelding stelling van Riemann]	
+Zij $\Omega \subset \C$, open enkelvoudig samenhanengd zodat $\Omega \ne \emptyset, \C$. Dan bestaat er een conforme afbeelding $F: \Omega \to \mathbb{D}= \{z \st \abs z < 1\} $. 
+Als $z_0 \in \Omega$, dan kunnen we eisen dat $F(z_0) = 0, F'(z_0) > 0$. Dan is $F$ uniek bepaald.
+\end{stelling}
+We gaan dit vandaag niet bewijzen, maar er wel voorbeidingen voor maken. Namelijk de stellign van Montel. 
+
+We gaan de voorwaarden analyseren. 
+\begin{itemize}
+	\item 
+$\Omega \ne \C$ is echt wel nodig want er bestaat geen conforme $\C \to \mathbb{D}$. Dat zou een begrensde gehele functie zijn. Dit is in tegenspraak met Liouville.
+\item Enkelvoudig samenhangend: Dit is nodig want de schijf is enkelvoudig samenhandengd en dat is een topologische eigenschap.
+\end{itemize}
+
+Stel dat $F$ en $G$ twee connforme afbeeldingen zijn met  $F(z_0) = 0 , G(z_0) = 0$, $F'(z_0) > 0, G'(z_0) > 0$. Bekijk $G \circ F' = \phi: \mathbb{D} \to \mathbb{D}$. 
+Dus is $\phi$ een automorphisme van $\mathbb{D}$. Ook is $\phi(0) =  0$. Dan is $\phi(z) = e^{i\theta}z$ voor zekere  $\theta \in \R$.
+We weten ook dat 
+\begin{align*}
+	\phi'(0) = G'(F^{-1}(0))\cdot (F^{-1})'(0) \\
+	= G'(z_0) \frac{1}{F'(z_0)} > 0
+.\end{align*}
+Dus if $\phi(z) = z$ en $F = G$.o
+
+
+Zij $\Omega$ open en $\mathcal{F} $ een deelvezameling van de verzameling van alle holomorfe $f: \Omega \to \C$. 
+\begin{definitie}
+	$\mathcal{F} $ is een \emph{normale famillie} als elke rij $(f_k)_k \in \mathcal{F} $ een convergente deelrij heeft. Convergent in de zin van uniforme convergentie op compacta.
+\end{definitie}
+\begin{opmerking}
+	\begin{enumerate}
+		\item de limiet van deelrij is een holomorfe functie.
+		\item de limiet hoeft niet tot $\mathcal{F} $ te behoren. 
+	\end{enumerate}
+\end{opmerking}
+
+\begin{vb}
+	Een tegenvoorbeeld is $\mathbb{H}(\Omega) = \{f \st f: \Omega \to \C\text{ is holomorf}\} $. 
+	Dit is geen normale famillie. 
+	Neem de  rij  $(f_k)_k$ met $f_k(z) = k$ geen convergente deelrij.
+\end{vb}
+We noemen $\mathcal{F} $ \emph{uniform begrensd} op compacta als bij elke $K \underset{\text{compact}}\subset \Omega$ een $M = M(k) > 0$ bestaat met $\abs{f(z)} \le M$ voor alle $f \in \mathcal{F} $ en $z \in K$. 
+De stelling van Montel zegt dat dit de enige voorwaarde is. 
+\begin{stelling}
+	[Stelling van Montel]
+	Zij $\mathcal{F} $ uniform bergennsd op compacta. Dan is $\mathcal{F} $ \emph{normaal}.
+\end{stelling}
+Eerst nog een begrip over dat soort famillies. 
+\begin{definitie}
+	$\mathcal{F} $ is \emph{equicontinu} op $K$ als 
+	\begin{align*}
+		\forall \epsilon > 0, \exists \delta > 0, \forall  f \in \F, \forall z, w  \in K:\\
+		\abs{w - z} < \delta \implies \abs{f(w) - f(z) } < \epsilon
+	.\end{align*}
+\end{definitie}
+Het bewijs van de stelling van Montel valt uiteen in twee implicaties. 
+\begin{enumerate}
+	\item  $\mathcal{F} $ is uniform begrensd ($f \in \mathcal{F}$ moet holomorf zijn) $\implies $ $\mathcal{F} $ is equicontinue
+	\item $\mathcal{F}  $ is equicontinu en uniform begrensd ($f \in \mathcal{F} $ moet niet holomorf zijn) $\implies$ $\mathcal{F}  $ is normaal
+\end{enumerate}
+
+\subsection{Bewijs  van de stelling van Montel} \label{sec:bewijs__van_de_stelling_van_montel}
+
+\begin{stelling}
+	[Stelling van Montel]
+	Zij $\mathcal{F} $ uniform bergensd op compacta. Dan is $\mathcal{F} $ \emph{normaal}.
+\end{stelling}
+
+
+Het bewijs van de stelling van Montel valt uiteen in twee implicaties. 
+\begin{enumerate}
+	\item  $\mathcal{F} $ is uniform begrensd ($f \in \mathcal{F}$ moet holomorf zijn) $\implies $ $\mathcal{F} $ is equicontinue
+\end{enumerate}
+\begin{proof}
+	Neem aan dat $\mathcal{F} $ is een uniform begrensd op compacta, famillie van holomorfe functies. Neem $K \subset  \Omega$ compact. 
+	De afstand $\text{dist}(K, \partial \Omega) > 0$. 
+	Neem $r > 0$ met $3 r < \text{dist}(K, \partial \Omega)$.
+	Definieer $L = \{z \in \Omega \st \text{dist}(z, \partial \Omega \ge r\} $ (verondestel dat $\Omega$ bergsend is). 
+	Dan $K \subset L$, $L$ compact ($\Omega$ is begrensd). 
+	Als $z \in K$ dan zal $D_{2r}(z) \subset L$. 
+	We weten dat $L$ compact is en $L \subset \Omega$. 
+	Er is een $M  = M(L)$ zo dat \[
+		\forall f \in \mathcal{F} , \forall z \in L, \abs{f(z)} \le M
+	.\] 
+	Neem $\epsilon > 0$ willekeurig. 
+	Neem $f \in \mathcal{F} $ willekeurig, $z, w \in K$ met $|w  - z| < \delta$. 
+	Dan $|w - z| < \delta < r$ en $D_{2r} \subset L \subset  \Omega$. 
+	Neem $\gamma = C_{2r (z)}$. 
+	Dan is 
+	\begin{align*}
+		f(z) &= \frac{1}{2\pi i } \oint_{\gamma} \frac{f(s)}{s  - z \dd s} \\
+		f(w) &=  \frac{1}{2 \pi i} \oint_{\gamma}  \frac{f(s)}{s - w}\dd w 
+	\end{align*}
+	en 
+	\begin{align*}
+		f(w) - f(z) &= \frac{1}{2 \pi i}\oint_{\gamma} f(x) \left[ \frac{1}{s - w} - \frac{1}{s - z} \right]  \dd s \\
+			    &= \frac{1}{2 \pi i} \oint_{\gamma} f(s) \frac{w - z}{(s-w)(s-z)} \\
+		\abs{f(w) - f(z)} &\le \frac{1}{2 \pi i}2\pi 2r \frac{\max_{s \in \gamma}|f(s)|}{r \cdot 2r}\abs{w - z}\\
+				  &\le \frac{M}{r}\delta < \epsilon.
+	.\end{align*}
+\end{proof}
+De tweede implicatie die we nodig hebben: 
+\begin{itemize}
+	\item [2.] $\mathcal{F}  $ is equicontinu en uniform begrensd ($f \in \mathcal{F} $ moet niet holomorf zijn) $\implies$ $\mathcal{F}  $ is normaal.
+\end{itemize}
+Deze stelling wordt wel eens de stelling van Arzela Asoli gennoemd. 
+\begin{proof}
+	Neem $(f_n)_n \in \mathcal{F} $. Er is een aftelbare verzameling $\{s_j \st j \in \N\} $ die  dicht ligt in $K$.	
+	Dan is $(f_n(s_i))_n$ een bergsende zij in $\C$. 
+	Er is een convergennte deelrij. We noemen die $(f_{n,1})$ van $(f_n)$, zodat $f_{n, 1}(s_i)$ covergenvergeert als $n \to \infty$.  
+	Dan is er een verdere deelrij $(f_{n, 2})$ van $(f_{n, 1})$ zodat  $f_n(s_2)$ convergeert.  Dit process herhalen we.
+	Dan voldoet de rij $(f_{n, n}) =  (g_n)$. Dat is een deelrij van de oorspronkelijke rij. 
+	Ook zal  $g_n(s_j)$ convergent zijn voor elke $j$. 
+	Bewering: $g_n$ convergeert uniform op $K$.
+
+	We zullen nu bewijzen dat voor elke  $z, g_n(z) $ een cauchyrij is. 
+	Te bewijzen \[
+		\forall \epsilon > 0, \exists  n_0: \forall n, m \ge n_0: \max_{z \in K}|g_n(z) - g_m(z)| <3 \epsilon. 
+	.\] 
+	Neem $\epsilon > 0$. Vanwege equicontinuiteit is er een $\delta > 0$ met $\forall f \in \mathcal{F} , \forall z, w \in K: |w, z |\le \delta$. 
+	Schrijven $D_\delta(s_j)$, overdekken $K$, want $s_j$ 's liggen dicht. 
+	Er is $N$ zodanign dat $K \subset \bigcup_{j = i} ^{N}D_\delta(s_j)$. 
+	We weten dat $g_n(s_j)$ een Cauchyrij is. 
+	Er is $n_0$ met $\forall m,n \ge n_0: |g_n (s_j) - g_m(s_j)| < \epsilon$. 
+	
+	Neem  $z \in K$. Er is een $j \in \{1, \ldots, N\}$ met $z \in D_{\delta}(s_j)$. 
+Dus $\abs{z - s_j} \le \delta$. 
+
+Dan $\abs{f(z) - f(s_j)} \le \epsilon$ voor elke $f \in \mathcal{F} $ voor elke $g_n$.
+Als $n, m \ge n_0$.
+\[
+	\abs{g_n(s_j) - g_n(s_i)} < \epsilon, \quad \abs{g_n(z)- g_n(s_j)} < \epsilon, \quad \abs{g_n(z) - g_m(s_j) } \le \epsilon. 
+\] 
+Dus 
+ \[
+	 \abs{g_n(z) - g_m(z)} \le 3 \epsilon
+.\]
+\end{proof}
+Nu kunnen we de stelling van Montel bewijzen. 
+\begin{proof}
+	Uit (1) vinden we dat $\mathcal{F} $ equiconitnu is op compacta $K$. 
+	Uit (2) vinden we dat er een deelrij van $(f_n) \in \mathcal{F}  $, die convergeert op  $K$ (uniform). 
+	We willen deelirj onafhankelijk van $K$. 
+
+	We doen een uitputting van $\Omega$. Dat is een rij $(K_j)$ van compacta met  $K_j \subset \Omega$ en $K_j \subset  \mathring{K_{j + 1}}$. 
+	Zodat elke $K \subset \Omega$ compact binnen een $K_j$ ligt. 
+
+Als $\Omega$ begrensd is dan  $K_j = \{z \in \Omega \st \text{dist}(z , \partial \Omega\}  \ge \frac{1}{j}\}$.
+	Als $\Omega$ niet bergensd is dan $K_j = \{z \in \Omega \st \text{dist}(z, \partial \Omega) \ge \frac{1}{j} \text{ en } \abs{z} \le j\} $
+
+	Zij $(f_n)$ een rij in $\mathcal{F} $. Er is een deelrij $(f_n), 1)$ die uniform convergeert op $K_1$. Dan nemen we opnieuw een deel van $f_{n, 1}$ die convergeert op $K_2$, \ldots
+	We nemen weer een diagonaal rij. 
+\end{proof}

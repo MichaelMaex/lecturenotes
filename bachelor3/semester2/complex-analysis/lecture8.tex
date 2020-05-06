@@ -22,7 +22,7 @@
 	uniform op $0 < \delta < \re z < M < \infty$. 
 
 	\begin{align*}
-		\abs{ \Gamma(z) - f_{\epsilon, R}(z)} &= \abs{\left( \int_{0}^{\epsilon} + \int_{R}^{\infty} e^{-t}^{z-1}\dd t   \right) } \\
+		\abs{ \Gamma(z) - f_{\epsilon, R}(z)} &= \abs{\left( \int_{0}^{\epsilon} + \int_{R}^{\infty} e^{-t} t^{z-1}\dd t   \right) } \\
 		\abs{\int_{0}^{\epsilon} e^{-t}t ^{z -1} \dd t}  &\le \int_{0}^{\epsilon} t ^{\re z - 1} \dd t , \epsilon < 1 \\
 								 &\le \int_{0}^{\epsilon} t ^{\delta -1} \dd t \to 0 , \text{ als } \epsilon \to 0 \\
 		\abs{\int_{R}^{\infty} e^{-t}t ^{z - 1}\dd t} &\le \int_{R}^{\infty} e^{-t} t ^{\re z - 1} \dd t \\
